@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24 WEARS - Premium Streetwear | 10% OFF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=ASSNFbhqrSldzaEefs33jzw9_0Q_xQizKeEu6SklLQOimr8Iez2IqyNJcUzHruNDbXhMOWttOZsHh9On&currency=EUR" data-sdk-integration-source="button-factory"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .logo-font {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.05em;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-gradient {
+            background: #000000;
+        }
+
+        .card-hover {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #000000;
+            transition: all 0.3s ease;
+            border: 2px solid #ffffff;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
+            background: transparent;
+            color: #ffffff;
+        }
+
+        .product-image {
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ornament-border {
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .ornament-border::before,
+        .ornament-border::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .ornament-border::before {
+            top: -2px;
+            left: -2px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .ornament-border::after {
+            bottom: -2px;
+            right: -2px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .luxury-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .luxury-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 70%
+            );
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .paypal-btn {
+            background: #0070ba;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .paypal-btn:hover {
+            background: #005ea6;
+            transform: scale(1.02);
+        }
+
+        .checkout-step {
+            transition: all 0.3s ease;
+        }
+
+        .checkout-step.active {
+            color: #ffffff;
+        }
+
+        .checkout-step.completed {
+            color: #10b981;
+        }
+
+        .step-line {
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .step-line.completed {
+            background: #10b981;
+        }
+
+        .error-input {
+            border-color: #ef4444 !important;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .discount-badge {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: #6b7280;
+        }
+
+        .price-discount {
+            color: #ef4444;
+            font-weight: 900;
+        }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 1.5rem;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .cookie-banner.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-black text-white scroll-smooth">
+
+    <nav class="fixed w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <img src="images/logo.png" alt="24 WEARS" class="h-16 w-auto">
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-gray-300 transition font-light tracking-wide">Home</a>
+                    <a href="#shop" class="hover:text-gray-300 transition font-light tracking-wide">Shop</a>
+                    <a href="#about" class="hover:text-gray-300 transition font-light tracking-wide">About</a>
+                    <a href="#contact" class="hover:text-gray-300 transition font-light tracking-wide">Contact</a>
+                    <a href="#legal" class="hover:text-gray-300 transition font-light tracking-wide">Legal</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button onclick="showCart()" class="relative hover:text-gray-300 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-white text-black text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gray-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-delay: 2s"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 fade-in">
+            <div class="mb-12 luxury-shine inline-block">
+                <img src="images/logo.png" alt="24 WEARS" class="h-48 md:h-64 w-auto mx-auto">
+            </div>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 font-light tracking-widest">PREMIUM STREETWEAR</p>
+            <p class="text-base text-gray-400 mb-12 max-w-2xl mx-auto font-light tracking-wide">
+                Exclusive Drops • Limited Edition • European Shipping
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#shop" class="btn-primary px-10 py-4 rounded-none font-bold text-lg tracking-wider">
+                    SHOP NOW
+                </a>
+                <a href="#about" class="bg-transparent border-2 border-white hover:bg-white hover:text-black px-10 py-4 rounded-none font-bold text-lg transition tracking-wider">
+                    LEARN MORE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="discount-badge inline-block px-6 py-3 mb-6 text-white font-bold tracking-wider text-lg">
+                    🔥 10% OFF - LIMITED TIME ONLY 🔥
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-4 logo-font tracking-wider">
+                    WINTER COLLECTION 2025
+                </h2>
+                <div class="w-32 h-px bg-white mx-auto mb-4"></div>
+                <p class="text-gray-400 text-base tracking-widest font-light">LIMITED DROPS</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="productGrid">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-black border-t border-white border-opacity-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-5xl md:text-6xl font-bold mb-6 logo-font tracking-wider">
+                        ABOUT<br/>24 WEARS
+                    </h2>
+                    <div class="w-24 h-px bg-white mb-6"></div>
+                    <p class="text-gray-300 text-base mb-6 leading-relaxed font-light">
+                        We are more than just a streetwear brand. 24 WEARS stands for quality, style and individuality. 
+                        Each piece is designed with passion and produced in limited quantities.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-8 h-px bg-white"></div>
+                            <span class="text-gray-300 tracking-wide font-light">Premium Materials</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-8 h-px bg-white"></div>
+                            <span class="text-gray-300 tracking-wide font-light">Limited Drops</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-8 h-px bg-white"></div>
+                            <span class="text-gray-300 tracking-wide font-light">European Shipping</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-8 h-px bg-white"></div>
+                            <span class="text-gray-300 tracking-wide font-light">30 Day Return Policy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative ornament-border p-2">
+                    <img src="images/content.png" alt="Streetwear" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="legal" class="py-24 bg-black border-t border-white border-opacity-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl md:text-6xl font-bold mb-12 logo-font tracking-wider text-center">
+                LEGAL INFORMATION
+            </h2>
+            
+            <div class="space-y-8">
+                <div class="bg-black border border-white border-opacity-20 p-6 ornament-border">
+                    <button onclick="toggleLegalSection('impressum')" class="w-full flex justify-between items-center text-2xl font-bold tracking-wider mb-4">
+                        <span>IMPRESSUM</span>
+                        <span id="impressum-icon">+</span>
+                    </button>
+                    <div id="impressum-content" class="hidden text-gray-300 space-y-4">
+                        <p class="font-semibold text-white">Angaben gemäß § 5 TMG:</p>
+                        <div>
+                            <p class="font-semibold text-white">24 WEARS</p>
+                            <p>[Dein vollständiger Name oder Firmenname]</p>
+                            <p>[Straße und Hausnummer]</p>
+                            <p>[PLZ und Ort]</p>
+                        </div>
+                        
+                        <div>
+                            <p class="font-semibold text-white">Kontakt:</p>
+                            <p>E-Mail: twenty.four.wears@gmx.de</p>
+                            <p>Telefon: [Deine Telefonnummer]</p>
+                        </div>
+                        
+                        <div>
+                            <p class="font-semibold text-white">Umsatzsteuer-ID:</p>
+                            <p>Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:</p>
+                            <p>[Deine USt-IdNr. - wenn vorhanden]</p>
+                        </div>
+                        
+                        <div>
+                            <p class="font-semibold text-white">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</p>
+                            <p>[Dein vollständiger Name]</p>
+                            <p>[Deine Adresse]</p>
+                        </div>
+                        
+                        <div>
+                            <p class="font-semibold text-white">Haftungsausschluss:</p>
+                            <p class="text-sm">Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black border border-white border-opacity-20 p-6 ornament-border">
+                    <button onclick="toggleLegalSection('datenschutz')" class="w-full flex justify-between items-center text-2xl font-bold tracking-wider mb-4">
+                        <span>DATENSCHUTZERKLÄRUNG</span>
+                        <span id="datenschutz-icon">+</span>
+                    </button>
+                    <div id="datenschutz-content" class="hidden text-gray-300 space-y-4 text-sm">
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">1. Datenschutz auf einen Blick</p>
+                            <p class="font-semibold text-white">Allgemeine Hinweise</p>
+                            <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white">Datenerfassung auf dieser Website</p>
+                            <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">2. Hosting</p>
+                            <p>Diese Website wird bei Strato gehostet. Der Hoster speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dies sind: Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage, IP-Adresse.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">3. Zahlungsdienstleister</p>
+                            <p class="font-semibold text-white">PayPal</p>
+                            <p>Auf dieser Website bieten wir die Bezahlung via PayPal an. Anbieter dieses Zahlungsdienstes ist die PayPal (Europe) S.à.r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxembourg.</p>
+                            <p class="mt-2">Wenn Sie die Bezahlung via PayPal auswählen, werden die von Ihnen eingegebenen Zahlungsdaten an PayPal übermittelt. Die Datenverarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">4. Newsletter</p>
+                            <p>Wenn Sie den auf der Website angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse. Die Daten werden ausschließlich für den Versand des Newsletters verwendet und nicht an Dritte weitergegeben.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">5. Ihre Rechte</p>
+                            <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Widerspruch und Datenübertragbarkeit. Wenden Sie sich hierzu an: twenty.four.wears@gmx.de</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">6. Cookies</p>
+                            <p>Diese Website verwendet Cookies für PayPal-Zahlungen. Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden. Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black border border-white border-opacity-20 p-6 ornament-border">
+                    <button onclick="toggleLegalSection('agb')" class="w-full flex justify-between items-center text-2xl font-bold tracking-wider mb-4">
+                        <span>AGB</span>
+                        <span id="agb-icon">+</span>
+                    </button>
+                    <div id="agb-content" class="hidden text-gray-300 space-y-4 text-sm">
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">1. Geltungsbereich</p>
+                            <p>Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge über die Lieferung von Waren, die Sie mit uns als Anbieter (24 WEARS) über die Website schließen.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">2. Vertragsschluss</p>
+                            <p>Die Präsentation der Waren in unserem Online-Shop stellt kein rechtlich bindendes Angebot dar. Durch Anklicken des Buttons "Kaufen" geben Sie eine verbindliche Bestellung ab. Der Kaufvertrag kommt zustande, wenn wir Ihre Bestellung durch eine Auftragsbestätigung per E-Mail annehmen.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">3. Preise und Versandkosten</p>
+                            <p>Alle Preise sind Endpreise und enthalten die gesetzliche Mehrwertsteuer. Zusätzlich zu den angegebenen Preisen berechnen wir für die Lieferung Versandkosten in Höhe von 3,49€. Ab einem Bestellwert von 50€ liefern wir versandkostenfrei.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">4. Zahlungsbedingungen</p>
+                            <p>Die Zahlung erfolgt ausschließlich über PayPal. Der Rechnungsbetrag ist sofort mit Vertragsschluss fällig.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">5. Lieferung</p>
+                            <p>Die Lieferung erfolgt innerhalb Deutschlands und Europas. Die Lieferzeit beträgt in der Regel 3-7 Werktage. Bei Lieferungen außerhalb Deutschlands können längere Lieferzeiten auftreten.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">6. Eigentumsvorbehalt</p>
+                            <p>Die gelieferte Ware bleibt bis zur vollständigen Bezahlung unser Eigentum.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">7. Gewährleistung</p>
+                            <p>Es gelten die gesetzlichen Gewährleistungsrechte. Die Gewährleistungsfrist beträgt 2 Jahre ab Lieferung der Ware.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">8. Haftung</p>
+                            <p>Wir haften für Vorsatz und grobe Fahrlässigkeit. Bei leichter Fahrlässigkeit haften wir nur bei Verletzung wesentlicher Vertragspflichten.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-black border border-white border-opacity-20 p-6 ornament-border">
+                    <button onclick="toggleLegalSection('widerruf')" class="w-full flex justify-between items-center text-2xl font-bold tracking-wider mb-4">
+                        <span>WIDERRUFSBELEHRUNG</span>
+                        <span id="widerruf-icon">+</span>
+                    </button>
+                    <div id="widerruf-content" class="hidden text-gray-300 space-y-4 text-sm">
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">Widerrufsrecht</p>
+                            <p>Sie haben das Recht, binnen 30 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
+                            <p class="mt-2">Die Widerrufsfrist beträgt 30 Tage ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die Waren in Besitz genommen haben bzw. hat.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">Ausübung des Widerrufsrechts</p>
+                            <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns mittels einer eindeutigen Erklärung (z.B. per E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren.</p>
+                            <p class="mt-2">Kontakt für Widerruf:</p>
+                            <p>E-Mail: twenty.four.wears@gmx.de</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">Folgen des Widerrufs</p>
+                            <p>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist.</p>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-white text-base mb-2">Rücksendung</p>
+                            <p>Sie haben die Waren unverzüglich und in jedem Fall spätestens binnen vierzehn Tagen ab dem Tag, an dem Sie uns über den Widerruf dieses Vertrags unterrichten, an uns zurückzusenden oder zu übergeben. Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen absenden.</p>
+                            <p class="mt-2">Sie tragen die unmittelbaren Kosten der Rücksendung der Waren.</p>
+                            <p class="mt-2">Rücksendeadresse:</p>
+                            <p>[Deine Rücksendeadresse eintragen]</p>
+                        </div>
+
+                        <div class="bg-yellow-900 bg-opacity-30 border border-yellow-500 border-opacity-50 p-4 rounded">
+                            <p class="font-semibold text-yellow-200">Wichtig:</p>
+                            <p class="text-yellow-300 text-xs mt-1">Die Ware muss ungetragen, ungewaschen und mit angebrachten Etiketten zurückgesendet werden.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-black border-t border-white border-opacity-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-5xl md:text-6xl font-bold mb-6 logo-font tracking-wider">
+                JOIN THE COMMUNITY
+            </h2>
+            <div class="w-32 h-px bg-white mx-auto mb-8"></div>
+            <p class="text-gray-400 text-base mb-12 tracking-wide font-light">
+                Stay updated on new drops and exclusive offers
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                <input type="email" id="newsletterEmail" placeholder="YOUR EMAIL" class="flex-1 px-6 py-4 rounded-none bg-transparent border-2 border-white focus:border-gray-400 focus:outline-none tracking-wider font-light">
+                <button onclick="subscribeNewsletter()" class="btn-primary px-8 py-4 rounded-none font-bold tracking-wider">SUBSCRIBE</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 border-t border-white border-opacity-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img src="images/logo.png" alt="24 WEARS" class="h-12 w-auto mb-4">
+                    <p class="text-gray-400 text-xs tracking-wider font-light">PREMIUM STREETWEAR</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 tracking-wider">SHOP</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm font-light">
+                        <li><a href="#shop" class="hover:text-white transition tracking-wide">Hoodies</a></li>
+                        <li><a href="#shop" class="hover:text-white transition tracking-wide">T-Shirts</a></li>
+                        <li><a href="#shop" class="hover:text-white transition tracking-wide">Pants</a></li>
+                        <li><a href="#shop" class="hover:text-white transition tracking-wide">Jackets</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 tracking-wider">LEGAL</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm font-light">
+                        <li><a href="#legal" onclick="openLegalSection('impressum')" class="hover:text-white transition tracking-wide">Impressum</a></li>
+                        <li><a href="#legal" onclick="openLegalSection('datenschutz')" class="hover:text-white transition tracking-wide">Datenschutz</a></li>
+                        <li><a href="#legal" onclick="openLegalSection('agb')" class="hover:text-white transition tracking-wide">AGB</a></li>
+                        <li><a href="#legal" onclick="openLegalSection('widerruf')" class="hover:text-white transition tracking-wide">Widerruf</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 tracking-wider">FOLLOW US</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/twenty.fourwears?igsh=a2dtZnBtdDQ5enY%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition text-sm font-light tracking-wide">Instagram</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition text-sm font-light tracking-wide">TikTok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white border-opacity-10 pt-8 text-center text-gray-400 text-xs tracking-widest font-light">
+                © 2025 24 WEARS. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex-1">
+                <p class="text-white font-bold mb-2">🍪 Wir verwenden Cookies</p>
+                <p class="text-gray-300 text-sm">
+                    Diese Website nutzt Cookies für PayPal-Zahlungen und zur Verbesserung der Nutzererfahrung. 
+                    Mit der Nutzung unserer Dienste erklären Sie sich damit einverstanden, dass wir Cookies verwenden. 
+                    <a href="#legal" onclick="openLegalSection('datenschutz')" class="underline hover:text-white">Mehr erfahren</a>
+                </p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="acceptCookies()" class="bg-white text-black px-6 py-3 font-bold tracking-wider hover:bg-gray-200 transition">
+                    AKZEPTIEREN
+                </button>
+                <button onclick="declineCookies()" class="bg-transparent border-2 border-white text-white px-6 py-3 font-bold tracking-wider hover:bg-white hover:text-black transition">
+                    ABLEHNEN
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50 p-4">
+        <div class="bg-black border-2 border-white ornament-border max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-white border-opacity-20 flex justify-between items-center">
+                <h3 class="text-2xl font-bold tracking-wider logo-font">SHOPPING CART</h3>
+                <button onclick="closeCart()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="cartItems" class="p-6">
+            </div>
+            <div class="p-6 border-t border-white border-opacity-20 space-y-3">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xl font-bold tracking-wider">TOTAL:</span>
+                    <span id="cartTotal" class="text-2xl font-black">0.00€</span>
+                </div>
+                <button onclick="proceedToCheckout()" class="w-full btn-primary py-4 rounded-none font-bold text-lg tracking-wider">
+                    CHECKOUT
+                </button>
+                <button onclick="closeCart()" class="w-full bg-transparent border-2 border-white hover:bg-white hover:text-black py-4 rounded-none font-bold tracking-wider transition">
+                    CONTINUE SHOPPING
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkoutModal" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50 p-4">
+        <div class="bg-black border-2 border-white ornament-border max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-white border-opacity-20 flex justify-between items-center">
+                <h3 class="text-2xl font-bold tracking-wider logo-font">CHECKOUT</h3>
+                <button onclick="closeCheckout()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="px-6 py-8 border-b border-white border-opacity-20">
+                <div class="flex items-center justify-between max-w-2xl mx-auto">
+                    <div class="flex items-center checkout-step" id="step1">
+                        <div class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center font-bold">
+                            1
+                        </div>
+                        <span class="ml-2 text-sm font-bold tracking-wider hidden sm:inline">DELIVERY</span>
+                    </div>
+                    <div class="flex-1 mx-4 step-line" id="line1"></div>
+                    <div class="flex items-center checkout-step" id="step2">
+                        <div class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center font-bold">
+                            2
+                        </div>
+                        <span class="ml-2 text-sm font-bold tracking-wider hidden sm:inline">PAYMENT</span>
+                    </div>
+                    <div class="flex-1 mx-4 step-line" id="line2"></div>
+                    <div class="flex items-center checkout-step" id="step3">
+                        <div class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center font-bold">
+                            ✓
+                        </div>
+                        <span class="ml-2 text-sm font-bold tracking-wider hidden sm:inline">DONE</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="checkoutContent" class="p-6">
+            </div>
+        </div>
+    </div>
+
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50 p-4">
+        <div class="bg-black border-2 border-white ornament-border max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-white border-opacity-20 flex justify-between items-center">
+                <h3 id="modalTitle" class="text-2xl font-bold tracking-wider logo-font"></h3>
+                <button onclick="closeProductModal()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="modalContent" class="p-6">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Casual Streetwear Hoodie",
+                price: 24.30,
+                originalPrice: 27.00,
+                category: "Hoodies",
+                colors: ["Black", "Lightgray"],
+                sizes: ["XL", "XXL", "3XL", "4XL", "5XL", "6XL"],
+                stock: 32,
+                description: "Premium quality with soft inner lining",
+                image: "images/products/Casual-Streetwear-Hoddie.png",
+                images: {
+                    "Black": "images/products/Casual-Streetwear-Hoddie.png",
+                    "Lightgray": "images/products/Casual-Streetwear-Hoddiegray.png"
+                }
+            },
+            {
+                id: 2,
+                name: "Streetwear Zipper",
+                price: 30.60,
+                originalPrice: 34.00,
+                category: "Zipper",
+                colors: ["Black", "Blue", "Lightgray"],
+                sizes: ["XL", "XXL", "3XL", "4XL", "5XL", "6XL"],
+                stock: 24,
+                description: "100% Cotton, oversized fit",
+                image: "images/products/Oversized-zipperblack.png",
+                images: {
+                    "Black": "images/products/Oversized-zipperblack.png",
+                    "Blue": "images/products/Oversized-zipperblue.png",
+                    "Lightgray": "images/products/Oversized-zippergray.png"
+                }
+            },
+            {
+                id: 3,
+                name: "Man jogger Casual",
+                price: 25.20,
+                originalPrice: 28.00,
+                category: "Jogger",
+                colors: ["Black", "Peach", "Lightgray", "Darkgray"],
+                sizes: ["S", "M", "L", "XL", "XXL"],
+                stock: 17,
+                description: "Modern casual jogger look: comfortable, clean, and easy to style",
+                image: "images/products/Man-jogger-CasualBlack.png",
+                images: {
+                    "Black": "images/products/Man-jogger-CasualBlack.png",
+                    "Peach": "images/products/Man-jogger-Casualpeach.png",
+                    "Lightgray": "images/products/light-gray.png",
+                    "Darkgray": "images/products/Man-jogger-Casualdarkgray.png"
+                }
+            },
+            {
+                id: 4,
+                name: "Japanes Style Jogger",
+                price: 23.40,
+                originalPrice: 26.00,
+                category: "Jogger",
+                colors: ["White", "Red", "Gray"],
+                sizes: ["S", "M", "L", "XL", "XXL"],
+                stock: 23,
+                description: "Perfekt für den Winter-Look",
+                image: "images/products/Japanes-Style-Joggerwhite.png",
+                images: {
+                    "White": "images/products/Japanes-Style-Joggerwhite.png",
+                    "Red": "images/products/Japanes-Style-Joggerred.png",
+                    "Gray": "images/products/Japanes-Style-Joggergray.png"
+                }
+            },
+            {
+                id: 5,
+                name: "Tokyo Hoddie",
+                price: 25.20,
+                originalPrice: 28.00,
+                category: "Hoodies",
+                colors: ["Peach", "White", "Gray"],
+                sizes: ["S", "M", "L", "XL", "XXL"],
+                stock: 13,
+                description: "Warm und stylisch für kalte Tage",
+                image: "images/products/Tokyo-HoddiePeach.png",
+                images: {
+                    "Peach": "images/products/Tokyo-HoddiePeach.png",
+                    "White": "images/products/Tokyo-HoddieWhite.png",
+                    "Gray": "images/products/Tokyo-HoddieGray.png"
+                }
+            },
+            {
+                id: 6,
+                name: "Japan Style Distressed Washed Streetwear Jeans",
+                price: 35.10,
+                originalPrice: 39.00,
+                category: "Jeans",
+                colors: ["Black"],
+                sizes: ["XS","S","M", "L", "XL", "XXL"],
+                stock: 15,
+                description: "Warm",
+                image: "images/products/Japan-Style-Distressed-Washed-Streetwear-Jeansblack.png",
+                images: {
+                    "Black": "images/products/Japan-Style-Distressed-Washed-Streetwear-Jeansblack.png",
+                }
+            },
+            {
+                id: 7,
+                name: "Oversizes Hodie",
+                price: 25.20,
+                originalPrice: 28.00,
+                category: "Hoodies",
+                colors: ["Pink", "Black", "Blue"],
+                sizes: ["S","M", "L", "XL", "XXL"],
+                stock: 23,
+                description: "Warm",
+                image: "images/products/Oversizes-Hodiepink.png",
+                images: {
+                    "Pink": "images/products/Oversizes-Hodiepink.png",
+                    "Black": "images/products/Oversizes-Hodieblack.png",
+                    "Blue": "images/products/Oversizes-Hodieblue.png",
+                }
+            }
+        ];
+
+        let cart = [];
+        let currentCheckoutStep = 1;
+        let deliveryData = {};
+        
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookieConsent');
+            if (consent) {
+                document.getElementById('cookieBanner').classList.add('hidden');
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieBanner').classList.add('hidden');
+        }
+
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookieBanner').classList.add('hidden');
+            alert('Sie haben Cookies abgelehnt. Einige Funktionen (z.B. PayPal-Zahlung) funktionieren möglicherweise nicht optimal.');
+        }
+
+        function toggleLegalSection(section) {
+            const content = document.getElementById(section + '-content');
+            const icon = document.getElementById(section + '-icon');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.textContent = '−';
+            } else {
+                content.classList.add('hidden');
+                icon.textContent = '+';
+            }
+        }
+
+        function openLegalSection(section) {
+            setTimeout(() => {
+                const content = document.getElementById(section + '-content');
+                const icon = document.getElementById(section + '-icon');
+                
+                ['impressum', 'datenschutz', 'agb', 'widerruf'].forEach(s => {
+                    if (s !== section) {
+                        document.getElementById(s + '-content').classList.add('hidden');
+                        document.getElementById(s + '-icon').textContent = '+';
+                    }
+                });
+                
+                content.classList.remove('hidden');
+                icon.textContent = '−';
+            }, 100);
+        }
+
+        function calculateShipping(subtotal) {
+            return subtotal >= 50 ? 0 : 3.49;
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="product-card bg-black border border-white border-opacity-20 ornament-border overflow-hidden card-hover cursor-pointer" onclick="openProductModal(${product.id})">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="${product.image}" alt="${product.name}" class="product-image w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 text-xs font-bold tracking-wider">
+                            10% OFF
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white text-black px-3 py-1 text-xs font-bold tracking-wider">
+                            ${product.stock} IN STOCK
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-gray-400 mb-2 tracking-widest">${product.category.toUpperCase()}</div>
+                        <h3 class="text-xl font-bold mb-2 tracking-wide">${product.name}</h3>
+                        <p class="text-gray-400 text-sm mb-4 font-light">${product.description}</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl font-black price-discount">${product.price.toFixed(2)}€</span>
+                                <span class="text-lg price-original">${product.originalPrice.toFixed(2)}€</span>
+                            </div>
+                            <button onclick="event.stopPropagation(); openProductModal(${product.id})" class="bg-white text-black hover:bg-transparent hover:text-white border-2 border-white px-6 py-2 font-bold transition tracking-wider text-sm">
+                                BUY NOW
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            const modal = document.getElementById('productModal');
+            document.getElementById('modalTitle').textContent = product.name;
+            
+            const defaultColor = product.colors[0];
+            const defaultImage = product.images[defaultColor];
+            
+            document.getElementById('modalContent').innerHTML = `
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="ornament-border">
+                        <img id="productImage" src="${defaultImage}" alt="${product.name}" class="w-full transition-all duration-500">
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-3xl font-black price-discount">${product.price.toFixed(2)}€</span>
+                            <span class="text-xl price-original">${product.originalPrice.toFixed(2)}€</span>
+                            <span class="bg-red-600 text-white px-2 py-1 text-xs font-bold">10% OFF</span>
+                        </div>
+                        <p class="text-gray-300 mb-6 font-light">${product.description}</p>
+                        
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold mb-2 tracking-wider">SELECT SIZE</label>
+                            <select id="sizeSelect" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light">
+                                ${product.sizes.map(size => `<option value="${size}" class="bg-black">${size}</option>`).join('')}
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold mb-2 tracking-wider">SELECT COLOR</label>
+                            <select id="colorSelect" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light" onchange="changeProductImage(${product.id})">
+                                ${product.colors.map(color => `<option value="${color}" class="bg-black">${color}</option>`).join('')}
+                            </select>
+                        </div>
+                        
+                        <button onclick="addToCart(${product.id})" class="w-full btn-primary py-4 rounded-none font-bold text-lg tracking-wider">
+                            ADD TO CART
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function changeProductImage(productId) {
+            const product = products.find(p => p.id === productId);
+            const selectedColor = document.getElementById('colorSelect').value;
+            const productImage = document.getElementById('productImage');
+            
+            productImage.style.opacity = '0';
+            
+            setTimeout(() => {
+                productImage.src = product.images[selectedColor];
+                productImage.style.opacity = '1';
+            }, 200);
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const size = document.getElementById('sizeSelect').value;
+            const color = document.getElementById('colorSelect').value;
+            
+            cart.push({
+                ...product,
+                selectedSize: size,
+                selectedColor: color
+            });
+            
+            updateCartCount();
+            closeProductModal();
+            
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-24 right-4 bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg z-50 tracking-wider font-bold';
+            notification.textContent = '✓ Item added to cart!';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        function showCart() {
+            const modal = document.getElementById('cartModal');
+            const cartItems = document.getElementById('cartItems');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-400 text-center py-8">Your cart is empty</p>';
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="flex items-center gap-4 mb-4 pb-4 border-b border-gray-700">
+                        <img src="${item.images[item.selectedColor]}" alt="${item.name}" class="w-20 h-20 object-cover">
+                        <div class="flex-1">
+                            <h4 class="font-bold tracking-wide">${item.name}</h4>
+                            <p class="text-sm text-gray-400">Size: ${item.selectedSize} | Color: ${item.selectedColor}</p>
+                            <p class="font-bold text-lg mt-1">${item.price.toFixed(2)}€</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-400 transition">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `).join('');
+            }
+            
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('cartTotal').textContent = total.toFixed(2) + '€';
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            showCart();
+        }
+
+        function updateCheckoutSteps(step) {
+            currentCheckoutStep = step;
+            
+            document.getElementById('step1').classList.remove('active', 'completed');
+            document.getElementById('step2').classList.remove('active', 'completed');
+            document.getElementById('step3').classList.remove('active', 'completed');
+            document.getElementById('line1').classList.remove('completed');
+            document.getElementById('line2').classList.remove('completed');
+            
+            if (step >= 1) {
+                document.getElementById('step1').classList.add(step === 1 ? 'active' : 'completed');
+            }
+            if (step >= 2) {
+                document.getElementById('line1').classList.add('completed');
+                document.getElementById('step2').classList.add(step === 2 ? 'active' : 'completed');
+            }
+            if (step >= 3) {
+                document.getElementById('line2').classList.add('completed');
+                document.getElementById('step3').classList.add('completed');
+            }
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            closeCart();
+            currentCheckoutStep = 1;
+            showCheckoutStep1();
+        }
+
+        function showCheckoutStep1() {
+            const modal = document.getElementById('checkoutModal');
+            const content = document.getElementById('checkoutContent');
+            
+            updateCheckoutSteps(1);
+            
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            const shipping = calculateShipping(total);
+            const finalTotal = total + shipping;
+            
+            content.innerHTML = `
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold mb-6 tracking-wider logo-font">DELIVERY INFORMATION</h3>
+                        
+                        <div class="space-y-5">
+                            <div>
+                                <label class="block text-sm font-bold mb-2 tracking-wider">FULL NAME *</label>
+                                <input type="text" id="fullName" value="${deliveryData.fullName || ''}" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light focus:border-gray-400 focus:outline-none" placeholder="John Doe">
+                                <div id="fullNameError" class="error-message hidden"></div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-bold mb-2 tracking-wider">STREET & NUMBER *</label>
+                                <input type="text" id="street" value="${deliveryData.street || ''}" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light focus:border-gray-400 focus:outline-none" placeholder="Example Street 123">
+                                <div id="streetError" class="error-message hidden"></div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-bold mb-2 tracking-wider">ZIP CODE *</label
+                                        <input type="text" id="zip" value="${deliveryData.zip || ''}" maxlength="5" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light focus:border-gray-400 focus:outline-none" placeholder="12345">
+                                    <div id="zipError" class="error-message hidden"></div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold mb-2 tracking-wider">CITY *</label>
+                                    <input type="text" id="city" value="${deliveryData.city || ''}" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light focus:border-gray-400 focus:outline-none" placeholder="Berlin">
+                                    <div id="cityError" class="error-message hidden"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-bold mb-2 tracking-wider">EMAIL *</label>
+                                <input type="email" id="email" value="${deliveryData.email || ''}" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light focus:border-gray-400 focus:outline-none" placeholder="john@example.com">
+                                <div id="emailError" class="error-message hidden"></div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="validateAndProceedToStep2()" class="w-full mt-8 btn-primary py-4 rounded-none font-bold text-lg tracking-wider">
+                            CONTINUE TO PAYMENT
+                        </button>
+                    </div>
+                    
+                    <div class="lg:col-span-1">
+                        <div class="bg-black border border-white border-opacity-20 p-6 ornament-border sticky top-4">
+                            <h3 class="text-xl font-bold mb-4 tracking-wider">CART</h3>
+                            <div class="space-y-3 mb-4">
+                                ${cart.map(item => `
+                                    <div class="flex items-center gap-3 pb-3 border-b border-gray-700">
+                                        <img src="${item.images[item.selectedColor]}" alt="${item.name}" class="w-12 h-12 object-cover">
+                                        <div class="flex-1">
+                                            <p class="font-bold text-sm">${item.name}</p>
+                                            <p class="text-xs text-gray-400">${item.selectedSize} | ${item.selectedColor}</p>
+                                        </div>
+                                        <p class="font-bold text-sm">${item.price.toFixed(2)}€</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="border-t border-white border-opacity-20 pt-4">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Subtotal:</span>
+                                    <span>${total.toFixed(2)}€</span>
+                                </div>
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Shipping:</span>
+                                    <span class="${shipping === 0 ? 'text-green-400' : ''}">${shipping === 0 ? 'FREE' : shipping.toFixed(2) + '€'}</span>
+                                </div>
+                                ${shipping === 0 ? '<p class="text-xs text-green-400 mb-2">✓ Free shipping from 50€</p>' : '<p class="text-xs text-gray-400 mb-2">Free shipping from 50€</p>'}
+                                <div class="flex justify-between text-xl font-bold mt-4">
+                                    <span>TOTAL:</span>
+                                    <span>${finalTotal.toFixed(2)}€</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function validateAndProceedToStep2() {
+            let hasError = false;
+            
+            const fullName = document.getElementById('fullName').value.trim();
+            const street = document.getElementById('street').value.trim();
+            const zip = document.getElementById('zip').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.classList.add('hidden');
+                el.textContent = '';
+            });
+            document.querySelectorAll('input').forEach(el => el.classList.remove('error-input'));
+            
+            if (!fullName) {
+                document.getElementById('fullNameError').textContent = 'Name is required';
+                document.getElementById('fullNameError').classList.remove('hidden');
+                document.getElementById('fullName').classList.add('error-input');
+                hasError = true;
+            }
+            
+            if (!street) {
+                document.getElementById('streetError').textContent = 'Street and number are required';
+                document.getElementById('streetError').classList.remove('hidden');
+                document.getElementById('street').classList.add('error-input');
+                hasError = true;
+            }
+            
+            if (!zip) {
+                document.getElementById('zipError').textContent = 'ZIP code is required';
+                document.getElementById('zipError').classList.remove('hidden');
+                document.getElementById('zip').classList.add('error-input');
+                hasError = true;
+            } else if (!/^\d{5}$/.test(zip)) {
+                document.getElementById('zipError').textContent = 'ZIP code must be 5 digits';
+                document.getElementById('zipError').classList.remove('hidden');
+                document.getElementById('zip').classList.add('error-input');
+                hasError = true;
+            }
+            
+            if (!city) {
+                document.getElementById('cityError').textContent = 'City is required';
+                document.getElementById('cityError').classList.remove('hidden');
+                document.getElementById('city').classList.add('error-input');
+                hasError = true;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Email is required';
+                document.getElementById('emailError').classList.remove('hidden');
+                document.getElementById('email').classList.add('error-input');
+                hasError = true;
+            } else if (!emailRegex.test(email)) {
+                document.getElementById('emailError').textContent = 'Invalid email address';
+                document.getElementById('emailError').classList.remove('hidden');
+                document.getElementById('email').classList.add('error-input');
+                hasError = true;
+            }
+            
+            if (hasError) {
+                return;
+            }
+            
+            deliveryData = {
+                fullName,
+                street,
+                zip,
+                city,
+                email
+            };
+            
+            completeOrder();
+        }
+
+        async function completeOrder() {
+            const orderData = {
+                orderId: `24W-${Date.now()}`,
+                customer: {
+                    fullName: deliveryData.fullName,
+                    email: deliveryData.email,
+                    address: {
+                        street: deliveryData.street,
+                        zip: deliveryData.zip,
+                        city: deliveryData.city
+                    }
+                },
+                items: cart.map(item => ({
+                    name: item.name,
+                    size: item.selectedSize,
+                    color: item.selectedColor,
+                    price: item.price
+                })),
+                total: cart.reduce((sum, item) => sum + item.price, 0),
+                shipping: calculateShipping(cart.reduce((sum, item) => sum + item.price, 0)),
+                orderDate: new Date().toLocaleString('en-GB')
+            };
+            
+            try {
+                await sendDiscordNotification(orderData);
+                await sendEmailNotification(orderData);
+                showPayPalPaymentStep(orderData);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error sending the order. Please try again.');
+            }
+        }
+
+        function showPayPalPaymentStep(orderData) {
+            const content = document.getElementById('checkoutContent');
+            updateCheckoutSteps(2);
+            
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            const shipping = calculateShipping(total);
+            const finalTotal = total + shipping;
+            
+            content.innerHTML = `
+                <div class="max-w-4xl mx-auto">
+                    <h3 class="text-3xl font-bold mb-8 tracking-wider logo-font text-center">PAYMENT</h3>
+                    
+                    <div class="bg-black border border-white border-opacity-20 p-6 ornament-border mb-8">
+                        <h4 class="text-lg font-bold tracking-wider mb-4">YOUR ORDER</h4>
+                        <div class="space-y-2">
+                            ${cart.map(item => `
+                                <div class="flex justify-between text-sm">
+                                    <span>${item.name} (${item.selectedSize}, ${item.selectedColor})</span>
+                                    <span>${item.price.toFixed(2)}€</span>
+                                </div>
+                            `).join('')}
+                            <div class="border-t border-white border-opacity-20 pt-3 mt-3">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Shipping:</span>
+                                    <span class="${shipping === 0 ? 'text-green-400' : ''}">${shipping === 0 ? 'FREE' : shipping.toFixed(2) + '€'}</span>
+                                </div>
+                                <div class="flex justify-between text-xl font-bold">
+                                    <span>TOTAL:</span>
+                                    <span>${finalTotal.toFixed(2)}€</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-black border border-white border-opacity-20 p-6 ornament-border mb-8">
+                        <h4 class="text-lg font-bold tracking-wider mb-4">DELIVERY ADDRESS</h4>
+                        <div class="space-y-1 text-gray-300">
+                            <p class="font-semibold text-white">${deliveryData.fullName}</p>
+                            <p>${deliveryData.street}</p>
+                            <p>${deliveryData.zip} ${deliveryData.city}</p>
+                            <p>${deliveryData.email}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-black border-2 border-white p-8 ornament-border mb-6">
+                        <p class="text-center text-gray-400 mb-6 text-sm">
+                            Click the PayPal button to pay securely
+                        </p>
+                        <div id="paypal-button-container"></div>
+                    </div>
+                    
+                    <button onclick="showCheckoutStep1()" class="w-full bg-transparent border-2 border-white hover:bg-white hover:text-black py-4 rounded-none font-bold tracking-wider transition">
+                        BACK
+                    </button>
+                </div>
+            `;
+            
+            renderPayPalButton(orderData);
+        }
+
+        function renderPayPalButton(orderData) {
+            const items = cart.map(item => ({
+                name: `${item.name} (${item.selectedSize}, ${item.selectedColor})`,
+                unit_amount: {
+                    currency_code: 'EUR',
+                    value: item.price.toFixed(2)
+                },
+                quantity: '1'
+            }));
+            
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const shipping = calculateShipping(subtotal);
+            const total = subtotal + shipping;
+            
+            paypal.Buttons({
+                style: {
+                    layout: 'vertical',
+                    color: 'blue',
+                    shape: 'rect',
+                    label: 'pay',
+                    height: 50
+                },
+                
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            description: '24 WEARS Order',
+                            amount: {
+                                currency_code: 'EUR',
+                                value: total.toFixed(2),
+                                breakdown: {
+                                    item_total: {
+                                        currency_code: 'EUR',
+                                        value: subtotal.toFixed(2)
+                                    },
+                                    shipping: {
+                                        currency_code: 'EUR',
+                                        value: shipping.toFixed(2)
+                                    }
+                                }
+                            },
+                            items: items,
+                            shipping: {
+                                name: {
+                                    full_name: deliveryData.fullName
+                                },
+                                address: {
+                                    address_line_1: deliveryData.street,
+                                    admin_area_2: deliveryData.city,
+                                    postal_code: deliveryData.zip,
+                                    country_code: 'DE'
+                                }
+                            }
+                        }],
+                        application_context: {
+                            shipping_preference: 'SET_PROVIDED_ADDRESS'
+                        }
+                    });
+                },
+                
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        sendDiscordOrderConfirmation(orderData, details);
+                        showOrderSuccess(orderData, details);
+                    });
+                },
+                
+                onError: function(err) {
+                    console.error('PayPal Error:', err);
+                    alert('There was an error with the PayPal payment. Please try again.');
+                },
+                
+                onCancel: function(data) {
+                    alert('Payment was cancelled. You can come back and pay anytime.');
+                }
+                
+            }).render('#paypal-button-container');
+        }
+
+        function showOrderSuccess(orderData, paypalDetails) {
+            const content = document.getElementById('checkoutContent');
+            updateCheckoutSteps(3);
+            
+            content.innerHTML = `
+                <div class="max-w-2xl mx-auto text-center py-12">
+                    <div class="w-24 h-24 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6 glow-effect">
+                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    
+                    <h3 class="text-4xl font-bold mb-4 tracking-wider logo-font">PAYMENT SUCCESSFUL!</h3>
+                    <p class="text-gray-400 text-lg mb-8">
+                        Thank you for your order at 24 WEARS
+                    </p>
+                    
+                    <div class="bg-black border border-white border-opacity-20 p-6 ornament-border mb-8 text-left">
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-400 mb-1">Order Number:</p>
+                            <p class="font-bold text-lg">${orderData.orderId}</p>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-400 mb-1">PayPal Transaction ID:</p>
+                            <p class="font-bold text-sm text-green-400">${paypalDetails.id}</p>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-400 mb-1">Amount Paid:</p>
+                            <p class="font-bold text-2xl">${(orderData.total + orderData.shipping).toFixed(2)}€</p>
+                            ${orderData.shipping > 0 ? `<p class="text-xs text-gray-400">(incl. ${orderData.shipping.toFixed(2)}€ shipping)</p>` : ''}
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-400 mb-1">Delivery Address:</p>
+                            <p class="font-semibold">${orderData.customer.fullName}</p>
+                            <p class="text-gray-300">${orderData.customer.address.street}</p>
+                            <p class="text-gray-300">${orderData.customer.address.zip} ${orderData.customer.address.city}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-400 mb-1">Email Confirmation to:</p>
+                            <p class="text-gray-300">${orderData.customer.email}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-900 bg-opacity-30 border border-green-500 border-opacity-50 p-6 rounded-lg mb-8">
+                        <p class="text-green-200 font-semibold mb-2">✓ Your order has been successfully paid</p>
+                        <p class="text-green-300 text-sm">You will shortly receive a confirmation email from PayPal and 24 WEARS.</p>
+                    </div>
+                    
+                    <button onclick="finishOrder()" class="btn-primary px-12 py-4 rounded-none font-bold text-lg tracking-wider">
+                        FINISH
+                    </button>
+                </div>
+            `;
+        }
+
+        function closeCheckout() {
+            const modal = document.getElementById('checkoutModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            currentCheckoutStep = 1;
+            deliveryData = {};
+        }
+
+        function finishOrder() {
+            cart = [];
+            updateCartCount();
+            deliveryData = {};
+            currentCheckoutStep = 1;
+            closeCheckout();
+        }
+
+        async function sendDiscordNotification(orderData) {
+            const webhookUrl = 'https://discordapp.com/api/webhooks/1448438047413764158/22M_EgEOeFLGIgUnm64QdIT0_N19tP8OXBTc5H-JdvprBa_AocaMNNOZfVt25Rq48TLm';
+            
+            const itemsList = orderData.items.map(item => 
+                `• ${item.name} (${item.size}, ${item.color}) - ${item.price.toFixed(2)}€`
+            ).join('\n');
+
+            const subtotal = orderData.total;
+            const shipping = orderData.shipping;
+            const finalTotal = subtotal + shipping;
+            
+            const embed = {
+                title: "🛍️ NEW ORDER - 24 WEARS",
+                description: "⚠️ **PAYMENT PENDING** - Awaiting PayPal confirmation",
+                color: 0xFFA500,
+                fields: [
+                    {
+                        name: "📋 Order Number",
+                        value: orderData.orderId,
+                        inline: true
+                    },
+                    {
+                        name: "📅 Date",
+                        value: orderData.orderDate,
+                        inline: true
+                    },
+                    {
+                        name: "💳 Payment Status",
+                        value: "⏳ **PENDING**",
+                        inline: true
+                    },
+                    {
+                        name: "👤 Customer",
+                        value: orderData.customer.fullName,
+                        inline: false
+                    },
+                    {
+                        name: "📧 Email",
+                        value: orderData.customer.email,
+                        inline: false
+                    },
+                    {
+                        name: "📍 Delivery Address",
+                        value: `${orderData.customer.address.street}\n${orderData.customer.address.zip} ${orderData.customer.address.city}`,
+                        inline: false
+                    },
+                    {
+                        name: "🛒 Items",
+                        value: itemsList,
+                        inline: false
+                    },
+                    {
+                        name: "📦 Shipping",
+                        value: shipping === 0 ? "**FREE**" : `${shipping.toFixed(2)}€`,
+                        inline: true
+                    },
+                    {
+                        name: "💰 Total",
+                        value: `**${finalTotal.toFixed(2)}€**`,
+                        inline: false
+                    }
+                ],
+                footer: {
+                    text: "24 WEARS • Premium Streetwear"
+                },
+                timestamp: new Date().toISOString()
+            };
+            
+            const response = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    embeds: [embed]
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error('Discord webhook failed');
+            }
+        }
+
+        async function sendDiscordOrderConfirmation(orderData, paypalDetails) {
+            const webhookUrl = 'https://discordapp.com/api/webhooks/1448438047413764158/22M_EgEOeFLGIgUnm64QdIT0_N19tP8OXBTc5H-JdvprBa_AocaMNNOZfVt25Rq48TLm';
+            
+            const itemsList = orderData.items.map(item => 
+                `• ${item.name} (${item.size}, ${item.color}) - ${item.price.toFixed(2)}€`
+            ).join('\n');
+
+            const subtotal = orderData.total;
+            const shipping = orderData.shipping;
+            const finalTotal = subtotal + shipping;
+            
+            const embed = {
+                title: "✅ ORDER CONFIRMED - PAYMENT RECEIVED",
+                description: "🎉 **PAYMENT SUCCESSFUL** - Order ready for processing",
+                color: 0x10b981,
+                fields: [
+                    {
+                        name: "📋 Order Number",
+                        value: orderData.orderId,
+                        inline: true
+                    },
+                    {
+                        name: "📅 Date",
+                        value: orderData.orderDate,
+                        inline: true
+                    },
+                    {
+                        name: "💳 Payment Status",
+                        value: "✅ **PAID**",
+                        inline: true
+                    },
+                    {
+                        name: "🔐 PayPal Transaction ID",
+                        value: paypalDetails.id,
+                        inline: false
+                    },
+                    {
+                        name: "👤 Customer",
+                        value: orderData.customer.fullName,
+                        inline: false
+                    },
+                    {
+                        name: "📧 Email",
+                        value: orderData.customer.email,
+                        inline: false
+                    },
+                    {
+                        name: "📍 Delivery Address",
+                        value: `${orderData.customer.address.street}\n${orderData.customer.address.zip} ${orderData.customer.address.city}`,
+                        inline: false
+                    },
+                    {
+                        name: "🛒 Items",
+                        value: itemsList,
+                        inline: false
+                    },
+                    {
+                        name: "📦 Shipping",
+                        value: shipping === 0 ? "**FREE** (Order over 50€)" : `${shipping.toFixed(2)}€`,
+                        inline: true
+                    },
+                    {
+                        name: "💰 Total Paid",
+                        value: `**${finalTotal.toFixed(2)}€**`,
+                        inline: false
+                    }
+                ],
+                footer: {
+                    text: "24 WEARS • Premium Streetwear • ORDER CONFIRMED"
+                },
+                timestamp: new Date().toISOString()
+            };
+            
+            await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    embeds: [embed]
+                })
+            });
+        }
+
+        async function subscribeNewsletter() {
+            const email = document.getElementById('newsletterEmail').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!email) {
+                alert('Please enter your email address');
+                return;
+            }
+            
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            const webhookUrl = 'https://discordapp.com/api/webhooks/1449141069500518513/Qu9jIm-O-LV4iwrIjOQHLfc5pQbFizENfb5ld3A5gwIY9aGFwRVVTYfSod5gQReX4QN8';
+            
+            const embed = {
+                title: "📧 NEW NEWSLETTER SUBSCRIPTION",
+                color: 0xFFFFFF,
+                fields: [
+                    {
+                        name: "Email Address",
+                        value: email,
+                        inline: false
+                    },
+                    {
+                        name: "Date & Time",
+                        value: new Date().toLocaleString('en-GB'),
+                        inline: false
+                    }
+                ],
+                footer: {
+                    text: "24 WEARS • Newsletter Subscription"
+                },
+                timestamp: new Date().toISOString()
+            };
+            
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        embeds: [embed]
+                    })
+                });
+                
+                if (response.ok) {
+                    document.getElementById('newsletterEmail').value = '';
+                    
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-24 right-4 bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg z-50 tracking-wider font-bold';
+                    notification.textContent = '✓ Successfully subscribed!';
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => notification.remove(), 3000);
+                } else {
+                    throw new Error('Subscription failed');
+                }
+            } catch (error) {
+                console.error('Newsletter subscription error:', error);
+                alert('There was an error. Please try again.');
+            }
+        }
+
+        async function sendEmailNotification(orderData) {
+            const itemsList = orderData.items.map(item => 
+                `${item.name} (${item.size}, ${item.color}) - ${item.price.toFixed(2)}€`
+            ).join('\n');
+            const subtotal = orderData.total;
+            const shipping = orderData.shipping;
+            const finalTotal = subtotal + shipping;
+            
+            const emailBody = `
+NEW ORDER - 24 WEARS
+
+Order Number: ${orderData.orderId}
+Date: ${orderData.orderDate}
+
+CUSTOMER INFORMATION:
+Name: ${orderData.customer.fullName}
+Email: ${orderData.customer.email}
+
+DELIVERY ADDRESS:
+${orderData.customer.address.street}
+${orderData.customer.address.zip} ${orderData.customer.address.city}
+
+ORDERED ITEMS:
+${itemsList}
+
+SUBTOTAL: ${subtotal.toFixed(2)}€
+SHIPPING: ${shipping === 0 ? 'FREE' : shipping.toFixed(2) + '€'}
+TOTAL: ${finalTotal.toFixed(2)}€
+
+---
+24 WEARS - Premium Streetwear
+            `;
+            
+            const mailtoLink = `mailto:twenty.four.wears@gmx.de?subject=New Order ${orderData.orderId}&body=${encodeURIComponent(emailBody)}`;
+            
+            const tempLink = document.createElement('a');
+            tempLink.href = mailtoLink;
+            tempLink.click();
+        }
+
+        renderProducts();
+        checkCookieConsent();
+    </script>
+</body>
+</html>
