@@ -1,0 +1,14 @@
+NODE_ENV=development
+
+PAYPAL_CLIENT_ID=your_paypal_client_id_here
+PAYPAL_CLIENT_SECRET=your_paypal_secret_here
+
+DISCORD_WEBHOOK_ORDERS=https://discord.com/api/webhooks/your_webhook_id_here
+DISCORD_WEBHOOK_NEWSLETTER=https://discord.com/api/webhooks/your_newsletter_webhook_id_here
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+EMAIL_USER=twenty.four.wears@gmx.de
+EMAIL_PASSWORD=your_email_password_here
+
+PORT=3000
