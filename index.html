@@ -1,1742 +1,1551 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24 WEARS - Premium Streetwear | 10% OFF</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=ASSNFbhqrSldzaEefs33jzw9_0Q_xQizKeEu6SklLQOimr8Iez2IqyNJcUzHruNDbXhMOWttOZsHh9On&currency=EUR" data-sdk-integration-source="button-factory"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brennholzhandel Nordhessen – Hochwertiges Brennholz aus der Region</title>
+  <meta name="description" content="Lokaler Brennholzhandel in Nordhessen. PEFC-zertifiziertes Buchen- und Eichenholz. Lieferung im Umkreis von 50 km möglich." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== CSS CUSTOM PROPERTIES ===== */
+    :root {
+      --bark:        #3B2A1A;
+      --heartwood:   #7B4F2E;
+      --amber:       #C07D3A;
+      --straw:       #E8C27A;
+      --cream:       #FAF4E8;
+      --moss:        #3D5A3E;
+      --fern:        #5A7A4A;
+      --sage:        #8FAF7A;
+      --mist:        #F2EDE4;
+      --charcoal:    #2A2118;
+      --light-bark:  #6B5040;
 
-        .logo-font {
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 0.05em;
-        }
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Lato', Helvetica, sans-serif;
 
-        .gradient-text {
-            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-soft: 0 4px 24px rgba(59,42,26,0.10);
+      --shadow-med:  0 8px 40px rgba(59,42,26,0.16);
+      --shadow-hard: 0 16px 60px rgba(59,42,26,0.22);
+      --radius:      12px;
+      --radius-lg:   24px;
+    }
 
-        .hero-gradient {
-            background: #000000;
-        }
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--bark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-        .card-hover {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--mist); }
+    ::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 4px; }
 
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
+    /* ===== NOISE TEXTURE OVERLAY ===== */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
 
-        .glow-effect {
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
-        }
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 4%;
+      background: rgba(250,244,232,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(192,125,58,0.18);
+      transition: box-shadow var(--transition);
+    }
+    nav.scrolled { box-shadow: var(--shadow-soft); }
 
-        .scroll-smooth {
-            scroll-behavior: smooth;
-        }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .nav-logo .logo-icon {
+      width: 38px; height: 38px;
+      background: var(--moss);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .nav-logo span {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--bark);
+      line-height: 1.2;
+    }
+    .nav-logo small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--heartwood);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .nav-links {
+      display: flex; align-items: center; gap: 2rem;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--light-bark);
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 1.5px;
+      background: var(--amber);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .nav-links a:hover { color: var(--bark); }
+    .nav-links a:hover::after { transform: scaleX(1); }
 
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
+    .nav-cta {
+      background: var(--moss);
+      color: #fff !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--fern) !important; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
 
-        .btn-primary {
-            background: #ffffff;
-            color: #000000;
-            transition: all 0.3s ease;
-            border: 2px solid #ffffff;
-        }
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      padding: 4px; border-radius: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--bark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
-            background: transparent;
-            color: #ffffff;
-        }
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 65px; left: 0; right: 0; z-index: 99;
+      background: var(--cream);
+      border-bottom: 1px solid rgba(192,125,58,0.18);
+      padding: 1.5rem 4%;
+      flex-direction: column; gap: 1rem;
+      box-shadow: var(--shadow-med);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1rem; font-weight: 400;
+      color: var(--bark); padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(192,125,58,0.12);
+    }
 
-        .product-image {
-            transition: transform 0.6s ease;
-        }
+    /* ===== SECTIONS SHARED ===== */
+    section { position: relative; z-index: 1; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.8rem;
+    }
+    h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.25; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 5%; }
 
-        .product-card:hover .product-image {
-            transform: scale(1.1);
-        }
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 7rem 5% 5rem;
+      background:
+        linear-gradient(135deg, rgba(61,90,62,0.82) 0%, rgba(59,42,26,0.72) 100%),
+        url('https://images.unsplash.com/photo-1544919982-b61976f0ba43?w=1600&q=85') center/cover no-repeat;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-ring {
+      position: absolute; right: -120px; top: 50%;
+      transform: translateY(-50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 80px solid rgba(232,194,122,0.08);
+      pointer-events: none;
+    }
+    .hero-ring2 {
+      position: absolute; right: -60px; top: 50%;
+      transform: translateY(-50%);
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      border: 2px solid rgba(232,194,122,0.25);
+      pointer-events: none;
+    }
+    .hero-content { max-width: 620px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--straw);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.6s 0.15s ease both;
+    }
+    h1 em { font-style: italic; color: var(--straw); }
+    .hero-sub {
+      font-size: 1.05rem; font-weight: 300;
+      color: rgba(255,255,255,0.82);
+      max-width: 480px;
+      margin-bottom: 2.2rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .hero-ctas {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      animation: fadeUp 0.6s 0.45s ease both;
+    }
+    .btn-primary {
+      background: var(--amber);
+      color: var(--bark);
+      padding: 0.85rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 16px rgba(192,125,58,0.4);
+    }
+    .btn-primary:hover {
+      background: var(--straw);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(192,125,58,0.5);
+    }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.45);
+      color: #fff;
+      padding: 0.85rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 400; font-size: 0.9rem;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
 
-        .nav-blur {
-            backdrop-filter: blur(20px);
-            background: rgba(0, 0, 0, 0.9);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3.5rem;
+      animation: fadeUp 0.6s 0.6s ease both;
+    }
+    .stat { }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem; font-weight: 700;
+      color: var(--straw);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem; font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.05em;
+    }
 
-        .ornament-border {
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-        }
+    /* ===== FEATURES STRIP ===== */
+    #features {
+      background: var(--bark);
+      padding: 2rem 5%;
+    }
+    .features-grid {
+      max-width: 1140px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .feat-item {
+      display: flex; align-items: center; gap: 0.9rem;
+      padding: 1.2rem 1.5rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .feat-item:last-child { border-right: none; }
+    .feat-icon {
+      font-size: 1.6rem; flex-shrink: 0;
+    }
+    .feat-text strong {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.9rem; font-weight: 700;
+      color: var(--straw);
+    }
+    .feat-text span {
+      font-size: 0.78rem; color: rgba(255,255,255,0.55);
+    }
 
-        .ornament-border::before,
-        .ornament-border::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-        }
+    /* ===== PRODUCTS ===== */
+    #produkte {
+      padding: 6rem 5%;
+      background: var(--cream);
+    }
+    .section-header { margin-bottom: 3.5rem; }
+    .section-header h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      color: var(--bark);
+      margin-bottom: 0.7rem;
+    }
+    .section-header p {
+      font-size: 1rem; color: var(--light-bark);
+      max-width: 540px;
+    }
 
-        .ornament-border::before {
-            top: -2px;
-            left: -2px;
-            border-right: none;
-            border-bottom: none;
-        }
+    .products-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hard);
+    }
+    .product-img {
+      height: 220px;
+      background-size: cover; background-position: center;
+      position: relative;
+    }
+    .product-img .badge-pefc {
+      position: absolute; top: 1rem; right: 1rem;
+      background: var(--moss);
+      color: #fff;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.35rem 0.75rem; border-radius: 100px;
+    }
+    .product-body { padding: 1.8rem; }
+    .product-body h3 {
+      font-size: 1.5rem; color: var(--bark);
+      margin-bottom: 0.5rem;
+    }
+    .product-desc {
+      font-size: 0.88rem; color: var(--light-bark);
+      margin-bottom: 1.4rem; line-height: 1.6;
+    }
+    .product-price {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 700;
+      color: var(--heartwood);
+    }
+    .product-price small {
+      font-family: var(--font-body);
+      font-size: 0.85rem; font-weight: 300;
+      color: var(--light-bark);
+    }
+    .product-lengths {
+      margin: 1.2rem 0;
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .length-chip {
+      background: var(--mist);
+      border: 1.5px solid rgba(192,125,58,0.25);
+      color: var(--heartwood);
+      font-size: 0.78rem; font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .length-chip:hover,
+    .length-chip.active {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: var(--bark);
+    }
+    .length-label {
+      font-size: 0.75rem; color: var(--light-bark);
+      margin-bottom: 0.4rem;
+    }
+    .product-order-btn {
+      display: block; width: 100%;
+      background: var(--moss);
+      color: #fff;
+      text-align: center;
+      padding: 0.85rem;
+      border-radius: 8px;
+      font-weight: 700; font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      margin-top: 1.4rem;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .product-order-btn:hover { background: var(--fern); transform: translateY(-2px); }
 
-        .ornament-border::after {
-            bottom: -2px;
-            right: -2px;
-            border-left: none;
-            border-top: none;
-        }
+    /* features list inside product */
+    .product-features {
+      margin: 1rem 0;
+    }
+    .product-features li {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.83rem; color: var(--light-bark);
+      margin-bottom: 0.35rem;
+    }
+    .product-features li::before {
+      content: '✓';
+      color: var(--fern); font-weight: 700;
+    }
 
-        .luxury-shine {
-            position: relative;
-            overflow: hidden;
-        }
+    /* ===== DELIVERY ===== */
+    #lieferung {
+      padding: 6rem 5%;
+      background: var(--bark);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    #lieferung::before {
+      content: '';
+      position: absolute; top: -80px; left: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(192,125,58,0.07);
+      pointer-events: none;
+    }
+    #lieferung .section-label { color: var(--straw); }
+    #lieferung .section-header h2 { color: #fff; }
+    #lieferung .section-header p { color: rgba(255,255,255,0.65); }
 
-        .luxury-shine::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 30%,
-                rgba(255, 255, 255, 0.1) 50%,
-                transparent 70%
-            );
-            animation: shine 3s infinite;
-        }
+    .delivery-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+    }
+    .delivery-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+    .delivery-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .delivery-card:hover {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(232,194,122,0.35);
+    }
+    .delivery-card-icon {
+      font-size: 2rem; flex-shrink: 0;
+      width: 52px; height: 52px;
+      background: rgba(192,125,58,0.18);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .delivery-card h4 {
+      font-family: var(--font-body);
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--straw);
+      margin-bottom: 0.35rem;
+    }
+    .delivery-card p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+    .delivery-card .price-tag {
+      margin-top: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--amber);
+    }
 
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
+    .delivery-map {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-hard);
+      aspect-ratio: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem;
+      position: relative;
+    }
+    /* SVG Map illustration */
+    .map-svg { width: 85%; }
 
-        .paypal-btn {
-            background: #0070ba;
-            color: white;
-            transition: all 0.3s ease;
-        }
+    /* ===== ABOUT ===== */
+    #ueber-uns {
+      padding: 6rem 5%;
+      background: var(--mist);
+    }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img {
+      border-radius: var(--radius-lg);
+      width: 100%; height: 420px;
+      object-fit: cover;
+      display: block;
+      background: url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=85') center/cover;
+    }
+    .about-img-badge {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      background: var(--moss);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-med);
+    }
+    .about-img-badge .num {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 700;
+      line-height: 1; display: block;
+    }
+    .about-img-badge .lbl {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      opacity: 0.8;
+    }
+    .about-content h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--bark); margin-bottom: 1rem;
+    }
+    .about-content p {
+      font-size: 0.95rem; color: var(--light-bark);
+      margin-bottom: 1rem;
+    }
+    .about-pillars {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-top: 1.8rem;
+    }
+    .pillar {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .pillar-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+    .pillar h5 {
+      font-family: var(--font-body);
+      font-size: 0.88rem; font-weight: 700;
+      color: var(--bark); margin-bottom: 0.2rem;
+    }
+    .pillar p { font-size: 0.78rem; color: var(--light-bark); }
 
-        .paypal-btn:hover {
-            background: #005ea6;
-            transform: scale(1.02);
-        }
+    /* ===== CONTACT ===== */
+    #kontakt {
+      padding: 6rem 5%;
+      background: var(--cream);
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 3.5rem;
+    }
+    .contact-info h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--bark); margin-bottom: 1rem;
+    }
+    .contact-info p { font-size: 0.9rem; color: var(--light-bark); margin-bottom: 1.8rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .contact-detail-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--mist);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      border: 1px solid rgba(192,125,58,0.2);
+    }
+    .contact-detail-text strong {
+      display: block; font-size: 0.8rem; font-weight: 700;
+      color: var(--bark); margin-bottom: 0.15rem;
+      letter-spacing: 0.04em;
+    }
+    .contact-detail-text span { font-size: 0.88rem; color: var(--light-bark); }
 
-        .checkout-step {
-            transition: all 0.3s ease;
-        }
+    /* Form */
+    .contact-form {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .contact-form h3 {
+      font-size: 1.3rem; color: var(--bark);
+      margin-bottom: 1.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--light-bark); letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1.5px solid rgba(192,125,58,0.22);
+      border-radius: 8px;
+      background: var(--mist);
+      font-family: var(--font-body);
+      font-size: 0.9rem; color: var(--bark);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(192,125,58,0.15);
+      background: #fff;
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%;
+      background: var(--moss);
+      color: #fff;
+      padding: 0.9rem;
+      border-radius: 8px;
+      font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      margin-top: 0.5rem;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .form-submit:hover { background: var(--fern); transform: translateY(-2px); }
+    .form-success {
+      display: none;
+      background: rgba(61,90,62,0.12);
+      border: 1.5px solid var(--moss);
+      border-radius: 8px;
+      padding: 1rem;
+      color: var(--moss);
+      font-size: 0.9rem; text-align: center;
+      margin-top: 1rem;
+    }
 
-        .checkout-step.active {
-            color: #ffffff;
-        }
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.6);
+      padding: 3rem 5% 2rem;
+    }
+    .footer-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 2.5rem;
+    }
+    .footer-brand p { font-size: 0.85rem; margin-top: 0.8rem; line-height: 1.65; max-width: 280px; }
+    .footer-col h5 {
+      font-family: var(--font-body);
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--straw); margin-bottom: 1rem;
+    }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition);
+    }
+    .footer-col ul a:hover { color: var(--straw); }
+    .footer-bottom {
+      max-width: 1140px; margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem;
+    }
+    .pefc-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--sage);
+    }
 
-        .checkout-step.completed {
-            color: #10b981;
-        }
+    /* ===== CHATBOT ===== */
+    .chat-fab {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+      width: 60px; height: 60px;
+      background: var(--moss);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 6px 24px rgba(61,90,62,0.5);
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+    .chat-fab:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 32px rgba(61,90,62,0.6);
+    }
+    .chat-fab .badge {
+      position: absolute; top: -3px; right: -3px;
+      width: 18px; height: 18px;
+      background: var(--amber);
+      border-radius: 50%;
+      font-size: 0.6rem; font-weight: 700; color: var(--bark);
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid var(--cream);
+    }
 
-        .step-line {
-            height: 2px;
-            background: rgba(255, 255, 255, 0.2);
-            position: relative;
-        }
+    .chat-window {
+      position: fixed; bottom: 6rem; right: 2rem; z-index: 200;
+      width: 360px;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-hard);
+      display: flex; flex-direction: column;
+      max-height: 520px;
+      transform: scale(0.85) translateY(20px);
+      transform-origin: bottom right;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      overflow: hidden;
+      border: 1px solid rgba(192,125,58,0.15);
+    }
+    .chat-window.open {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: all;
+    }
+    .chat-header {
+      background: var(--moss);
+      padding: 1rem 1.2rem;
+      display: flex; align-items: center; gap: 0.8rem;
+      flex-shrink: 0;
+    }
+    .chat-avatar {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .chat-header-info strong {
+      display: block; font-size: 0.9rem; color: #fff; font-weight: 700;
+    }
+    .chat-header-info span { font-size: 0.72rem; color: rgba(255,255,255,0.7); }
+    .chat-online { width: 8px; height: 8px; background: #6EFF6E; border-radius: 50%; display: inline-block; margin-right: 4px; }
+    .chat-close {
+      margin-left: auto; color: rgba(255,255,255,0.7); font-size: 1.2rem;
+      padding: 4px; border-radius: 4px;
+      transition: color var(--transition);
+    }
+    .chat-close:hover { color: #fff; }
 
-        .step-line.completed {
-            background: #10b981;
-        }
+    .chat-messages {
+      flex: 1; overflow-y: auto;
+      padding: 1.2rem;
+      display: flex; flex-direction: column; gap: 0.8rem;
+      scroll-behavior: smooth;
+    }
+    .chat-msg {
+      max-width: 82%;
+      padding: 0.7rem 1rem;
+      border-radius: 14px;
+      font-size: 0.85rem; line-height: 1.5;
+      animation: fadeUp 0.3s ease;
+    }
+    .chat-msg.bot {
+      background: var(--mist);
+      color: var(--bark);
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+    }
+    .chat-msg.user {
+      background: var(--moss);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+      align-self: flex-end;
+    }
+    .chat-typing {
+      align-self: flex-start;
+      background: var(--mist);
+      border-radius: 14px; border-bottom-left-radius: 4px;
+      padding: 0.7rem 1rem;
+      display: none;
+    }
+    .typing-dots { display: flex; gap: 4px; }
+    .typing-dots span {
+      width: 7px; height: 7px; background: var(--light-bark);
+      border-radius: 50%;
+      animation: bounce 1s infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.18s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.36s; }
+    @keyframes bounce {
+      0%,80%,100% { transform: translateY(0); }
+      40% { transform: translateY(-6px); }
+    }
 
-        .error-input {
-            border-color: #ef4444 !important;
-        }
+    .chat-quick {
+      padding: 0 1.2rem 0.6rem;
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    .quick-btn {
+      background: var(--mist);
+      border: 1px solid rgba(192,125,58,0.25);
+      color: var(--heartwood);
+      font-size: 0.75rem; font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .quick-btn:hover { background: rgba(192,125,58,0.15); }
 
-        .error-message {
-            color: #ef4444;
-            font-size: 0.75rem;
-            margin-top: 0.25rem;
-        }
+    .chat-input-wrap {
+      border-top: 1px solid rgba(192,125,58,0.12);
+      padding: 0.8rem 1rem;
+      display: flex; gap: 0.6rem;
+      flex-shrink: 0;
+    }
+    .chat-input {
+      flex: 1;
+      border: 1.5px solid rgba(192,125,58,0.25);
+      border-radius: 8px;
+      padding: 0.55rem 0.9rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem; color: var(--bark);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .chat-input:focus { border-color: var(--amber); }
+    .chat-send {
+      background: var(--moss);
+      color: #fff;
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: background var(--transition);
+      flex-shrink: 0;
+    }
+    .chat-send:hover { background: var(--fern); }
+    .chat-powered {
+      text-align: center;
+      font-size: 0.65rem; color: rgba(59,42,26,0.35);
+      padding: 0.4rem;
+      flex-shrink: 0;
+    }
 
-        .discount-badge {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            animation: pulse 2s ease-in-out infinite;
-        }
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .price-original {
-            text-decoration: line-through;
-            color: #6b7280;
-        }
-
-        .price-discount {
-            color: #ef4444;
-            font-weight: 900;
-        }
-
-        .cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            border-top: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 1.5rem;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        .cookie-banner.hidden {
-            display: none;
-        }
-    </style>
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .feat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .feat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.08); }
+      .feat-item:last-child { border-bottom: none; }
+      .products-grid { grid-template-columns: 1fr; }
+      .delivery-grid { grid-template-columns: 1fr; }
+      .delivery-map { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { height: 280px; }
+      .about-img-badge { right: 0; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .chat-window { width: 92vw; right: 4vw; }
+    }
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
 </head>
-<body class="bg-black text-white scroll-smooth">
+<body>
 
-    <nav class="fixed w-full z-50 nav-blur">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <img src="images/logo.png" alt="24 WEARS" class="h-16 w-auto">
-                </div>
-                
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="hover:text-gray-300 transition font-light tracking-wide">Home</a>
-                    <a href="#shop" class="hover:text-gray-300 transition font-light tracking-wide">Shop</a>
-                    <a href="#about" class="hover:text-gray-300 transition font-light tracking-wide">About</a>
-                    <a href="#contact" class="hover:text-gray-300 transition font-light tracking-wide">Contact</a>
-                    <a href="#legal" class="hover:text-gray-300 transition font-light tracking-wide">Legal</a>
-                </div>
-                
-                <div class="flex items-center space-x-4">
-                    <button onclick="showCart()" class="relative hover:text-gray-300 transition">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                        </svg>
-                        <span id="cartCount" class="absolute -top-2 -right-2 bg-white text-black text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">0</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+<!-- ===================== NAVIGATION ===================== -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="logo-icon">🌲</div>
+    <span>Brennholzhandel<small>Nordhessen</small></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#produkte">Produkte</a></li>
+    <li><a href="#lieferung">Lieferung</a></li>
+    <li><a href="#ueber-uns">Über uns</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="#kontakt" class="nav-cta">Anfrage senden</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-    <section id="home" class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gray-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-delay: 2s"></div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 fade-in">
-            <div class="mb-12 luxury-shine inline-block">
-                <img src="images/logo.png" alt="24 WEARS" class="h-48 md:h-64 w-auto mx-auto">
-            </div>
-            <p class="text-xl md:text-2xl text-gray-300 mb-8 font-light tracking-widest">PREMIUM STREETWEAR</p>
-            <p class="text-base text-gray-400 mb-12 max-w-2xl mx-auto font-light tracking-wide">
-                Exclusive Drops • Limited Edition • European Shipping
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#shop" class="btn-primary px-10 py-4 rounded-none font-bold text-lg tracking-wider">
-                    SHOP NOW
-                </a>
-                <a href="#about" class="bg-transparent border-2 border-white hover:bg-white hover:text-black px-10 py-4 rounded-none font-bold text-lg transition tracking-wider">
-                    LEARN MORE
-                </a>
-            </div>
-        </div>
-    </section>
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#produkte" onclick="closeMobile()">Produkte</a>
+  <a href="#lieferung" onclick="closeMobile()">Lieferung</a>
+  <a href="#ueber-uns" onclick="closeMobile()">Über uns</a>
+  <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
+  <a href="#kontakt" class="btn-primary" style="text-align:center" onclick="closeMobile()">Anfrage senden</a>
+</div>
 
-    <section id="shop" class="py-24 bg-black">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <div class="discount-badge inline-block px-6 py-3 mb-6 text-white font-bold tracking-wider text-lg">
-                    🔥 10% OFF - LIMITED TIME ONLY 🔥
-                </div>
-                <h2 class="text-5xl md:text-6xl font-bold mb-4 logo-font tracking-wider">
-                    WINTER COLLECTION 2025
-                </h2>
-                <div class="w-32 h-px bg-white mx-auto mb-4"></div>
-                <p class="text-gray-400 text-base tracking-widest font-light">LIMITED DROPS</p>
-            </div>
+<!-- ===================== HERO ===================== -->
+<section id="hero">
+  <div class="hero-ring"></div>
+  <div class="hero-ring2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌿 PEFC-Zertifiziert &nbsp;·&nbsp; Nachhaltig &nbsp;·&nbsp; Regional</div>
+    <h1>Hochwertiges Brennholz<br />aus <em>Nordhessen</em></h1>
+    <p class="hero-sub">Direkt aus der Region. Nachhaltig bewirtschaftet. Frisch gespalten.<br/>Wir liefern Buchen- und Eichenholz in höchster Qualität zu Ihnen nach Hause.</p>
+    <div class="hero-ctas">
+      <a href="#kontakt" class="btn-primary">Jetzt Anfrage senden</a>
+      <a href="#produkte" class="btn-outline">Produkte ansehen</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">50 km</div>
+        <div class="stat-label">Lieferradius</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Holzarten</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Regional & PEFC</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="productGrid">
-            </div>
-        </div>
-    </section>
+<!-- ===================== FEATURES STRIP ===================== -->
+<div id="features">
+  <div class="features-grid">
+    <div class="feat-item">
+      <div class="feat-icon">🌳</div>
+      <div class="feat-text">
+        <strong>PEFC-zertifiziert</strong>
+        <span>Nachhaltige Forstwirtschaft</span>
+      </div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">📍</div>
+      <div class="feat-text">
+        <strong>Aus der Region</strong>
+        <span>Oetmannshausen, Nordhessen</span>
+      </div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">🚚</div>
+      <div class="feat-text">
+        <strong>Lieferung möglich</strong>
+        <span>Im Umkreis von 50 km</span>
+      </div>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">🏆</div>
+      <div class="feat-text">
+        <strong>Top-Qualität</strong>
+        <span>Ausgesuchtes Brennholz</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <section id="about" class="py-24 bg-black border-t border-white border-opacity-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-5xl md:text-6xl font-bold mb-6 logo-font tracking-wider">
-                        ABOUT<br/>24 WEARS
-                    </h2>
-                    <div class="w-24 h-px bg-white mb-6"></div>
-                    <p class="text-gray-300 text-base mb-6 leading-relaxed font-light">
-                        We are more than just a streetwear brand. 24 WEARS stands for quality, style and individuality. 
-                        Each piece is designed with passion and produced in limited quantities.
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-8 h-px bg-white"></div>
-                            <span class="text-gray-300 tracking-wide font-light">Premium Materials</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-8 h-px bg-white"></div>
-                            <span class="text-gray-300 tracking-wide font-light">Limited Drops</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-8 h-px bg-white"></div>
-                            <span class="text-gray-300 tracking-wide font-light">European Shipping</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-8 h-px bg-white"></div>
-                            <span class="text-gray-300 tracking-wide font-light">30 Day Return Policy</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative ornament-border p-2">
-                    <img src="images/content.png" alt="Streetwear" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="legal" class="py-24 bg-black border-t border-white border-opacity-10">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl md:text-6xl font-bold mb-12 logo-font tracking-wider text-center">
-                LEGAL INFORMATION
-            </h2>
-            
-            <div class="space-y-8">
-                <div class="bg-black border border-white border-opacity-20 p-6 ornament-border">
-                    <button onclick="toggleLegalSection('impressum')" class="w-full flex justify-between items-center text-2xl font-bold tracking-wider mb-4">
-                        <span>IMPRESSUM</span>
-                        <span id="impressum-icon">+</span>
-                    </button>
-                    <div id="impressum-content" class="hidden text-gray-300 space-y-4">
-                        <p class="font-semibold text-white">Angaben gemäß § 5 TMG:</p>
-                        <div>
-                            <p class="font-semibold text-white">24 WEARS</p>
-                            <p>[Dein vollständiger Name oder Firmenname]</p>
-                            <p>[Straße und Hausnummer]</p>
-                            <p>[PLZ und Ort]</p>
-                        </div>
-                        
-                        <div>
-                            <p class="font-semibold text-white">Kontakt:</p>
-                            <p>E-Mail: twenty.four.wears@gmx.de</p>
-                            <p>Telefon: [Deine Telefonnummer]</p>
-                        </div>
-                        
-                        <div>
-                            <p class="font-semibold text-white">Umsatzsteuer-ID:</p>
-                            <p>Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:</p>
-                            <p>[Deine USt-IdNr. - wenn vorhanden]</p>
-                        </div>
-                        
-                        <div>
-                            <p class="font-semibold text-white">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</p>
-                            <p>[Dein vollständiger Name]</p>
-                            <p>[Deine Adresse]</p>
-                        </div>
-                        
-                        <div>
-                            <p class="font-semibold text-white">Haftungsausschluss:</p>
-                            <p class="text-sm">Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-black border border-white border-opacity-20 p-6 ornament-border">
-                    <button onclick="toggleLegalSection('datenschutz')" class="w-full flex justify-between items-center text-2xl font-bold tracking-wider mb-4">
-                        <span>DATENSCHUTZERKLÄRUNG</span>
-                        <span id="datenschutz-icon">+</span>
-                    </button>
-                    <div id="datenschutz-content" class="hidden text-gray-300 space-y-4 text-sm">
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">1. Datenschutz auf einen Blick</p>
-                            <p class="font-semibold text-white">Allgemeine Hinweise</p>
-                            <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white">Datenerfassung auf dieser Website</p>
-                            <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">2. Hosting</p>
-                            <p>Diese Website wird bei Strato gehostet. Der Hoster speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dies sind: Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage, IP-Adresse.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">3. Zahlungsdienstleister</p>
-                            <p class="font-semibold text-white">PayPal</p>
-                            <p>Auf dieser Website bieten wir die Bezahlung via PayPal an. Anbieter dieses Zahlungsdienstes ist die PayPal (Europe) S.à.r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxembourg.</p>
-                            <p class="mt-2">Wenn Sie die Bezahlung via PayPal auswählen, werden die von Ihnen eingegebenen Zahlungsdaten an PayPal übermittelt. Die Datenverarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">4. Newsletter</p>
-                            <p>Wenn Sie den auf der Website angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse. Die Daten werden ausschließlich für den Versand des Newsletters verwendet und nicht an Dritte weitergegeben.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">5. Ihre Rechte</p>
-                            <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Widerspruch und Datenübertragbarkeit. Wenden Sie sich hierzu an: twenty.four.wears@gmx.de</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">6. Cookies</p>
-                            <p>Diese Website verwendet Cookies für PayPal-Zahlungen. Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden. Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-black border border-white border-opacity-20 p-6 ornament-border">
-                    <button onclick="toggleLegalSection('agb')" class="w-full flex justify-between items-center text-2xl font-bold tracking-wider mb-4">
-                        <span>AGB</span>
-                        <span id="agb-icon">+</span>
-                    </button>
-                    <div id="agb-content" class="hidden text-gray-300 space-y-4 text-sm">
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">1. Geltungsbereich</p>
-                            <p>Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge über die Lieferung von Waren, die Sie mit uns als Anbieter (24 WEARS) über die Website schließen.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">2. Vertragsschluss</p>
-                            <p>Die Präsentation der Waren in unserem Online-Shop stellt kein rechtlich bindendes Angebot dar. Durch Anklicken des Buttons "Kaufen" geben Sie eine verbindliche Bestellung ab. Der Kaufvertrag kommt zustande, wenn wir Ihre Bestellung durch eine Auftragsbestätigung per E-Mail annehmen.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">3. Preise und Versandkosten</p>
-                            <p>Alle Preise sind Endpreise und enthalten die gesetzliche Mehrwertsteuer. Zusätzlich zu den angegebenen Preisen berechnen wir für die Lieferung Versandkosten in Höhe von 3,49€. Ab einem Bestellwert von 50€ liefern wir versandkostenfrei.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">4. Zahlungsbedingungen</p>
-                            <p>Die Zahlung erfolgt ausschließlich über PayPal. Der Rechnungsbetrag ist sofort mit Vertragsschluss fällig.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">5. Lieferung</p>
-                            <p>Die Lieferung erfolgt innerhalb Deutschlands und Europas. Die Lieferzeit beträgt in der Regel 3-7 Werktage. Bei Lieferungen außerhalb Deutschlands können längere Lieferzeiten auftreten.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">6. Eigentumsvorbehalt</p>
-                            <p>Die gelieferte Ware bleibt bis zur vollständigen Bezahlung unser Eigentum.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">7. Gewährleistung</p>
-                            <p>Es gelten die gesetzlichen Gewährleistungsrechte. Die Gewährleistungsfrist beträgt 2 Jahre ab Lieferung der Ware.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">8. Haftung</p>
-                            <p>Wir haften für Vorsatz und grobe Fahrlässigkeit. Bei leichter Fahrlässigkeit haften wir nur bei Verletzung wesentlicher Vertragspflichten.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-black border border-white border-opacity-20 p-6 ornament-border">
-                    <button onclick="toggleLegalSection('widerruf')" class="w-full flex justify-between items-center text-2xl font-bold tracking-wider mb-4">
-                        <span>WIDERRUFSBELEHRUNG</span>
-                        <span id="widerruf-icon">+</span>
-                    </button>
-                    <div id="widerruf-content" class="hidden text-gray-300 space-y-4 text-sm">
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">Widerrufsrecht</p>
-                            <p>Sie haben das Recht, binnen 30 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
-                            <p class="mt-2">Die Widerrufsfrist beträgt 30 Tage ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die Waren in Besitz genommen haben bzw. hat.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">Ausübung des Widerrufsrechts</p>
-                            <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns mittels einer eindeutigen Erklärung (z.B. per E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren.</p>
-                            <p class="mt-2">Kontakt für Widerruf:</p>
-                            <p>E-Mail: twenty.four.wears@gmx.de</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">Folgen des Widerrufs</p>
-                            <p>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist.</p>
-                        </div>
-
-                        <div>
-                            <p class="font-semibold text-white text-base mb-2">Rücksendung</p>
-                            <p>Sie haben die Waren unverzüglich und in jedem Fall spätestens binnen vierzehn Tagen ab dem Tag, an dem Sie uns über den Widerruf dieses Vertrags unterrichten, an uns zurückzusenden oder zu übergeben. Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen absenden.</p>
-                            <p class="mt-2">Sie tragen die unmittelbaren Kosten der Rücksendung der Waren.</p>
-                            <p class="mt-2">Rücksendeadresse:</p>
-                            <p>[Deine Rücksendeadresse eintragen]</p>
-                        </div>
-
-                        <div class="bg-yellow-900 bg-opacity-30 border border-yellow-500 border-opacity-50 p-4 rounded">
-                            <p class="font-semibold text-yellow-200">Wichtig:</p>
-                            <p class="text-yellow-300 text-xs mt-1">Die Ware muss ungetragen, ungewaschen und mit angebrachten Etiketten zurückgesendet werden.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 bg-black border-t border-white border-opacity-10">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-5xl md:text-6xl font-bold mb-6 logo-font tracking-wider">
-                JOIN THE COMMUNITY
-            </h2>
-            <div class="w-32 h-px bg-white mx-auto mb-8"></div>
-            <p class="text-gray-400 text-base mb-12 tracking-wide font-light">
-                Stay updated on new drops and exclusive offers
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-                <input type="email" id="newsletterEmail" placeholder="YOUR EMAIL" class="flex-1 px-6 py-4 rounded-none bg-transparent border-2 border-white focus:border-gray-400 focus:outline-none tracking-wider font-light">
-                <button onclick="subscribeNewsletter()" class="btn-primary px-8 py-4 rounded-none font-bold tracking-wider">SUBSCRIBE</button>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-black py-12 border-t border-white border-opacity-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <img src="images/logo.png" alt="24 WEARS" class="h-12 w-auto mb-4">
-                    <p class="text-gray-400 text-xs tracking-wider font-light">PREMIUM STREETWEAR</p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 tracking-wider">SHOP</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm font-light">
-                        <li><a href="#shop" class="hover:text-white transition tracking-wide">Hoodies</a></li>
-                        <li><a href="#shop" class="hover:text-white transition tracking-wide">T-Shirts</a></li>
-                        <li><a href="#shop" class="hover:text-white transition tracking-wide">Pants</a></li>
-                        <li><a href="#shop" class="hover:text-white transition tracking-wide">Jackets</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 tracking-wider">LEGAL</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm font-light">
-                        <li><a href="#legal" onclick="openLegalSection('impressum')" class="hover:text-white transition tracking-wide">Impressum</a></li>
-                        <li><a href="#legal" onclick="openLegalSection('datenschutz')" class="hover:text-white transition tracking-wide">Datenschutz</a></li>
-                        <li><a href="#legal" onclick="openLegalSection('agb')" class="hover:text-white transition tracking-wide">AGB</a></li>
-                        <li><a href="#legal" onclick="openLegalSection('widerruf')" class="hover:text-white transition tracking-wide">Widerruf</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 tracking-wider">FOLLOW US</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://www.instagram.com/twenty.fourwears?igsh=a2dtZnBtdDQ5enY%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition text-sm font-light tracking-wide">Instagram</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition text-sm font-light tracking-wide">TikTok</a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-white border-opacity-10 pt-8 text-center text-gray-400 text-xs tracking-widest font-light">
-                © 2025 24 WEARS. ALL RIGHTS RESERVED.
-            </div>
-        </div>
-    </footer>
-
-    <div id="cookieBanner" class="cookie-banner">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex-1">
-                <p class="text-white font-bold mb-2">🍪 Wir verwenden Cookies</p>
-                <p class="text-gray-300 text-sm">
-                    Diese Website nutzt Cookies für PayPal-Zahlungen und zur Verbesserung der Nutzererfahrung. 
-                    Mit der Nutzung unserer Dienste erklären Sie sich damit einverstanden, dass wir Cookies verwenden. 
-                    <a href="#legal" onclick="openLegalSection('datenschutz')" class="underline hover:text-white">Mehr erfahren</a>
-                </p>
-            </div>
-            <div class="flex gap-3">
-                <button onclick="acceptCookies()" class="bg-white text-black px-6 py-3 font-bold tracking-wider hover:bg-gray-200 transition">
-                    AKZEPTIEREN
-                </button>
-                <button onclick="declineCookies()" class="bg-transparent border-2 border-white text-white px-6 py-3 font-bold tracking-wider hover:bg-white hover:text-black transition">
-                    ABLEHNEN
-                </button>
-            </div>
-        </div>
+<!-- ===================== PRODUCTS ===================== -->
+<section id="produkte">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Unser Sortiment</span>
+      <h2>Auserlesenes Brennholz<br/>für jeden Bedarf</h2>
+      <p>Wir führen ausschließlich hochwertiges, PEFC-zertifiziertes Holz aus nachhaltiger Forstwirtschaft. Wählen Sie Ihre bevorzugte Holzart und Schnittlänge.</p>
     </div>
 
-    <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50 p-4">
-        <div class="bg-black border-2 border-white ornament-border max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div class="p-6 border-b border-white border-opacity-20 flex justify-between items-center">
-                <h3 class="text-2xl font-bold tracking-wider logo-font">SHOPPING CART</h3>
-                <button onclick="closeCart()" class="text-gray-400 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <div id="cartItems" class="p-6">
-            </div>
-            <div class="p-6 border-t border-white border-opacity-20 space-y-3">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-xl font-bold tracking-wider">TOTAL:</span>
-                    <span id="cartTotal" class="text-2xl font-black">0.00€</span>
-                </div>
-                <button onclick="proceedToCheckout()" class="w-full btn-primary py-4 rounded-none font-bold text-lg tracking-wider">
-                    CHECKOUT
-                </button>
-                <button onclick="closeCart()" class="w-full bg-transparent border-2 border-white hover:bg-white hover:text-black py-4 rounded-none font-bold tracking-wider transition">
-                    CONTINUE SHOPPING
-                </button>
-            </div>
+    <div class="products-grid">
+      <!-- Buchenholz -->
+      <div class="product-card reveal">
+        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1504204267155-aaad8e81290d?w=800&q=85');">
+          <span class="badge-pefc">PEFC zertifiziert</span>
         </div>
-    </div>
-
-    <div id="checkoutModal" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50 p-4">
-        <div class="bg-black border-2 border-white ornament-border max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-            <div class="p-6 border-b border-white border-opacity-20 flex justify-between items-center">
-                <h3 class="text-2xl font-bold tracking-wider logo-font">CHECKOUT</h3>
-                <button onclick="closeCheckout()" class="text-gray-400 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <div class="px-6 py-8 border-b border-white border-opacity-20">
-                <div class="flex items-center justify-between max-w-2xl mx-auto">
-                    <div class="flex items-center checkout-step" id="step1">
-                        <div class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center font-bold">
-                            1
-                        </div>
-                        <span class="ml-2 text-sm font-bold tracking-wider hidden sm:inline">DELIVERY</span>
-                    </div>
-                    <div class="flex-1 mx-4 step-line" id="line1"></div>
-                    <div class="flex items-center checkout-step" id="step2">
-                        <div class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center font-bold">
-                            2
-                        </div>
-                        <span class="ml-2 text-sm font-bold tracking-wider hidden sm:inline">PAYMENT</span>
-                    </div>
-                    <div class="flex-1 mx-4 step-line" id="line2"></div>
-                    <div class="flex items-center checkout-step" id="step3">
-                        <div class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center font-bold">
-                            ✓
-                        </div>
-                        <span class="ml-2 text-sm font-bold tracking-wider hidden sm:inline">DONE</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="checkoutContent" class="p-6">
-            </div>
+        <div class="product-body">
+          <h3>🪵 Buchenholz</h3>
+          <p class="product-desc">Buche gilt als das klassische Brennholz schlechthin – hohe Energiedichte, gleichmäßige Verbrennung und angenehmer Duft. Ideal für Kamin, Ofen und offene Feuerstellen.</p>
+          <div class="product-price">120 €<small> / Raummeter</small></div>
+          <ul class="product-features">
+            <li>Sehr hoher Heizwert</li>
+            <li>Gleichmäßige, langanhaltende Glut</li>
+            <li>Geringer Funkenflug</li>
+            <li>Angenehmer, milder Duft</li>
+          </ul>
+          <div class="length-label">Schnittlänge wählen:</div>
+          <div class="product-lengths">
+            <button class="length-chip active" onclick="selectChip(this)">25 cm</button>
+            <button class="length-chip" onclick="selectChip(this)">33 cm</button>
+            <button class="length-chip" onclick="selectChip(this)">50 cm</button>
+          </div>
+          <a href="#kontakt" class="product-order-btn">Jetzt anfragen</a>
         </div>
-    </div>
+      </div>
 
-    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50 p-4">
-        <div class="bg-black border-2 border-white ornament-border max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div class="p-6 border-b border-white border-opacity-20 flex justify-between items-center">
-                <h3 id="modalTitle" class="text-2xl font-bold tracking-wider logo-font"></h3>
-                <button onclick="closeProductModal()" class="text-gray-400 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <div id="modalContent" class="p-6">
-            </div>
+      <!-- Eichenholz -->
+      <div class="product-card reveal" style="transition-delay:0.12s">
+        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&q=85');">
+          <span class="badge-pefc">PEFC zertifiziert</span>
         </div>
+        <div class="product-body">
+          <h3>🌳 Eichenholz</h3>
+          <p class="product-desc">Eiche brennt besonders langsam und gleichmäßig mit einer sehr langen Glutdauer. Perfekt für Kaminöfen und Heizungsanlagen, wo Effizienz zählt.</p>
+          <div class="product-price">110 €<small> / Raummeter</small></div>
+          <ul class="product-features">
+            <li>Extrem lange Brenndauer</li>
+            <li>Sehr robustes, hartes Holz</li>
+            <li>Ideal für Nachtstunden</li>
+            <li>Kräftig-rauchiges Aroma</li>
+          </ul>
+          <div class="length-label">Schnittlänge wählen:</div>
+          <div class="product-lengths">
+            <button class="length-chip active" onclick="selectChip(this)">25 cm</button>
+            <button class="length-chip" onclick="selectChip(this)">33 cm</button>
+            <button class="length-chip" onclick="selectChip(this)">50 cm</button>
+          </div>
+          <a href="#kontakt" class="product-order-btn">Jetzt anfragen</a>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <script>
-        const products = [
-            {
-                id: 1,
-                name: "Casual Streetwear Hoodie",
-                price: 24.30,
-                originalPrice: 27.00,
-                category: "Hoodies",
-                colors: ["Black", "Lightgray"],
-                sizes: ["XL", "XXL", "3XL", "4XL", "5XL", "6XL"],
-                stock: 32,
-                description: "Premium quality with soft inner lining",
-                image: "images/products/Casual-Streetwear-Hoddie.png",
-                images: {
-                    "Black": "images/products/Casual-Streetwear-Hoddie.png",
-                    "Lightgray": "images/products/Casual-Streetwear-Hoddiegray.png"
-                }
-            },
-            {
-                id: 2,
-                name: "Streetwear Zipper",
-                price: 30.60,
-                originalPrice: 34.00,
-                category: "Zipper",
-                colors: ["Black", "Blue", "Lightgray"],
-                sizes: ["XL", "XXL", "3XL", "4XL", "5XL", "6XL"],
-                stock: 24,
-                description: "100% Cotton, oversized fit",
-                image: "images/products/Oversized-zipperblack.png",
-                images: {
-                    "Black": "images/products/Oversized-zipperblack.png",
-                    "Blue": "images/products/Oversized-zipperblue.png",
-                    "Lightgray": "images/products/Oversized-zippergray.png"
-                }
-            },
-            {
-                id: 3,
-                name: "Man jogger Casual",
-                price: 25.20,
-                originalPrice: 28.00,
-                category: "Jogger",
-                colors: ["Black", "Peach", "Lightgray", "Darkgray"],
-                sizes: ["S", "M", "L", "XL", "XXL"],
-                stock: 17,
-                description: "Modern casual jogger look: comfortable, clean, and easy to style",
-                image: "images/products/Man-jogger-CasualBlack.png",
-                images: {
-                    "Black": "images/products/Man-jogger-CasualBlack.png",
-                    "Peach": "images/products/Man-jogger-Casualpeach.png",
-                    "Lightgray": "images/products/light-gray.png",
-                    "Darkgray": "images/products/Man-jogger-Casualdarkgray.png"
-                }
-            },
-            {
-                id: 4,
-                name: "Japanes Style Jogger",
-                price: 23.40,
-                originalPrice: 26.00,
-                category: "Jogger",
-                colors: ["White", "Red", "Gray"],
-                sizes: ["S", "M", "L", "XL", "XXL"],
-                stock: 23,
-                description: "Perfekt für den Winter-Look",
-                image: "images/products/Japanes-Style-Joggerwhite.png",
-                images: {
-                    "White": "images/products/Japanes-Style-Joggerwhite.png",
-                    "Red": "images/products/Japanes-Style-Joggerred.png",
-                    "Gray": "images/products/Japanes-Style-Joggergray.png"
-                }
-            },
-            {
-                id: 5,
-                name: "Tokyo Hoddie",
-                price: 25.20,
-                originalPrice: 28.00,
-                category: "Hoodies",
-                colors: ["Peach", "White", "Gray"],
-                sizes: ["S", "M", "L", "XL", "XXL"],
-                stock: 13,
-                description: "Warm und stylisch für kalte Tage",
-                image: "images/products/Tokyo-HoddiePeach.png",
-                images: {
-                    "Peach": "images/products/Tokyo-HoddiePeach.png",
-                    "White": "images/products/Tokyo-HoddieWhite.png",
-                    "Gray": "images/products/Tokyo-HoddieGray.png"
-                }
-            },
-            {
-                id: 6,
-                name: "Japan Style Distressed Washed Streetwear Jeans",
-                price: 35.10,
-                originalPrice: 39.00,
-                category: "Jeans",
-                colors: ["Black"],
-                sizes: ["XS","S","M", "L", "XL", "XXL"],
-                stock: 15,
-                description: "Warm",
-                image: "images/products/Japan-Style-Distressed-Washed-Streetwear-Jeansblack.png",
-                images: {
-                    "Black": "images/products/Japan-Style-Distressed-Washed-Streetwear-Jeansblack.png",
-                }
-            },
-            {
-                id: 7,
-                name: "Oversizes Hodie",
-                price: 25.20,
-                originalPrice: 28.00,
-                category: "Hoodies",
-                colors: ["Pink", "Black", "Blue"],
-                sizes: ["S","M", "L", "XL", "XXL"],
-                stock: 23,
-                description: "Warm",
-                image: "images/products/Oversizes-Hodiepink.png",
-                images: {
-                    "Pink": "images/products/Oversizes-Hodiepink.png",
-                    "Black": "images/products/Oversizes-Hodieblack.png",
-                    "Blue": "images/products/Oversizes-Hodieblue.png",
-                }
-            }
-        ];
+<!-- ===================== DELIVERY ===================== -->
+<section id="lieferung">
+  <div class="container">
+    <div class="delivery-grid">
+      <div>
+        <div class="section-header reveal">
+          <span class="section-label">Lieferung &amp; Service</span>
+          <h2 style="color:#fff">Komfortabel bis<br/>vor Ihre Tür</h2>
+          <p>Wir liefern direkt zu Ihnen – sicher verpackt in stabilen Gitterboxen. Alternativ können Sie Ihr Brennholz auch bequem vor Ort bei uns abholen.</p>
+        </div>
+        <div class="delivery-cards">
+          <div class="delivery-card reveal">
+            <div class="delivery-card-icon">🚚</div>
+            <div>
+              <h4>Lieferung im Umkreis</h4>
+              <p>Wir liefern innerhalb eines Radius von 50 km um unseren Standort in Oetmannshausen. Direkt, pünktlich und sicher.</p>
+              <div class="price-tag">85 €</div>
+            </div>
+          </div>
+          <div class="delivery-card reveal" style="transition-delay:0.1s">
+            <div class="delivery-card-icon">🧺</div>
+            <div>
+              <h4>Gitterbox-Lieferung</h4>
+              <p>Das Holz wird in robusten Gitterboxen geliefert. Pro Box erheben wir ein Pfand von 30 €, das bei Rückgabe vollständig erstattet wird.</p>
+              <div class="price-tag">30 € Pfand</div>
+            </div>
+          </div>
+          <div class="delivery-card reveal" style="transition-delay:0.2s">
+            <div class="delivery-card-icon">📦</div>
+            <div>
+              <h4>Abholung vor Ort</h4>
+              <p>Sie holen selbst ab? Kein Problem! Kommen Sie einfach zu uns nach Oetmannshausen, 37287 Wehretal. Bitte vorher kurz anrufen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        let cart = [];
-        let currentCheckoutStep = 1;
-        let deliveryData = {};
-        
-        function checkCookieConsent() {
-            const consent = localStorage.getItem('cookieConsent');
-            if (consent) {
-                document.getElementById('cookieBanner').classList.add('hidden');
-            }
+      <!-- Map illustration -->
+      <div class="delivery-map reveal">
+        <svg class="map-svg" viewBox="0 0 340 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="340" height="300" rx="16" fill="rgba(255,255,255,0.04)"/>
+          <!-- Terrain blobs -->
+          <ellipse cx="170" cy="150" rx="130" ry="110" fill="rgba(61,90,62,0.15)"/>
+          <ellipse cx="200" cy="130" rx="80" ry="60" fill="rgba(90,122,74,0.12)"/>
+          <!-- Roads -->
+          <path d="M 40 150 Q 100 130 170 150 Q 240 170 300 145" stroke="rgba(255,255,255,0.15)" stroke-width="8" stroke-linecap="round"/>
+          <path d="M 170 40 Q 165 100 170 150 Q 175 200 165 260" stroke="rgba(255,255,255,0.12)" stroke-width="6" stroke-linecap="round"/>
+          <!-- Delivery radius circle -->
+          <circle cx="170" cy="150" r="100" stroke="rgba(232,194,122,0.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <circle cx="170" cy="150" r="100" fill="rgba(192,125,58,0.06)"/>
+          <!-- Pin shadow -->
+          <ellipse cx="170" cy="165" rx="14" ry="5" fill="rgba(0,0,0,0.2)"/>
+          <!-- Pin -->
+          <path d="M 170 90 C 148 90 130 108 130 130 C 130 155 170 185 170 185 C 170 185 210 155 210 130 C 210 108 192 90 170 90Z" fill="#C07D3A"/>
+          <circle cx="170" cy="130" r="12" fill="white"/>
+          <text x="170" y="135" text-anchor="middle" font-size="12" fill="#3B2A1A">🌲</text>
+          <!-- Distance label -->
+          <text x="245" y="78" fill="rgba(232,194,122,0.7)" font-size="10" font-family="Lato, sans-serif" font-weight="700">50 km Radius</text>
+          <line x1="240" y1="82" x2="220" y2="110" stroke="rgba(232,194,122,0.4)" stroke-width="1"/>
+          <!-- Location name -->
+          <text x="170" y="210" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11" font-family="Lato, sans-serif" font-weight="700">Oetmannshausen</text>
+          <text x="170" y="224" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="9" font-family="Lato, sans-serif">37287 Wehretal, Nordhessen</text>
+          <!-- Small tree icons around -->
+          <text x="60" y="100" font-size="18" opacity="0.3">🌲</text>
+          <text x="260" y="180" font-size="16" opacity="0.25">🌳</text>
+          <text x="80" y="200" font-size="14" opacity="0.2">🌲</text>
+          <text x="250" y="90" font-size="14" opacity="0.2">🌳</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="ueber-uns">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-img"></div>
+        <div class="about-img-badge">
+          <span class="num">🌿</span>
+          <span class="lbl">PEFC<br/>Zertifiziert</span>
+        </div>
+      </div>
+      <div class="about-content reveal" style="transition-delay:0.15s">
+        <span class="section-label">Über uns</span>
+        <h2>Lokal verwurzelt,<br/>nachhaltig gedacht</h2>
+        <p>Wir sind ein junges, lokales Unternehmen aus Oetmannshausen im Herzen von Nordhessen. Als leidenschaftliche Befürworter nachhaltiger Forstwirtschaft beziehen wir unser Holz ausschließlich aus PEFC-zertifizierten Quellen.</p>
+        <p>Unser Ziel ist es, Ihnen hochwertiges Brennholz direkt aus der Region anzubieten – transparent, fair und mit echtem Bezug zu Natur und Umwelt. Kurze Lieferwege schonen nicht nur die Umwelt, sondern garantieren frische, optimale Qualität.</p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">🌱</div>
+            <h5>Nachhaltigkeit</h5>
+            <p>PEFC-zertifiziertes Holz aus verantwortungsvoller Forstwirtschaft.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">📍</div>
+            <h5>Regionalität</h5>
+            <p>Direkt aus Nordhessen – kurze Wege, starke Region.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">✅</div>
+            <h5>Qualität</h5>
+            <p>Ausgesuchtes Holz, sorgfältig gespalten und bereit für Ihren Kamin.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤝</div>
+            <h5>Vertrauen</h5>
+            <p>Persönlicher Service und transparente Preise ohne versteckte Kosten.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="kontakt">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:3rem">
+      <span class="section-label">Kontakt</span>
+      <h2>Wir freuen uns<br/>von Ihnen zu hören</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p>Haben Sie Fragen zu unseren Produkten, Preisen oder Lieferkonditionen? Schreiben Sie uns – wir melden uns schnellstmöglich bei Ihnen zurück.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">
+              <strong>Adresse</strong>
+              <span>Oetmannshausen<br/>37287 Wehretal, Deutschland</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📞</div>
+            <div class="contact-detail-text">
+              <strong>Telefon</strong>
+              <span>Auf Anfrage erhältlich</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉️</div>
+            <div class="contact-detail-text">
+              <strong>E-Mail</strong>
+              <span>info@brennholz-nordhessen.de</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">🕐</div>
+            <div class="contact-detail-text">
+              <strong>Erreichbarkeit</strong>
+              <span>Mo–Fr: 8–18 Uhr<br/>Sa: 9–14 Uhr</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal" style="transition-delay:0.15s">
+        <h3>Anfrage senden</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Vorname</label>
+            <input type="text" placeholder="Max" id="fname" />
+          </div>
+          <div class="form-group">
+            <label>Nachname</label>
+            <input type="text" placeholder="Mustermann" id="lname" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input type="email" placeholder="max@beispiel.de" id="email" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Holzart</label>
+            <select id="wood">
+              <option value="">Bitte wählen...</option>
+              <option>Buchenholz – 120 €/rm</option>
+              <option>Eichenholz – 110 €/rm</option>
+              <option>Beides</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Schnittlänge</label>
+            <select id="length">
+              <option value="">Bitte wählen...</option>
+              <option>25 cm</option>
+              <option>33 cm</option>
+              <option>50 cm</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Lieferung oder Abholung?</label>
+          <select id="delivery">
+            <option value="">Bitte wählen...</option>
+            <option>Lieferung (85 € + 30 € Pfand/Gitterbox)</option>
+            <option>Selbstabholung in Oetmannshausen</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ihre Nachricht</label>
+          <textarea placeholder="Ihre Fragen oder Bestelldetails..." id="message"></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Anfrage absenden ✉️</button>
+        <div class="form-success" id="formSuccess">
+          ✅ Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns bald bei Ihnen.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <div class="logo-icon">🌲</div>
+        <span style="color:#fff">Brennholzhandel<small style="color:rgba(255,255,255,0.5)">Nordhessen</small></span>
+      </div>
+      <p>Lokales Start-up aus Oetmannshausen. Hochwertiges, PEFC-zertifiziertes Brennholz direkt aus Nordhessen.</p>
+      <div class="pefc-badge" style="margin-top:1rem">🌿 PEFC-zertifiziert</div>
+    </div>
+    <div class="footer-col">
+      <h5>Navigation</h5>
+      <ul>
+        <li><a href="#produkte">Produkte</a></li>
+        <li><a href="#lieferung">Lieferung & Service</a></li>
+        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Produkte</h5>
+      <ul>
+        <li><a href="#produkte">Buchenholz – 120 €/rm</a></li>
+        <li><a href="#produkte">Eichenholz – 110 €/rm</a></li>
+        <li><a href="#produkte">25 cm · 33 cm · 50 cm</a></li>
+        <li><a href="#lieferung">Gitterbox-Lieferung</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Brennholzhandel Nordhessen · Oetmannshausen, 37287 Wehretal</span>
+    <span>Impressum · Datenschutz</span>
+  </div>
+</footer>
+
+<!-- ===================== CHATBOT ===================== -->
+<div class="chat-fab" id="chatFab" onclick="toggleChat()" title="Chat öffnen">
+  💬
+  <div class="badge">1</div>
+</div>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar">🌲</div>
+    <div class="chat-header-info">
+      <strong>Holz-Assistent</strong>
+      <span><span class="chat-online"></span>Online – KI-Chatbot</span>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">
+      Hallo! 👋 Ich bin Ihr digitaler Holz-Assistent.<br/><br/>
+      Ich helfe Ihnen bei Fragen zu unseren Produkten, Preisen, Lieferung und mehr. Was kann ich für Sie tun?
+    </div>
+  </div>
+  <div class="chat-typing" id="chatTyping">
+    <div class="typing-dots">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="chat-quick" id="quickBtns">
+    <button class="quick-btn" onclick="quickAsk('Welche Holzarten haben Sie?')">Holzarten</button>
+    <button class="quick-btn" onclick="quickAsk('Was kostet die Lieferung?')">Lieferkosten</button>
+    <button class="quick-btn" onclick="quickAsk('Welche Schnittlängen gibt es?')">Schnittlängen</button>
+    <button class="quick-btn" onclick="quickAsk('Wo kann ich abholen?')">Abholung</button>
+  </div>
+  <div class="chat-input-wrap">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Ihre Frage..." onkeydown="if(event.key==='Enter')sendChat()" />
+    <button class="chat-send" onclick="sendChat()">➤</button>
+  </div>
+  <div class="chat-powered">Powered by Claude AI</div>
+</div>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+  /* ---- NAVBAR SCROLL ---- */
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  /* ---- HAMBURGER ---- */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  /* ---- REVEAL ON SCROLL ---- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  /* ---- LENGTH CHIPS ---- */
+  function selectChip(btn) {
+    const parent = btn.closest('.product-lengths');
+    parent.querySelectorAll('.length-chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  /* ---- CONTACT FORM → DISCORD WEBHOOK ---- */
+  async function submitForm() {
+    const fname    = document.getElementById('fname').value.trim();
+    const lname    = document.getElementById('lname').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const wood     = document.getElementById('wood').value;
+    const length   = document.getElementById('length').value;
+    const delivery = document.getElementById('delivery').value;
+    const message  = document.getElementById('message').value.trim();
+
+    // Einfache Validierung
+    if (!fname || !email) {
+      alert('Bitte füllen Sie mindestens Vorname und E-Mail aus.');
+      return;
+    }
+
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = 'Wird gesendet…';
+    btn.disabled = true;
+
+    // Discord Embed aufbauen
+    const payload = {
+      username: '🌲 Brennholz Anfrage',
+      embeds: [{
+        title: '📋 Neue Kundenanfrage',
+        color: 0x3D5A3E,
+        fields: [
+          { name: '👤 Name',       value: `${fname} ${lname}`.trim() || '—', inline: true  },
+          { name: '📧 E-Mail',     value: email,                              inline: true  },
+          { name: '🪵 Holzart',    value: wood     || '—',                   inline: true  },
+          { name: '📏 Länge',      value: length   || '—',                   inline: true  },
+          { name: '🚚 Lieferung',  value: delivery || '—',                   inline: false },
+          { name: '💬 Nachricht',  value: message  || '(keine Nachricht)',    inline: false },
+        ],
+        footer: { text: 'Brennholzhandel Nordhessen · Website-Formular' },
+        timestamp: new Date().toISOString()
+      }]
+    };
+
+    try {
+      const res = await fetch(
+        'https://discord.com/api/webhooks/1448438047413764158/22M_EgEOeFLGIgUnm64QdIT0_N19tP8OXBTc5H-JdvprBa_AocaMNNOZfVt25Rq48TLm',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         }
+      );
 
-        function acceptCookies() {
-            localStorage.setItem('cookieConsent', 'accepted');
-            document.getElementById('cookieBanner').classList.add('hidden');
-        }
+      if (res.ok || res.status === 204) {
+        // Formular leeren
+        ['fname','lname','email','wood','length','delivery','message']
+          .forEach(id => { document.getElementById(id).value = ''; });
+        const success = document.getElementById('formSuccess');
+        success.style.display = 'block';
+        setTimeout(() => success.style.display = 'none', 6000);
+      } else {
+        throw new Error('Discord antwortete mit Status ' + res.status);
+      }
+    } catch (err) {
+      alert('Fehler beim Senden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt eine E-Mail.');
+      console.error(err);
+    } finally {
+      btn.textContent = 'Anfrage absenden ✉️';
+      btn.disabled = false;
+    }
+  }
 
-        function declineCookies() {
-            localStorage.setItem('cookieConsent', 'declined');
-            document.getElementById('cookieBanner').classList.add('hidden');
-            alert('Sie haben Cookies abgelehnt. Einige Funktionen (z.B. PayPal-Zahlung) funktionieren möglicherweise nicht optimal.');
-        }
+  /* ---- CHATBOT ---- */
+  let chatOpen = false;
 
-        function toggleLegalSection(section) {
-            const content = document.getElementById(section + '-content');
-            const icon = document.getElementById(section + '-icon');
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.textContent = '−';
-            } else {
-                content.classList.add('hidden');
-                icon.textContent = '+';
-            }
-        }
+  function toggleChat() {
+    chatOpen = !chatOpen;
+    document.getElementById('chatWindow').classList.toggle('open', chatOpen);
+    // Remove badge
+    const badge = document.querySelector('.chat-fab .badge');
+    if (badge) badge.remove();
+  }
 
-        function openLegalSection(section) {
-            setTimeout(() => {
-                const content = document.getElementById(section + '-content');
-                const icon = document.getElementById(section + '-icon');
-                
-                ['impressum', 'datenschutz', 'agb', 'widerruf'].forEach(s => {
-                    if (s !== section) {
-                        document.getElementById(s + '-content').classList.add('hidden');
-                        document.getElementById(s + '-icon').textContent = '+';
-                    }
-                });
-                
-                content.classList.remove('hidden');
-                icon.textContent = '−';
-            }, 100);
-        }
+  function quickAsk(q) {
+    document.getElementById('chatInput').value = q;
+    sendChat();
+  }
 
-        function calculateShipping(subtotal) {
-            return subtotal >= 50 ? 0 : 3.49;
-        }
+  async function sendChat() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+    input.value = '';
 
-        function renderProducts() {
-            const grid = document.getElementById('productGrid');
-            grid.innerHTML = products.map(product => `
-                <div class="product-card bg-black border border-white border-opacity-20 ornament-border overflow-hidden card-hover cursor-pointer" onclick="openProductModal(${product.id})">
-                    <div class="relative overflow-hidden h-80">
-                        <img src="${product.image}" alt="${product.name}" class="product-image w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 text-xs font-bold tracking-wider">
-                            10% OFF
-                        </div>
-                        <div class="absolute top-4 right-4 bg-white text-black px-3 py-1 text-xs font-bold tracking-wider">
-                            ${product.stock} IN STOCK
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-xs text-gray-400 mb-2 tracking-widest">${product.category.toUpperCase()}</div>
-                        <h3 class="text-xl font-bold mb-2 tracking-wide">${product.name}</h3>
-                        <p class="text-gray-400 text-sm mb-4 font-light">${product.description}</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-3">
-                                <span class="text-2xl font-black price-discount">${product.price.toFixed(2)}€</span>
-                                <span class="text-lg price-original">${product.originalPrice.toFixed(2)}€</span>
-                            </div>
-                            <button onclick="event.stopPropagation(); openProductModal(${product.id})" class="bg-white text-black hover:bg-transparent hover:text-white border-2 border-white px-6 py-2 font-bold transition tracking-wider text-sm">
-                                BUY NOW
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
+    appendMsg(msg, 'user');
+    hideQuick();
 
-        function openProductModal(productId) {
-            const product = products.find(p => p.id === productId);
-            const modal = document.getElementById('productModal');
-            document.getElementById('modalTitle').textContent = product.name;
-            
-            const defaultColor = product.colors[0];
-            const defaultImage = product.images[defaultColor];
-            
-            document.getElementById('modalContent').innerHTML = `
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="ornament-border">
-                        <img id="productImage" src="${defaultImage}" alt="${product.name}" class="w-full transition-all duration-500">
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-3xl font-black price-discount">${product.price.toFixed(2)}€</span>
-                            <span class="text-xl price-original">${product.originalPrice.toFixed(2)}€</span>
-                            <span class="bg-red-600 text-white px-2 py-1 text-xs font-bold">10% OFF</span>
-                        </div>
-                        <p class="text-gray-300 mb-6 font-light">${product.description}</p>
-                        
-                        <div class="mb-6">
-                            <label class="block text-sm font-bold mb-2 tracking-wider">SELECT SIZE</label>
-                            <select id="sizeSelect" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light">
-                                ${product.sizes.map(size => `<option value="${size}" class="bg-black">${size}</option>`).join('')}
-                            </select>
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label class="block text-sm font-bold mb-2 tracking-wider">SELECT COLOR</label>
-                            <select id="colorSelect" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light" onchange="changeProductImage(${product.id})">
-                                ${product.colors.map(color => `<option value="${color}" class="bg-black">${color}</option>`).join('')}
-                            </select>
-                        </div>
-                        
-                        <button onclick="addToCart(${product.id})" class="w-full btn-primary py-4 rounded-none font-bold text-lg tracking-wider">
-                            ADD TO CART
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
+    // Show typing indicator
+    const typing = document.getElementById('chatTyping');
+    typing.style.display = 'block';
+    scrollChat();
 
-        function changeProductImage(productId) {
-            const product = products.find(p => p.id === productId);
-            const selectedColor = document.getElementById('colorSelect').value;
-            const productImage = document.getElementById('productImage');
-            
-            productImage.style.opacity = '0';
-            
-            setTimeout(() => {
-                productImage.src = product.images[selectedColor];
-                productImage.style.opacity = '1';
-            }, 200);
-        }
+    try {
+      const systemPrompt = `Du bist ein freundlicher und hilfreicher Assistent für Brennholzhandel Nordhessen, ein lokales Start-up in Oetmannshausen, 37287 Wehretal, Deutschland.
 
-        function closeProductModal() {
-            const modal = document.getElementById('productModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
+Informationen über das Unternehmen:
+- Name: Brennholzhandel Nordhessen
+- Standort: Oetmannshausen, 37287 Wehretal, Nordhessen
+- Zertifizierung: PEFC-zertifiziertes Holz
 
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const size = document.getElementById('sizeSelect').value;
-            const color = document.getElementById('colorSelect').value;
-            
-            cart.push({
-                ...product,
-                selectedSize: size,
-                selectedColor: color
-            });
-            
-            updateCartCount();
-            closeProductModal();
-            
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-24 right-4 bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg z-50 tracking-wider font-bold';
-            notification.textContent = '✓ Item added to cart!';
-            document.body.appendChild(notification);
-            
-            setTimeout(() => notification.remove(), 3000);
-        }
+Produkte:
+- Buchenholz: 120 € pro Raummeter
+- Eichenholz: 110 € pro Raummeter
+- Schnittlängen: 25 cm, 33 cm, 50 cm
 
-        function updateCartCount() {
-            document.getElementById('cartCount').textContent = cart.length;
-        }
+Lieferung:
+- Lieferung im Umkreis von 50 km: 85 € Liefergebühr
+- Pfand pro Gitterbox: 30 € (wird bei Rückgabe erstattet)
+- Abholung vor Ort möglich
 
-        function showCart() {
-            const modal = document.getElementById('cartModal');
-            const cartItems = document.getElementById('cartItems');
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-gray-400 text-center py-8">Your cart is empty</p>';
-            } else {
-                cartItems.innerHTML = cart.map((item, index) => `
-                    <div class="flex items-center gap-4 mb-4 pb-4 border-b border-gray-700">
-                        <img src="${item.images[item.selectedColor]}" alt="${item.name}" class="w-20 h-20 object-cover">
-                        <div class="flex-1">
-                            <h4 class="font-bold tracking-wide">${item.name}</h4>
-                            <p class="text-sm text-gray-400">Size: ${item.selectedSize} | Color: ${item.selectedColor}</p>
-                            <p class="font-bold text-lg mt-1">${item.price.toFixed(2)}€</p>
-                        </div>
-                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-400 transition">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                            </svg>
-                        </button>
-                    </div>
-                `).join('');
-            }
-            
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            document.getElementById('cartTotal').textContent = total.toFixed(2) + '€';
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
+Beantworte Fragen auf Deutsch, freundlich und prägnant. Halte Antworten kurz (max. 3-4 Sätze). Wenn du etwas nicht weißt, verweise auf das Kontaktformular oder empfiehl anzurufen.`;
 
-        function closeCart() {
-            const modal = document.getElementById('cartModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: systemPrompt,
+          messages: [{ role: 'user', content: msg }]
+        })
+      });
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartCount();
-            showCart();
-        }
+      const data = await response.json();
+      const reply = data.content?.[0]?.text || 'Entschuldigung, ich konnte keine Antwort generieren. Bitte nutzen Sie das Kontaktformular.';
 
-        function updateCheckoutSteps(step) {
-            currentCheckoutStep = step;
-            
-            document.getElementById('step1').classList.remove('active', 'completed');
-            document.getElementById('step2').classList.remove('active', 'completed');
-            document.getElementById('step3').classList.remove('active', 'completed');
-            document.getElementById('line1').classList.remove('completed');
-            document.getElementById('line2').classList.remove('completed');
-            
-            if (step >= 1) {
-                document.getElementById('step1').classList.add(step === 1 ? 'active' : 'completed');
-            }
-            if (step >= 2) {
-                document.getElementById('line1').classList.add('completed');
-                document.getElementById('step2').classList.add(step === 2 ? 'active' : 'completed');
-            }
-            if (step >= 3) {
-                document.getElementById('line2').classList.add('completed');
-                document.getElementById('step3').classList.add('completed');
-            }
-        }
+      typing.style.display = 'none';
+      appendMsg(reply, 'bot');
+    } catch (err) {
+      typing.style.display = 'none';
+      appendMsg('Entschuldigung, der Chat ist momentan nicht verfügbar. Bitte nutzen Sie unser Kontaktformular oder rufen Sie uns an.', 'bot');
+    }
+  }
 
-        function proceedToCheckout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            
-            closeCart();
-            currentCheckoutStep = 1;
-            showCheckoutStep1();
-        }
+  function appendMsg(text, type) {
+    const container = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.className = `chat-msg ${type}`;
+    div.innerHTML = text.replace(/\n/g, '<br/>');
+    container.appendChild(div);
+    scrollChat();
+  }
 
-        function showCheckoutStep1() {
-            const modal = document.getElementById('checkoutModal');
-            const content = document.getElementById('checkoutContent');
-            
-            updateCheckoutSteps(1);
-            
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            const shipping = calculateShipping(total);
-            const finalTotal = total + shipping;
-            
-            content.innerHTML = `
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2">
-                        <h3 class="text-2xl font-bold mb-6 tracking-wider logo-font">DELIVERY INFORMATION</h3>
-                        
-                        <div class="space-y-5">
-                            <div>
-                                <label class="block text-sm font-bold mb-2 tracking-wider">FULL NAME *</label>
-                                <input type="text" id="fullName" value="${deliveryData.fullName || ''}" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light focus:border-gray-400 focus:outline-none" placeholder="John Doe">
-                                <div id="fullNameError" class="error-message hidden"></div>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-bold mb-2 tracking-wider">STREET & NUMBER *</label>
-                                <input type="text" id="street" value="${deliveryData.street || ''}" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light focus:border-gray-400 focus:outline-none" placeholder="Example Street 123">
-                                <div id="streetError" class="error-message hidden"></div>
-                            </div>
-                            
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-bold mb-2 tracking-wider">ZIP CODE *</label
-                                        <input type="text" id="zip" value="${deliveryData.zip || ''}" maxlength="5" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light focus:border-gray-400 focus:outline-none" placeholder="12345">
-                                    <div id="zipError" class="error-message hidden"></div>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold mb-2 tracking-wider">CITY *</label>
-                                    <input type="text" id="city" value="${deliveryData.city || ''}" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light focus:border-gray-400 focus:outline-none" placeholder="Berlin">
-                                    <div id="cityError" class="error-message hidden"></div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-bold mb-2 tracking-wider">EMAIL *</label>
-                                <input type="email" id="email" value="${deliveryData.email || ''}" class="w-full bg-transparent border-2 border-white px-4 py-3 tracking-wider font-light focus:border-gray-400 focus:outline-none" placeholder="john@example.com">
-                                <div id="emailError" class="error-message hidden"></div>
-                            </div>
-                        </div>
-                        
-                        <button onclick="validateAndProceedToStep2()" class="w-full mt-8 btn-primary py-4 rounded-none font-bold text-lg tracking-wider">
-                            CONTINUE TO PAYMENT
-                        </button>
-                    </div>
-                    
-                    <div class="lg:col-span-1">
-                        <div class="bg-black border border-white border-opacity-20 p-6 ornament-border sticky top-4">
-                            <h3 class="text-xl font-bold mb-4 tracking-wider">CART</h3>
-                            <div class="space-y-3 mb-4">
-                                ${cart.map(item => `
-                                    <div class="flex items-center gap-3 pb-3 border-b border-gray-700">
-                                        <img src="${item.images[item.selectedColor]}" alt="${item.name}" class="w-12 h-12 object-cover">
-                                        <div class="flex-1">
-                                            <p class="font-bold text-sm">${item.name}</p>
-                                            <p class="text-xs text-gray-400">${item.selectedSize} | ${item.selectedColor}</p>
-                                        </div>
-                                        <p class="font-bold text-sm">${item.price.toFixed(2)}€</p>
-                                    </div>
-                                `).join('')}
-                            </div>
-                            <div class="border-t border-white border-opacity-20 pt-4">
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span>Subtotal:</span>
-                                    <span>${total.toFixed(2)}€</span>
-                                </div>
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span>Shipping:</span>
-                                    <span class="${shipping === 0 ? 'text-green-400' : ''}">${shipping === 0 ? 'FREE' : shipping.toFixed(2) + '€'}</span>
-                                </div>
-                                ${shipping === 0 ? '<p class="text-xs text-green-400 mb-2">✓ Free shipping from 50€</p>' : '<p class="text-xs text-gray-400 mb-2">Free shipping from 50€</p>'}
-                                <div class="flex justify-between text-xl font-bold mt-4">
-                                    <span>TOTAL:</span>
-                                    <span>${finalTotal.toFixed(2)}€</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
+  function scrollChat() {
+    const c = document.getElementById('chatMessages');
+    c.scrollTop = c.scrollHeight;
+  }
 
-        function validateAndProceedToStep2() {
-            let hasError = false;
-            
-            const fullName = document.getElementById('fullName').value.trim();
-            const street = document.getElementById('street').value.trim();
-            const zip = document.getElementById('zip').value.trim();
-            const city = document.getElementById('city').value.trim();
-            const email = document.getElementById('email').value.trim();
-            
-            document.querySelectorAll('.error-message').forEach(el => {
-                el.classList.add('hidden');
-                el.textContent = '';
-            });
-            document.querySelectorAll('input').forEach(el => el.classList.remove('error-input'));
-            
-            if (!fullName) {
-                document.getElementById('fullNameError').textContent = 'Name is required';
-                document.getElementById('fullNameError').classList.remove('hidden');
-                document.getElementById('fullName').classList.add('error-input');
-                hasError = true;
-            }
-            
-            if (!street) {
-                document.getElementById('streetError').textContent = 'Street and number are required';
-                document.getElementById('streetError').classList.remove('hidden');
-                document.getElementById('street').classList.add('error-input');
-                hasError = true;
-            }
-            
-            if (!zip) {
-                document.getElementById('zipError').textContent = 'ZIP code is required';
-                document.getElementById('zipError').classList.remove('hidden');
-                document.getElementById('zip').classList.add('error-input');
-                hasError = true;
-            } else if (!/^\d{5}$/.test(zip)) {
-                document.getElementById('zipError').textContent = 'ZIP code must be 5 digits';
-                document.getElementById('zipError').classList.remove('hidden');
-                document.getElementById('zip').classList.add('error-input');
-                hasError = true;
-            }
-            
-            if (!city) {
-                document.getElementById('cityError').textContent = 'City is required';
-                document.getElementById('cityError').classList.remove('hidden');
-                document.getElementById('city').classList.add('error-input');
-                hasError = true;
-            }
-            
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!email) {
-                document.getElementById('emailError').textContent = 'Email is required';
-                document.getElementById('emailError').classList.remove('hidden');
-                document.getElementById('email').classList.add('error-input');
-                hasError = true;
-            } else if (!emailRegex.test(email)) {
-                document.getElementById('emailError').textContent = 'Invalid email address';
-                document.getElementById('emailError').classList.remove('hidden');
-                document.getElementById('email').classList.add('error-input');
-                hasError = true;
-            }
-            
-            if (hasError) {
-                return;
-            }
-            
-            deliveryData = {
-                fullName,
-                street,
-                zip,
-                city,
-                email
-            };
-            
-            completeOrder();
-        }
-
-        async function completeOrder() {
-            const orderData = {
-                orderId: `24W-${Date.now()}`,
-                customer: {
-                    fullName: deliveryData.fullName,
-                    email: deliveryData.email,
-                    address: {
-                        street: deliveryData.street,
-                        zip: deliveryData.zip,
-                        city: deliveryData.city
-                    }
-                },
-                items: cart.map(item => ({
-                    name: item.name,
-                    size: item.selectedSize,
-                    color: item.selectedColor,
-                    price: item.price
-                })),
-                total: cart.reduce((sum, item) => sum + item.price, 0),
-                shipping: calculateShipping(cart.reduce((sum, item) => sum + item.price, 0)),
-                orderDate: new Date().toLocaleString('en-GB')
-            };
-            
-            try {
-                await sendDiscordNotification(orderData);
-                await sendEmailNotification(orderData);
-                showPayPalPaymentStep(orderData);
-            } catch (error) {
-                console.error('Error:', error);
-                alert('There was an error sending the order. Please try again.');
-            }
-        }
-
-        function showPayPalPaymentStep(orderData) {
-            const content = document.getElementById('checkoutContent');
-            updateCheckoutSteps(2);
-            
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            const shipping = calculateShipping(total);
-            const finalTotal = total + shipping;
-            
-            content.innerHTML = `
-                <div class="max-w-4xl mx-auto">
-                    <h3 class="text-3xl font-bold mb-8 tracking-wider logo-font text-center">PAYMENT</h3>
-                    
-                    <div class="bg-black border border-white border-opacity-20 p-6 ornament-border mb-8">
-                        <h4 class="text-lg font-bold tracking-wider mb-4">YOUR ORDER</h4>
-                        <div class="space-y-2">
-                            ${cart.map(item => `
-                                <div class="flex justify-between text-sm">
-                                    <span>${item.name} (${item.selectedSize}, ${item.selectedColor})</span>
-                                    <span>${item.price.toFixed(2)}€</span>
-                                </div>
-                            `).join('')}
-                            <div class="border-t border-white border-opacity-20 pt-3 mt-3">
-                                <div class="flex justify-between text-sm mb-2">
-                                    <span>Shipping:</span>
-                                    <span class="${shipping === 0 ? 'text-green-400' : ''}">${shipping === 0 ? 'FREE' : shipping.toFixed(2) + '€'}</span>
-                                </div>
-                                <div class="flex justify-between text-xl font-bold">
-                                    <span>TOTAL:</span>
-                                    <span>${finalTotal.toFixed(2)}€</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-black border border-white border-opacity-20 p-6 ornament-border mb-8">
-                        <h4 class="text-lg font-bold tracking-wider mb-4">DELIVERY ADDRESS</h4>
-                        <div class="space-y-1 text-gray-300">
-                            <p class="font-semibold text-white">${deliveryData.fullName}</p>
-                            <p>${deliveryData.street}</p>
-                            <p>${deliveryData.zip} ${deliveryData.city}</p>
-                            <p>${deliveryData.email}</p>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-black border-2 border-white p-8 ornament-border mb-6">
-                        <p class="text-center text-gray-400 mb-6 text-sm">
-                            Click the PayPal button to pay securely
-                        </p>
-                        <div id="paypal-button-container"></div>
-                    </div>
-                    
-                    <button onclick="showCheckoutStep1()" class="w-full bg-transparent border-2 border-white hover:bg-white hover:text-black py-4 rounded-none font-bold tracking-wider transition">
-                        BACK
-                    </button>
-                </div>
-            `;
-            
-            renderPayPalButton(orderData);
-        }
-
-        function renderPayPalButton(orderData) {
-            const items = cart.map(item => ({
-                name: `${item.name} (${item.selectedSize}, ${item.selectedColor})`,
-                unit_amount: {
-                    currency_code: 'EUR',
-                    value: item.price.toFixed(2)
-                },
-                quantity: '1'
-            }));
-            
-            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-            const shipping = calculateShipping(subtotal);
-            const total = subtotal + shipping;
-            
-            paypal.Buttons({
-                style: {
-                    layout: 'vertical',
-                    color: 'blue',
-                    shape: 'rect',
-                    label: 'pay',
-                    height: 50
-                },
-                
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            description: '24 WEARS Order',
-                            amount: {
-                                currency_code: 'EUR',
-                                value: total.toFixed(2),
-                                breakdown: {
-                                    item_total: {
-                                        currency_code: 'EUR',
-                                        value: subtotal.toFixed(2)
-                                    },
-                                    shipping: {
-                                        currency_code: 'EUR',
-                                        value: shipping.toFixed(2)
-                                    }
-                                }
-                            },
-                            items: items,
-                            shipping: {
-                                name: {
-                                    full_name: deliveryData.fullName
-                                },
-                                address: {
-                                    address_line_1: deliveryData.street,
-                                    admin_area_2: deliveryData.city,
-                                    postal_code: deliveryData.zip,
-                                    country_code: 'DE'
-                                }
-                            }
-                        }],
-                        application_context: {
-                            shipping_preference: 'SET_PROVIDED_ADDRESS'
-                        }
-                    });
-                },
-                
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        sendDiscordOrderConfirmation(orderData, details);
-                        showOrderSuccess(orderData, details);
-                    });
-                },
-                
-                onError: function(err) {
-                    console.error('PayPal Error:', err);
-                    alert('There was an error with the PayPal payment. Please try again.');
-                },
-                
-                onCancel: function(data) {
-                    alert('Payment was cancelled. You can come back and pay anytime.');
-                }
-                
-            }).render('#paypal-button-container');
-        }
-
-        function showOrderSuccess(orderData, paypalDetails) {
-            const content = document.getElementById('checkoutContent');
-            updateCheckoutSteps(3);
-            
-            content.innerHTML = `
-                <div class="max-w-2xl mx-auto text-center py-12">
-                    <div class="w-24 h-24 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6 glow-effect">
-                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                    </div>
-                    
-                    <h3 class="text-4xl font-bold mb-4 tracking-wider logo-font">PAYMENT SUCCESSFUL!</h3>
-                    <p class="text-gray-400 text-lg mb-8">
-                        Thank you for your order at 24 WEARS
-                    </p>
-                    
-                    <div class="bg-black border border-white border-opacity-20 p-6 ornament-border mb-8 text-left">
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-400 mb-1">Order Number:</p>
-                            <p class="font-bold text-lg">${orderData.orderId}</p>
-                        </div>
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-400 mb-1">PayPal Transaction ID:</p>
-                            <p class="font-bold text-sm text-green-400">${paypalDetails.id}</p>
-                        </div>
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-400 mb-1">Amount Paid:</p>
-                            <p class="font-bold text-2xl">${(orderData.total + orderData.shipping).toFixed(2)}€</p>
-                            ${orderData.shipping > 0 ? `<p class="text-xs text-gray-400">(incl. ${orderData.shipping.toFixed(2)}€ shipping)</p>` : ''}
-                        </div>
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-400 mb-1">Delivery Address:</p>
-                            <p class="font-semibold">${orderData.customer.fullName}</p>
-                            <p class="text-gray-300">${orderData.customer.address.street}</p>
-                            <p class="text-gray-300">${orderData.customer.address.zip} ${orderData.customer.address.city}</p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-400 mb-1">Email Confirmation to:</p>
-                            <p class="text-gray-300">${orderData.customer.email}</p>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-green-900 bg-opacity-30 border border-green-500 border-opacity-50 p-6 rounded-lg mb-8">
-                        <p class="text-green-200 font-semibold mb-2">✓ Your order has been successfully paid</p>
-                        <p class="text-green-300 text-sm">You will shortly receive a confirmation email from PayPal and 24 WEARS.</p>
-                    </div>
-                    
-                    <button onclick="finishOrder()" class="btn-primary px-12 py-4 rounded-none font-bold text-lg tracking-wider">
-                        FINISH
-                    </button>
-                </div>
-            `;
-        }
-
-        function closeCheckout() {
-            const modal = document.getElementById('checkoutModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            currentCheckoutStep = 1;
-            deliveryData = {};
-        }
-
-        function finishOrder() {
-            cart = [];
-            updateCartCount();
-            deliveryData = {};
-            currentCheckoutStep = 1;
-            closeCheckout();
-        }
-
-        async function sendDiscordNotification(orderData) {
-            const webhookUrl = 'https://discordapp.com/api/webhooks/1448438047413764158/22M_EgEOeFLGIgUnm64QdIT0_N19tP8OXBTc5H-JdvprBa_AocaMNNOZfVt25Rq48TLm';
-            
-            const itemsList = orderData.items.map(item => 
-                `• ${item.name} (${item.size}, ${item.color}) - ${item.price.toFixed(2)}€`
-            ).join('\n');
-
-            const subtotal = orderData.total;
-            const shipping = orderData.shipping;
-            const finalTotal = subtotal + shipping;
-            
-            const embed = {
-                title: "🛍️ NEW ORDER - 24 WEARS",
-                description: "⚠️ **PAYMENT PENDING** - Awaiting PayPal confirmation",
-                color: 0xFFA500,
-                fields: [
-                    {
-                        name: "📋 Order Number",
-                        value: orderData.orderId,
-                        inline: true
-                    },
-                    {
-                        name: "📅 Date",
-                        value: orderData.orderDate,
-                        inline: true
-                    },
-                    {
-                        name: "💳 Payment Status",
-                        value: "⏳ **PENDING**",
-                        inline: true
-                    },
-                    {
-                        name: "👤 Customer",
-                        value: orderData.customer.fullName,
-                        inline: false
-                    },
-                    {
-                        name: "📧 Email",
-                        value: orderData.customer.email,
-                        inline: false
-                    },
-                    {
-                        name: "📍 Delivery Address",
-                        value: `${orderData.customer.address.street}\n${orderData.customer.address.zip} ${orderData.customer.address.city}`,
-                        inline: false
-                    },
-                    {
-                        name: "🛒 Items",
-                        value: itemsList,
-                        inline: false
-                    },
-                    {
-                        name: "📦 Shipping",
-                        value: shipping === 0 ? "**FREE**" : `${shipping.toFixed(2)}€`,
-                        inline: true
-                    },
-                    {
-                        name: "💰 Total",
-                        value: `**${finalTotal.toFixed(2)}€**`,
-                        inline: false
-                    }
-                ],
-                footer: {
-                    text: "24 WEARS • Premium Streetwear"
-                },
-                timestamp: new Date().toISOString()
-            };
-            
-            const response = await fetch(webhookUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    embeds: [embed]
-                })
-            });
-            
-            if (!response.ok) {
-                throw new Error('Discord webhook failed');
-            }
-        }
-
-        async function sendDiscordOrderConfirmation(orderData, paypalDetails) {
-            const webhookUrl = 'https://discordapp.com/api/webhooks/1448438047413764158/22M_EgEOeFLGIgUnm64QdIT0_N19tP8OXBTc5H-JdvprBa_AocaMNNOZfVt25Rq48TLm';
-            
-            const itemsList = orderData.items.map(item => 
-                `• ${item.name} (${item.size}, ${item.color}) - ${item.price.toFixed(2)}€`
-            ).join('\n');
-
-            const subtotal = orderData.total;
-            const shipping = orderData.shipping;
-            const finalTotal = subtotal + shipping;
-            
-            const embed = {
-                title: "✅ ORDER CONFIRMED - PAYMENT RECEIVED",
-                description: "🎉 **PAYMENT SUCCESSFUL** - Order ready for processing",
-                color: 0x10b981,
-                fields: [
-                    {
-                        name: "📋 Order Number",
-                        value: orderData.orderId,
-                        inline: true
-                    },
-                    {
-                        name: "📅 Date",
-                        value: orderData.orderDate,
-                        inline: true
-                    },
-                    {
-                        name: "💳 Payment Status",
-                        value: "✅ **PAID**",
-                        inline: true
-                    },
-                    {
-                        name: "🔐 PayPal Transaction ID",
-                        value: paypalDetails.id,
-                        inline: false
-                    },
-                    {
-                        name: "👤 Customer",
-                        value: orderData.customer.fullName,
-                        inline: false
-                    },
-                    {
-                        name: "📧 Email",
-                        value: orderData.customer.email,
-                        inline: false
-                    },
-                    {
-                        name: "📍 Delivery Address",
-                        value: `${orderData.customer.address.street}\n${orderData.customer.address.zip} ${orderData.customer.address.city}`,
-                        inline: false
-                    },
-                    {
-                        name: "🛒 Items",
-                        value: itemsList,
-                        inline: false
-                    },
-                    {
-                        name: "📦 Shipping",
-                        value: shipping === 0 ? "**FREE** (Order over 50€)" : `${shipping.toFixed(2)}€`,
-                        inline: true
-                    },
-                    {
-                        name: "💰 Total Paid",
-                        value: `**${finalTotal.toFixed(2)}€**`,
-                        inline: false
-                    }
-                ],
-                footer: {
-                    text: "24 WEARS • Premium Streetwear • ORDER CONFIRMED"
-                },
-                timestamp: new Date().toISOString()
-            };
-            
-            await fetch(webhookUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    embeds: [embed]
-                })
-            });
-        }
-
-        async function subscribeNewsletter() {
-            const email = document.getElementById('newsletterEmail').value.trim();
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            if (!email) {
-                alert('Please enter your email address');
-                return;
-            }
-            
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address');
-                return;
-            }
-            
-            const webhookUrl = 'https://discordapp.com/api/webhooks/1449141069500518513/Qu9jIm-O-LV4iwrIjOQHLfc5pQbFizENfb5ld3A5gwIY9aGFwRVVTYfSod5gQReX4QN8';
-            
-            const embed = {
-                title: "📧 NEW NEWSLETTER SUBSCRIPTION",
-                color: 0xFFFFFF,
-                fields: [
-                    {
-                        name: "Email Address",
-                        value: email,
-                        inline: false
-                    },
-                    {
-                        name: "Date & Time",
-                        value: new Date().toLocaleString('en-GB'),
-                        inline: false
-                    }
-                ],
-                footer: {
-                    text: "24 WEARS • Newsletter Subscription"
-                },
-                timestamp: new Date().toISOString()
-            };
-            
-            try {
-                const response = await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        embeds: [embed]
-                    })
-                });
-                
-                if (response.ok) {
-                    document.getElementById('newsletterEmail').value = '';
-                    
-                    const notification = document.createElement('div');
-                    notification.className = 'fixed top-24 right-4 bg-green-600 text-white px-6 py-4 rounded-xl shadow-lg z-50 tracking-wider font-bold';
-                    notification.textContent = '✓ Successfully subscribed!';
-                    document.body.appendChild(notification);
-                    
-                    setTimeout(() => notification.remove(), 3000);
-                } else {
-                    throw new Error('Subscription failed');
-                }
-            } catch (error) {
-                console.error('Newsletter subscription error:', error);
-                alert('There was an error. Please try again.');
-            }
-        }
-
-        async function sendEmailNotification(orderData) {
-            const itemsList = orderData.items.map(item => 
-                `${item.name} (${item.size}, ${item.color}) - ${item.price.toFixed(2)}€`
-            ).join('\n');
-            const subtotal = orderData.total;
-            const shipping = orderData.shipping;
-            const finalTotal = subtotal + shipping;
-            
-            const emailBody = `
-NEW ORDER - 24 WEARS
-
-Order Number: ${orderData.orderId}
-Date: ${orderData.orderDate}
-
-CUSTOMER INFORMATION:
-Name: ${orderData.customer.fullName}
-Email: ${orderData.customer.email}
-
-DELIVERY ADDRESS:
-${orderData.customer.address.street}
-${orderData.customer.address.zip} ${orderData.customer.address.city}
-
-ORDERED ITEMS:
-${itemsList}
-
-SUBTOTAL: ${subtotal.toFixed(2)}€
-SHIPPING: ${shipping === 0 ? 'FREE' : shipping.toFixed(2) + '€'}
-TOTAL: ${finalTotal.toFixed(2)}€
-
----
-24 WEARS - Premium Streetwear
-            `;
-            
-            const mailtoLink = `mailto:twenty.four.wears@gmx.de?subject=New Order ${orderData.orderId}&body=${encodeURIComponent(emailBody)}`;
-            
-            const tempLink = document.createElement('a');
-            tempLink.href = mailtoLink;
-            tempLink.click();
-        }
-
-        renderProducts();
-        checkCookieConsent();
-    </script>
+  function hideQuick() {
+    document.getElementById('quickBtns').style.display = 'none';
+  }
+</script>
 </body>
 </html>
