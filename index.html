@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
-    /* ===== CSS CUSTOM PROPERTIES ===== */
     :root {
       --bark:        #3B2A1A;
       --heartwood:   #7B4F2E;
@@ -22,10 +21,8 @@
       --mist:        #F2EDE4;
       --charcoal:    #2A2118;
       --light-bark:  #6B5040;
-
       --font-display: 'Playfair Display', Georgia, serif;
       --font-body:    'Lato', Helvetica, sans-serif;
-
       --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       --shadow-soft: 0 4px 24px rgba(59,42,26,0.10);
       --shadow-med:  0 8px 40px rgba(59,42,26,0.16);
@@ -33,36 +30,22 @@
       --radius:      12px;
       --radius-lg:   24px;
     }
-
-    /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: var(--font-body);
-      background: var(--cream);
-      color: var(--bark);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--bark); line-height: 1.7; overflow-x: hidden; }
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
     button { cursor: pointer; border: none; background: none; font-family: inherit; }
-
-    /* ===== SCROLLBAR ===== */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--mist); }
     ::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 4px; }
-
-    /* ===== NOISE TEXTURE OVERLAY ===== */
     body::before {
       content: '';
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
       opacity: 0.5;
     }
-
-    /* ===== NAVIGATION ===== */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -73,818 +56,203 @@
       transition: box-shadow var(--transition);
     }
     nav.scrolled { box-shadow: var(--shadow-soft); }
-
-    .nav-logo {
-      display: flex; align-items: center; gap: 0.6rem;
-    }
-    .nav-logo .logo-icon {
-      width: 38px; height: 38px;
-      background: var(--moss);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem;
-    }
-    .nav-logo span {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--bark);
-      line-height: 1.2;
-    }
-    .nav-logo small {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.65rem;
-      font-weight: 300;
-      color: var(--heartwood);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 2rem;
-    }
-    .nav-links a {
-      font-size: 0.88rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: var(--light-bark);
-      transition: color var(--transition);
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute; bottom: -3px; left: 0; right: 0;
-      height: 1.5px;
-      background: var(--amber);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--transition);
-    }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; }
+    .nav-logo .logo-icon { width: 38px; height: 38px; background: var(--moss); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .nav-logo span { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--bark); line-height: 1.2; }
+    .nav-logo small { display: block; font-family: var(--font-body); font-size: 0.65rem; font-weight: 300; color: var(--heartwood); letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-size: 0.88rem; font-weight: 400; letter-spacing: 0.04em; color: var(--light-bark); transition: color var(--transition); position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1.5px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform var(--transition); }
     .nav-links a:hover { color: var(--bark); }
     .nav-links a:hover::after { transform: scaleX(1); }
-
-    .nav-cta {
-      background: var(--moss);
-      color: #fff !important;
-      padding: 0.5rem 1.2rem;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 0.82rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      transition: background var(--transition), transform var(--transition) !important;
-    }
+    .nav-cta { background: var(--moss); color: #fff !important; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; transition: background var(--transition), transform var(--transition) !important; }
     .nav-cta:hover { background: var(--fern) !important; transform: translateY(-1px); }
     .nav-cta::after { display: none !important; }
-
-    /* Hamburger */
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      padding: 4px; border-radius: 4px;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--bark);
-      border-radius: 2px;
-      transition: var(--transition);
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; border-radius: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--bark); border-radius: 2px; transition: var(--transition); }
     .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-    .mobile-menu {
-      display: none;
-      position: fixed; top: 65px; left: 0; right: 0; z-index: 99;
-      background: var(--cream);
-      border-bottom: 1px solid rgba(192,125,58,0.18);
-      padding: 1.5rem 4%;
-      flex-direction: column; gap: 1rem;
-      box-shadow: var(--shadow-med);
-    }
+    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; z-index: 99; background: var(--cream); border-bottom: 1px solid rgba(192,125,58,0.18); padding: 1.5rem 4%; flex-direction: column; gap: 1rem; box-shadow: var(--shadow-med); }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: 1rem; font-weight: 400;
-      color: var(--bark); padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(192,125,58,0.12);
-    }
-
-    /* ===== SECTIONS SHARED ===== */
+    .mobile-menu a { font-size: 1rem; font-weight: 400; color: var(--bark); padding: 0.5rem 0; border-bottom: 1px solid rgba(192,125,58,0.12); }
     section { position: relative; z-index: 1; }
-    .section-label {
-      display: inline-block;
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 0.8rem;
-    }
+    .section-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.8rem; }
     h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.25; }
     .container { max-width: 1140px; margin: 0 auto; padding: 0 5%; }
-
-    /* ===== HERO ===== */
-    #hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 7rem 5% 5rem;
-      background:
-        linear-gradient(135deg, rgba(61,90,62,0.82) 0%, rgba(59,42,26,0.72) 100%),
-        url('https://images.unsplash.com/photo-1544919982-b61976f0ba43?w=1600&q=85') center/cover no-repeat;
-      color: var(--cream);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-ring {
-      position: absolute; right: -120px; top: 50%;
-      transform: translateY(-50%);
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      border: 80px solid rgba(232,194,122,0.08);
-      pointer-events: none;
-    }
-    .hero-ring2 {
-      position: absolute; right: -60px; top: 50%;
-      transform: translateY(-50%);
-      width: 420px; height: 420px;
-      border-radius: 50%;
-      border: 2px solid rgba(232,194,122,0.25);
-      pointer-events: none;
-    }
+    #hero { min-height: 100vh; display: flex; align-items: center; padding: 7rem 5% 5rem; background: linear-gradient(135deg, rgba(61,90,62,0.82) 0%, rgba(59,42,26,0.72) 100%), url('https://images.unsplash.com/photo-1544919982-b61976f0ba43?w=1600&q=85') center/cover no-repeat; color: var(--cream); position: relative; overflow: hidden; }
+    .hero-ring { position: absolute; right: -120px; top: 50%; transform: translateY(-50%); width: 600px; height: 600px; border-radius: 50%; border: 80px solid rgba(232,194,122,0.08); pointer-events: none; }
+    .hero-ring2 { position: absolute; right: -60px; top: 50%; transform: translateY(-50%); width: 420px; height: 420px; border-radius: 50%; border: 2px solid rgba(232,194,122,0.25); pointer-events: none; }
     .hero-content { max-width: 620px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 100px;
-      padding: 0.35rem 1rem;
-      font-size: 0.8rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--straw);
-      margin-bottom: 1.5rem;
-      animation: fadeUp 0.6s ease both;
-    }
-    h1 {
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
-      font-weight: 700;
-      line-height: 1.15;
-      color: #fff;
-      margin-bottom: 1.2rem;
-      animation: fadeUp 0.6s 0.15s ease both;
-    }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; padding: 0.35rem 1rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--straw); margin-bottom: 1.5rem; animation: fadeUp 0.6s ease both; }
+    h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 700; line-height: 1.15; color: #fff; margin-bottom: 1.2rem; animation: fadeUp 0.6s 0.15s ease both; }
     h1 em { font-style: italic; color: var(--straw); }
-    .hero-sub {
-      font-size: 1.05rem; font-weight: 300;
-      color: rgba(255,255,255,0.82);
-      max-width: 480px;
-      margin-bottom: 2.2rem;
-      animation: fadeUp 0.6s 0.3s ease both;
-    }
-    .hero-ctas {
-      display: flex; flex-wrap: wrap; gap: 1rem;
-      animation: fadeUp 0.6s 0.45s ease both;
-    }
-    .btn-primary {
-      background: var(--amber);
-      color: var(--bark);
-      padding: 0.85rem 1.8rem;
-      border-radius: 8px;
-      font-weight: 700; font-size: 0.9rem;
-      letter-spacing: 0.04em;
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-      box-shadow: 0 4px 16px rgba(192,125,58,0.4);
-    }
-    .btn-primary:hover {
-      background: var(--straw);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(192,125,58,0.5);
-    }
-    .btn-outline {
-      border: 1.5px solid rgba(255,255,255,0.45);
-      color: #fff;
-      padding: 0.85rem 1.8rem;
-      border-radius: 8px;
-      font-weight: 400; font-size: 0.9rem;
-      transition: border-color var(--transition), background var(--transition);
-    }
+    .hero-sub { font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.82); max-width: 480px; margin-bottom: 2.2rem; animation: fadeUp 0.6s 0.3s ease both; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; animation: fadeUp 0.6s 0.45s ease both; }
+    .btn-primary { background: var(--amber); color: var(--bark); padding: 0.85rem 1.8rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em; transition: background var(--transition), transform var(--transition), box-shadow var(--transition); box-shadow: 0 4px 16px rgba(192,125,58,0.4); }
+    .btn-primary:hover { background: var(--straw); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,125,58,0.5); }
+    .btn-outline { border: 1.5px solid rgba(255,255,255,0.45); color: #fff; padding: 0.85rem 1.8rem; border-radius: 8px; font-weight: 400; font-size: 0.9rem; transition: border-color var(--transition), background var(--transition); }
     .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
-
-    .hero-stats {
-      display: flex; gap: 2.5rem; margin-top: 3.5rem;
-      animation: fadeUp 0.6s 0.6s ease both;
-    }
-    .stat { }
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 1.8rem; font-weight: 700;
-      color: var(--straw);
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.75rem; font-weight: 300;
-      color: rgba(255,255,255,0.65);
-      letter-spacing: 0.05em;
-    }
-
-    /* ===== FEATURES STRIP ===== */
-    #features {
-      background: var(--bark);
-      padding: 2rem 5%;
-    }
-    .features-grid {
-      max-width: 1140px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-    .feat-item {
-      display: flex; align-items: center; gap: 0.9rem;
-      padding: 1.2rem 1.5rem;
-      border-right: 1px solid rgba(255,255,255,0.08);
-    }
+    .hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; animation: fadeUp 0.6s 0.6s ease both; }
+    .stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--straw); line-height: 1; }
+    .stat-label { font-size: 0.75rem; font-weight: 300; color: rgba(255,255,255,0.65); letter-spacing: 0.05em; }
+    #features { background: var(--bark); padding: 2rem 5%; }
+    .features-grid { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .feat-item { display: flex; align-items: center; gap: 0.9rem; padding: 1.2rem 1.5rem; border-right: 1px solid rgba(255,255,255,0.08); }
     .feat-item:last-child { border-right: none; }
-    .feat-icon {
-      font-size: 1.6rem; flex-shrink: 0;
-    }
-    .feat-text strong {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.9rem; font-weight: 700;
-      color: var(--straw);
-    }
-    .feat-text span {
-      font-size: 0.78rem; color: rgba(255,255,255,0.55);
-    }
-
-    /* ===== PRODUCTS ===== */
-    #produkte {
-      padding: 6rem 5%;
-      background: var(--cream);
-    }
+    .feat-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .feat-text strong { display: block; font-family: var(--font-body); font-size: 0.9rem; font-weight: 700; color: var(--straw); }
+    .feat-text span { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
+    #produkte { padding: 6rem 5%; background: var(--cream); }
     .section-header { margin-bottom: 3.5rem; }
-    .section-header h2 {
-      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-      color: var(--bark);
-      margin-bottom: 0.7rem;
-    }
-    .section-header p {
-      font-size: 1rem; color: var(--light-bark);
-      max-width: 540px;
-    }
-
-    .products-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-    .product-card {
-      background: #fff;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-hard);
-    }
-    .product-img {
-      height: 220px;
-      background-size: cover; background-position: center;
-      position: relative;
-    }
-    .product-img .badge-pefc {
-      position: absolute; top: 1rem; right: 1rem;
-      background: var(--moss);
-      color: #fff;
-      font-size: 0.7rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.35rem 0.75rem; border-radius: 100px;
-    }
+    .section-header h2 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); color: var(--bark); margin-bottom: 0.7rem; }
+    .section-header p { font-size: 1rem; color: var(--light-bark); max-width: 540px; }
+    .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .product-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft); transition: transform var(--transition), box-shadow var(--transition); }
+    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hard); }
+    .product-img { height: 220px; background-size: cover; background-position: center; position: relative; }
+    .product-img .badge-pefc { position: absolute; top: 1rem; right: 1rem; background: var(--moss); color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.75rem; border-radius: 100px; }
     .product-body { padding: 1.8rem; }
-    .product-body h3 {
-      font-size: 1.5rem; color: var(--bark);
-      margin-bottom: 0.5rem;
-    }
-    .product-desc {
-      font-size: 0.88rem; color: var(--light-bark);
-      margin-bottom: 1.4rem; line-height: 1.6;
-    }
-    .product-price {
-      font-family: var(--font-display);
-      font-size: 2rem; font-weight: 700;
-      color: var(--heartwood);
-    }
-    .product-price small {
-      font-family: var(--font-body);
-      font-size: 0.85rem; font-weight: 300;
-      color: var(--light-bark);
-    }
-    .product-lengths {
-      margin: 1.2rem 0;
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-    }
-    .length-chip {
-      background: var(--mist);
-      border: 1.5px solid rgba(192,125,58,0.25);
-      color: var(--heartwood);
-      font-size: 0.78rem; font-weight: 700;
-      padding: 0.3rem 0.8rem;
-      border-radius: 100px;
-      cursor: pointer;
-      transition: background var(--transition), border-color var(--transition), color var(--transition);
-    }
-    .length-chip:hover,
-    .length-chip.active {
-      background: var(--amber);
-      border-color: var(--amber);
-      color: var(--bark);
-    }
-    .length-label {
-      font-size: 0.75rem; color: var(--light-bark);
-      margin-bottom: 0.4rem;
-    }
-    .product-order-btn {
-      display: block; width: 100%;
-      background: var(--moss);
-      color: #fff;
-      text-align: center;
-      padding: 0.85rem;
-      border-radius: 8px;
-      font-weight: 700; font-size: 0.88rem;
-      letter-spacing: 0.04em;
-      margin-top: 1.4rem;
-      transition: background var(--transition), transform var(--transition);
-    }
+    .product-body h3 { font-size: 1.5rem; color: var(--bark); margin-bottom: 0.5rem; }
+    .product-desc { font-size: 0.88rem; color: var(--light-bark); margin-bottom: 1.4rem; line-height: 1.6; }
+    .product-price { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--heartwood); }
+    .product-price small { font-family: var(--font-body); font-size: 0.85rem; font-weight: 300; color: var(--light-bark); }
+    .product-lengths { margin: 1.2rem 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .length-chip { background: var(--mist); border: 1.5px solid rgba(192,125,58,0.25); color: var(--heartwood); font-size: 0.78rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 100px; cursor: pointer; transition: background var(--transition), border-color var(--transition), color var(--transition); }
+    .length-chip:hover, .length-chip.active { background: var(--amber); border-color: var(--amber); color: var(--bark); }
+    .length-label { font-size: 0.75rem; color: var(--light-bark); margin-bottom: 0.4rem; }
+    .product-order-btn { display: block; width: 100%; background: var(--moss); color: #fff; text-align: center; padding: 0.85rem; border-radius: 8px; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.04em; margin-top: 1.4rem; transition: background var(--transition), transform var(--transition); }
     .product-order-btn:hover { background: var(--fern); transform: translateY(-2px); }
-
-    /* features list inside product */
-    .product-features {
-      margin: 1rem 0;
-    }
-    .product-features li {
-      display: flex; align-items: center; gap: 0.5rem;
-      font-size: 0.83rem; color: var(--light-bark);
-      margin-bottom: 0.35rem;
-    }
-    .product-features li::before {
-      content: '✓';
-      color: var(--fern); font-weight: 700;
-    }
-
-    /* ===== DELIVERY ===== */
-    #lieferung {
-      padding: 6rem 5%;
-      background: var(--bark);
-      color: var(--cream);
-      position: relative;
-      overflow: hidden;
-    }
-    #lieferung::before {
-      content: '';
-      position: absolute; top: -80px; left: -80px;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: rgba(192,125,58,0.07);
-      pointer-events: none;
-    }
+    .product-features { margin: 1rem 0; }
+    .product-features li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.83rem; color: var(--light-bark); margin-bottom: 0.35rem; }
+    .product-features li::before { content: '✓'; color: var(--fern); font-weight: 700; }
+    #lieferung { padding: 6rem 5%; background: var(--bark); color: var(--cream); position: relative; overflow: hidden; }
+    #lieferung::before { content: ''; position: absolute; top: -80px; left: -80px; width: 400px; height: 400px; border-radius: 50%; background: rgba(192,125,58,0.07); pointer-events: none; }
     #lieferung .section-label { color: var(--straw); }
     #lieferung .section-header h2 { color: #fff; }
     #lieferung .section-header p { color: rgba(255,255,255,0.65); }
-
-    .delivery-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 3rem; align-items: center;
-    }
+    .delivery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
     .delivery-cards { display: flex; flex-direction: column; gap: 1.2rem; }
-    .delivery-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      display: flex; gap: 1.2rem; align-items: flex-start;
-      transition: background var(--transition), border-color var(--transition);
-    }
-    .delivery-card:hover {
-      background: rgba(255,255,255,0.10);
-      border-color: rgba(232,194,122,0.35);
-    }
-    .delivery-card-icon {
-      font-size: 2rem; flex-shrink: 0;
-      width: 52px; height: 52px;
-      background: rgba(192,125,58,0.18);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .delivery-card h4 {
-      font-family: var(--font-body);
-      font-size: 0.95rem; font-weight: 700;
-      color: var(--straw);
-      margin-bottom: 0.35rem;
-    }
+    .delivery-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 1.5rem; display: flex; gap: 1.2rem; align-items: flex-start; transition: background var(--transition), border-color var(--transition); }
+    .delivery-card:hover { background: rgba(255,255,255,0.10); border-color: rgba(232,194,122,0.35); }
+    .delivery-card-icon { font-size: 2rem; flex-shrink: 0; width: 52px; height: 52px; background: rgba(192,125,58,0.18); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .delivery-card h4 { font-family: var(--font-body); font-size: 0.95rem; font-weight: 700; color: var(--straw); margin-bottom: 0.35rem; }
     .delivery-card p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
-    .delivery-card .price-tag {
-      margin-top: 0.5rem;
-      font-family: var(--font-display);
-      font-size: 1.3rem; font-weight: 700;
-      color: var(--amber);
-    }
-
-    .delivery-map {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-hard);
-      aspect-ratio: 1;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 1rem;
-      position: relative;
-    }
-    /* SVG Map illustration */
+    .delivery-card .price-tag { margin-top: 0.5rem; font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--amber); }
+    .delivery-map { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-hard); aspect-ratio: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; position: relative; }
     .map-svg { width: 85%; }
-
-    /* ===== ABOUT ===== */
-    #ueber-uns {
-      padding: 6rem 5%;
-      background: var(--mist);
-    }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
-    }
-    .about-img-wrap {
-      position: relative;
-    }
-    .about-img {
-      border-radius: var(--radius-lg);
-      width: 100%; height: 420px;
-      object-fit: cover;
-      display: block;
-      background: url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=85') center/cover;
-    }
-    .about-img-badge {
-      position: absolute; bottom: -1.5rem; right: -1.5rem;
-      background: var(--moss);
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 1.2rem 1.5rem;
-      text-align: center;
-      box-shadow: var(--shadow-med);
-    }
-    .about-img-badge .num {
-      font-family: var(--font-display);
-      font-size: 2rem; font-weight: 700;
-      line-height: 1; display: block;
-    }
-    .about-img-badge .lbl {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      opacity: 0.8;
-    }
-    .about-content h2 {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      color: var(--bark); margin-bottom: 1rem;
-    }
-    .about-content p {
-      font-size: 0.95rem; color: var(--light-bark);
-      margin-bottom: 1rem;
-    }
-    .about-pillars {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem; margin-top: 1.8rem;
-    }
-    .pillar {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 1.1rem;
-      box-shadow: var(--shadow-soft);
-    }
+    #ueber-uns { padding: 6rem 5%; background: var(--mist); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img { border-radius: var(--radius-lg); width: 100%; height: 420px; object-fit: cover; display: block; background: url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=85') center/cover; }
+    .about-img-badge { position: absolute; bottom: -1.5rem; right: -1.5rem; background: var(--moss); color: #fff; border-radius: var(--radius); padding: 1.2rem 1.5rem; text-align: center; box-shadow: var(--shadow-med); }
+    .about-img-badge .num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; line-height: 1; display: block; }
+    .about-img-badge .lbl { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+    .about-content h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--bark); margin-bottom: 1rem; }
+    .about-content p { font-size: 0.95rem; color: var(--light-bark); margin-bottom: 1rem; }
+    .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.8rem; }
+    .pillar { background: #fff; border-radius: var(--radius); padding: 1.1rem; box-shadow: var(--shadow-soft); }
     .pillar-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
-    .pillar h5 {
-      font-family: var(--font-body);
-      font-size: 0.88rem; font-weight: 700;
-      color: var(--bark); margin-bottom: 0.2rem;
-    }
+    .pillar h5 { font-family: var(--font-body); font-size: 0.88rem; font-weight: 700; color: var(--bark); margin-bottom: 0.2rem; }
     .pillar p { font-size: 0.78rem; color: var(--light-bark); }
-
-    /* ===== CONTACT ===== */
-    #kontakt {
-      padding: 6rem 5%;
-      background: var(--cream);
-    }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1.4fr;
-      gap: 3.5rem;
-    }
-    .contact-info h2 {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      color: var(--bark); margin-bottom: 1rem;
-    }
+    #kontakt { padding: 6rem 5%; background: var(--cream); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3.5rem; }
+    .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--bark); margin-bottom: 1rem; }
     .contact-info p { font-size: 0.9rem; color: var(--light-bark); margin-bottom: 1.8rem; }
     .contact-details { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-detail {
-      display: flex; align-items: flex-start; gap: 1rem;
-    }
-    .contact-detail-icon {
-      width: 44px; height: 44px; flex-shrink: 0;
-      background: var(--mist);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      border: 1px solid rgba(192,125,58,0.2);
-    }
-    .contact-detail-text strong {
-      display: block; font-size: 0.8rem; font-weight: 700;
-      color: var(--bark); margin-bottom: 0.15rem;
-      letter-spacing: 0.04em;
-    }
+    .contact-detail { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-detail-icon { width: 44px; height: 44px; flex-shrink: 0; background: var(--mist); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; border: 1px solid rgba(192,125,58,0.2); }
+    .contact-detail-text strong { display: block; font-size: 0.8rem; font-weight: 700; color: var(--bark); margin-bottom: 0.15rem; letter-spacing: 0.04em; }
     .contact-detail-text span { font-size: 0.88rem; color: var(--light-bark); }
-
-    /* Form */
-    .contact-form {
-      background: #fff;
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-soft);
-    }
-    .contact-form h3 {
-      font-size: 1.3rem; color: var(--bark);
-      margin-bottom: 1.5rem;
-    }
+    .contact-form { background: #fff; border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-soft); }
+    .contact-form h3 { font-size: 1.3rem; color: var(--bark); margin-bottom: 1.5rem; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .form-group { margin-bottom: 1.1rem; }
-    .form-group label {
-      display: block;
-      font-size: 0.8rem; font-weight: 700;
-      color: var(--light-bark); letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%; padding: 0.75rem 1rem;
-      border: 1.5px solid rgba(192,125,58,0.22);
-      border-radius: 8px;
-      background: var(--mist);
-      font-family: var(--font-body);
-      font-size: 0.9rem; color: var(--bark);
-      transition: border-color var(--transition), box-shadow var(--transition);
-      outline: none;
-      appearance: none;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--amber);
-      box-shadow: 0 0 0 3px rgba(192,125,58,0.15);
-      background: #fff;
-    }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--light-bark); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid rgba(192,125,58,0.22); border-radius: 8px; background: var(--mist); font-family: var(--font-body); font-size: 0.9rem; color: var(--bark); transition: border-color var(--transition), box-shadow var(--transition); outline: none; appearance: none; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--amber); box-shadow: 0 0 0 3px rgba(192,125,58,0.15); background: #fff; }
     .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-submit {
-      width: 100%;
-      background: var(--moss);
-      color: #fff;
-      padding: 0.9rem;
-      border-radius: 8px;
-      font-weight: 700; font-size: 0.9rem;
-      letter-spacing: 0.04em;
-      margin-top: 0.5rem;
-      transition: background var(--transition), transform var(--transition);
-    }
+    .form-submit { width: 100%; background: var(--moss); color: #fff; padding: 0.9rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em; margin-top: 0.5rem; transition: background var(--transition), transform var(--transition); }
     .form-submit:hover { background: var(--fern); transform: translateY(-2px); }
-    .form-success {
-      display: none;
-      background: rgba(61,90,62,0.12);
-      border: 1.5px solid var(--moss);
-      border-radius: 8px;
-      padding: 1rem;
-      color: var(--moss);
-      font-size: 0.9rem; text-align: center;
-      margin-top: 1rem;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--charcoal);
-      color: rgba(255,255,255,0.6);
-      padding: 3rem 5% 2rem;
-    }
-    .footer-inner {
-      max-width: 1140px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem; margin-bottom: 2.5rem;
-    }
+    .form-success { display: none; background: rgba(61,90,62,0.12); border: 1.5px solid var(--moss); border-radius: 8px; padding: 1rem; color: var(--moss); font-size: 0.9rem; text-align: center; margin-top: 1rem; }
+    footer { background: var(--charcoal); color: rgba(255,255,255,0.6); padding: 3rem 5% 2rem; }
+    .footer-inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem; }
     .footer-brand p { font-size: 0.85rem; margin-top: 0.8rem; line-height: 1.65; max-width: 280px; }
-    .footer-col h5 {
-      font-family: var(--font-body);
-      font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--straw); margin-bottom: 1rem;
-    }
+    .footer-col h5 { font-family: var(--font-body); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--straw); margin-bottom: 1rem; }
     .footer-col ul li { margin-bottom: 0.5rem; }
-    .footer-col ul a {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.55);
-      transition: color var(--transition);
-    }
+    .footer-col ul a { font-size: 0.85rem; color: rgba(255,255,255,0.55); transition: color var(--transition); }
     .footer-col ul a:hover { color: var(--straw); }
-    .footer-bottom {
-      max-width: 1140px; margin: 0 auto;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 1.5rem;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.78rem;
-    }
-    .pefc-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 6px;
-      padding: 0.4rem 0.8rem;
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--sage);
-    }
-
-    /* ===== CHATBOT ===== */
-    .chat-fab {
-      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
-      width: 60px; height: 60px;
-      background: var(--moss);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-      box-shadow: 0 6px 24px rgba(61,90,62,0.5);
-      transition: transform var(--transition), box-shadow var(--transition);
-      cursor: pointer;
-    }
-    .chat-fab:hover {
-      transform: scale(1.08);
-      box-shadow: 0 10px 32px rgba(61,90,62,0.6);
-    }
-    .chat-fab .badge {
-      position: absolute; top: -3px; right: -3px;
-      width: 18px; height: 18px;
-      background: var(--amber);
-      border-radius: 50%;
-      font-size: 0.6rem; font-weight: 700; color: var(--bark);
-      display: flex; align-items: center; justify-content: center;
-      border: 2px solid var(--cream);
-    }
-
-    .chat-window {
-      position: fixed; bottom: 6rem; right: 2rem; z-index: 200;
-      width: 360px;
-      background: #fff;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-hard);
-      display: flex; flex-direction: column;
-      max-height: 520px;
-      transform: scale(0.85) translateY(20px);
-      transform-origin: bottom right;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      overflow: hidden;
-      border: 1px solid rgba(192,125,58,0.15);
-    }
-    .chat-window.open {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-      pointer-events: all;
-    }
-    .chat-header {
-      background: var(--moss);
-      padding: 1rem 1.2rem;
-      display: flex; align-items: center; gap: 0.8rem;
-      flex-shrink: 0;
-    }
-    .chat-avatar {
-      width: 36px; height: 36px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-    }
-    .chat-header-info strong {
-      display: block; font-size: 0.9rem; color: #fff; font-weight: 700;
-    }
+    .footer-bottom { max-width: 1140px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+    .pefc-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 0.4rem 0.8rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: var(--sage); }
+    .chat-fab { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; width: 60px; height: 60px; background: var(--moss); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 6px 24px rgba(61,90,62,0.5); transition: transform var(--transition), box-shadow var(--transition); cursor: pointer; }
+    .chat-fab:hover { transform: scale(1.08); box-shadow: 0 10px 32px rgba(61,90,62,0.6); }
+    .chat-fab .badge { position: absolute; top: -3px; right: -3px; width: 18px; height: 18px; background: var(--amber); border-radius: 50%; font-size: 0.6rem; font-weight: 700; color: var(--bark); display: flex; align-items: center; justify-content: center; border: 2px solid var(--cream); }
+    .chat-window { position: fixed; bottom: 6rem; right: 2rem; z-index: 200; width: 360px; background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-hard); display: flex; flex-direction: column; max-height: 560px; transform: scale(0.85) translateY(20px); transform-origin: bottom right; opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease; overflow: hidden; border: 1px solid rgba(192,125,58,0.15); }
+    .chat-window.open { opacity: 1; transform: scale(1) translateY(0); pointer-events: all; }
+    .chat-header { background: var(--moss); padding: 1rem 1.2rem; display: flex; align-items: center; gap: 0.8rem; flex-shrink: 0; }
+    .chat-avatar { width: 36px; height: 36px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .chat-header-info strong { display: block; font-size: 0.9rem; color: #fff; font-weight: 700; }
     .chat-header-info span { font-size: 0.72rem; color: rgba(255,255,255,0.7); }
     .chat-online { width: 8px; height: 8px; background: #6EFF6E; border-radius: 50%; display: inline-block; margin-right: 4px; }
-    .chat-close {
-      margin-left: auto; color: rgba(255,255,255,0.7); font-size: 1.2rem;
-      padding: 4px; border-radius: 4px;
-      transition: color var(--transition);
-    }
+    .chat-close { margin-left: auto; color: rgba(255,255,255,0.7); font-size: 1.2rem; padding: 4px; border-radius: 4px; transition: color var(--transition); }
     .chat-close:hover { color: #fff; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; scroll-behavior: smooth; }
+    .chat-msg { max-width: 82%; padding: 0.7rem 1rem; border-radius: 14px; font-size: 0.85rem; line-height: 1.5; animation: fadeUp 0.3s ease; }
+    .chat-msg.bot { background: var(--mist); color: var(--bark); border-bottom-left-radius: 4px; align-self: flex-start; }
+    .chat-msg.user { background: var(--moss); color: #fff; border-bottom-right-radius: 4px; align-self: flex-end; }
+    .chat-faq-list { display: flex; flex-direction: column; gap: 0.4rem; padding: 0 1.2rem 0.8rem; }
+    .faq-btn { text-align: left; background: var(--mist); border: 1px solid rgba(192,125,58,0.22); border-radius: 10px; padding: 0.55rem 0.9rem; font-size: 0.82rem; color: var(--bark); font-weight: 400; cursor: pointer; transition: background var(--transition), border-color var(--transition); line-height: 1.35; }
+    .faq-btn:hover { background: rgba(192,125,58,0.14); border-color: var(--amber); }
+    .faq-btn.other-btn { background: transparent; border-style: dashed; color: var(--heartwood); font-weight: 700; font-size: 0.8rem; }
+    /* FIX 3: Custom contact box */
+    .chat-contact-box { display: none; flex-direction: column; gap: 0; flex-shrink: 0; }
+    .chat-contact-box.visible { display: flex; }
+    .chat-contact-inner { border-top: 1px solid rgba(192,125,58,0.15); background: var(--mist); padding: 1rem 1.2rem; }
+    .chat-contact-inner p { font-size: 0.8rem; color: var(--light-bark); margin-bottom: 0.7rem; line-height: 1.5; }
+    .chat-contact-options { display: flex; flex-direction: column; gap: 0.5rem; }
+    .contact-option-btn { display: flex; align-items: center; gap: 0.6rem; background: #fff; border: 1.5px solid rgba(192,125,58,0.25); border-radius: 8px; padding: 0.6rem 0.9rem; font-size: 0.83rem; font-weight: 700; color: var(--bark); text-decoration: none; transition: border-color var(--transition), background var(--transition); cursor: pointer; }
+    .contact-option-btn:hover { border-color: var(--amber); background: rgba(192,125,58,0.07); }
+    .contact-option-btn .opt-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .contact-option-btn .opt-label { display: flex; flex-direction: column; text-align: left; }
+    .contact-option-btn .opt-label small { font-weight: 400; font-size: 0.72rem; color: var(--light-bark); }
+    .chat-contact-back { display: flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1.2rem; font-size: 0.78rem; color: var(--heartwood); font-weight: 700; cursor: pointer; border-top: 1px solid rgba(192,125,58,0.12); background: #fff; transition: background var(--transition); }
+    .chat-contact-back:hover { background: var(--mist); }
+    .chat-powered { text-align: center; font-size: 0.65rem; color: rgba(59,42,26,0.35); padding: 0.4rem; flex-shrink: 0; }
 
-    .chat-messages {
-      flex: 1; overflow-y: auto;
-      padding: 1.2rem;
-      display: flex; flex-direction: column; gap: 0.8rem;
-      scroll-behavior: smooth;
-    }
-    .chat-msg {
-      max-width: 82%;
-      padding: 0.7rem 1rem;
-      border-radius: 14px;
-      font-size: 0.85rem; line-height: 1.5;
-      animation: fadeUp 0.3s ease;
-    }
-    .chat-msg.bot {
-      background: var(--mist);
-      color: var(--bark);
-      border-bottom-left-radius: 4px;
-      align-self: flex-start;
-    }
-    .chat-msg.user {
-      background: var(--moss);
-      color: #fff;
-      border-bottom-right-radius: 4px;
-      align-self: flex-end;
-    }
-    .chat-typing {
-      align-self: flex-start;
-      background: var(--mist);
-      border-radius: 14px; border-bottom-left-radius: 4px;
-      padding: 0.7rem 1rem;
-      display: none;
-    }
-    .typing-dots { display: flex; gap: 4px; }
-    .typing-dots span {
-      width: 7px; height: 7px; background: var(--light-bark);
-      border-radius: 50%;
-      animation: bounce 1s infinite;
-    }
-    .typing-dots span:nth-child(2) { animation-delay: 0.18s; }
-    .typing-dots span:nth-child(3) { animation-delay: 0.36s; }
-    @keyframes bounce {
-      0%,80%,100% { transform: translateY(0); }
-      40% { transform: translateY(-6px); }
-    }
+    /* QTY SLIDER */
+    .qty-wrap { margin: 1rem 0 1.2rem; }
+    .qty-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+    .qty-value { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--heartwood); background: var(--mist); padding: 0.15rem 0.7rem; border-radius: 6px; border: 1.5px solid rgba(192,125,58,0.25); min-width: 56px; text-align: center; }
+    .qty-slider-row { display: flex; align-items: center; gap: 0.6rem; }
+    .qty-btn { width: 36px; height: 36px; flex-shrink: 0; background: var(--mist); border: 1.5px solid rgba(192,125,58,0.3); border-radius: 8px; font-size: 1.2rem; font-weight: 700; color: var(--heartwood); display: flex; align-items: center; justify-content: center; transition: background var(--transition), border-color var(--transition); cursor: pointer; }
+    .qty-btn:hover { background: rgba(192,125,58,0.18); border-color: var(--amber); }
+    .qty-slider { flex: 1; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 3px; background: linear-gradient(to right, var(--amber) 0%, var(--mist) 0%); outline: none; cursor: pointer; }
+    .qty-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--amber); border: 3px solid #fff; box-shadow: 0 2px 8px rgba(192,125,58,0.4); cursor: pointer; transition: transform 0.15s; }
+    .qty-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    .qty-ticks { display: flex; justify-content: space-between; padding: 0 18px; margin-top: 0.2rem; font-size: 0.68rem; color: var(--light-bark); opacity: 0.6; }
 
-    .chat-quick {
-      padding: 0 1.2rem 0.6rem;
-      display: flex; flex-wrap: wrap; gap: 0.4rem;
-    }
-    .quick-btn {
-      background: var(--mist);
-      border: 1px solid rgba(192,125,58,0.25);
-      color: var(--heartwood);
-      font-size: 0.75rem; font-weight: 700;
-      padding: 0.3rem 0.75rem;
-      border-radius: 100px;
-      cursor: pointer;
-      transition: background var(--transition);
-    }
-    .quick-btn:hover { background: rgba(192,125,58,0.15); }
+    /* PRICE CALCULATOR */
+    .price-calc { margin-top: 2.5rem; background: var(--bark); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-med); }
+    .calc-header { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.8rem; background: var(--heartwood); }
+    .calc-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .calc-header-text { flex: 1; }
+    .calc-header-text strong { display: block; color: #fff; font-size: 1rem; font-weight: 700; }
+    .calc-header-text span { font-size: 0.78rem; color: rgba(255,255,255,0.65); }
+    .calc-type-toggle { display: flex; gap: 0.4rem; }
+    .calc-type-btn { padding: 0.4rem 0.9rem; border-radius: 6px; font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.6); border: 1.5px solid rgba(255,255,255,0.2); transition: background var(--transition), color var(--transition), border-color var(--transition); cursor: pointer; }
+    .calc-type-btn.active { background: var(--amber); color: var(--bark); border-color: var(--amber); }
+    .calc-body { padding: 1.5rem 1.8rem; }
+    .calc-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+    .calc-row span:last-child { font-weight: 700; color: var(--straw); white-space: nowrap; margin-left: 1rem; }
+    .calc-divider { border: none; border-top: 2px solid rgba(255,255,255,0.15); margin: 0.8rem 0; }
+    .calc-total-row { display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; font-weight: 700; color: #fff; }
+    .calc-total-row span:last-child { font-family: var(--font-display); font-size: 1.7rem; color: var(--amber); }
+    .calc-note { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 0.8rem; }
 
-    .chat-input-wrap {
-      border-top: 1px solid rgba(192,125,58,0.12);
-      padding: 0.8rem 1rem;
-      display: flex; gap: 0.6rem;
-      flex-shrink: 0;
-    }
-    .chat-input {
-      flex: 1;
-      border: 1.5px solid rgba(192,125,58,0.25);
-      border-radius: 8px;
-      padding: 0.55rem 0.9rem;
-      font-family: var(--font-body);
-      font-size: 0.85rem; color: var(--bark);
-      outline: none;
-      transition: border-color var(--transition);
-    }
-    .chat-input:focus { border-color: var(--amber); }
-    .chat-send {
-      background: var(--moss);
-      color: #fff;
-      width: 38px; height: 38px;
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-      transition: background var(--transition);
-      flex-shrink: 0;
-    }
-    .chat-send:hover { background: var(--fern); }
-    .chat-powered {
-      text-align: center;
-      font-size: 0.65rem; color: rgba(59,42,26,0.35);
-      padding: 0.4rem;
-      flex-shrink: 0;
-    }
-
-    /* ===== ANIMATIONS ===== */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .features-grid { grid-template-columns: 1fr 1fr; }
       .feat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -908,144 +276,10 @@
       .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
       .hero-stats { gap: 1.5rem; }
     }
-    /* ===== QTY SLIDER ===== */
-    .qty-wrap { margin: 1rem 0 1.2rem; }
-    .qty-label-row {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 0.5rem;
-    }
-    .qty-value {
-      font-family: var(--font-display);
-      font-size: 1.1rem; font-weight: 700;
-      color: var(--heartwood);
-      background: var(--mist);
-      padding: 0.15rem 0.7rem;
-      border-radius: 6px;
-      border: 1.5px solid rgba(192,125,58,0.25);
-      min-width: 56px; text-align: center;
-    }
-    .qty-slider-row { display: flex; align-items: center; gap: 0.6rem; }
-    .qty-btn {
-      width: 36px; height: 36px; flex-shrink: 0;
-      background: var(--mist);
-      border: 1.5px solid rgba(192,125,58,0.3);
-      border-radius: 8px;
-      font-size: 1.2rem; font-weight: 700;
-      color: var(--heartwood);
-      display: flex; align-items: center; justify-content: center;
-      transition: background var(--transition), border-color var(--transition);
-      cursor: pointer;
-    }
-    .qty-btn:hover { background: rgba(192,125,58,0.18); border-color: var(--amber); }
-    .qty-slider {
-      flex: 1; -webkit-appearance: none; appearance: none;
-      height: 6px; border-radius: 3px;
-      background: linear-gradient(to right, var(--amber) 0%, var(--mist) 0%);
-      outline: none; cursor: pointer;
-    }
-    .qty-slider::-webkit-slider-thumb {
-      -webkit-appearance: none; width: 20px; height: 20px;
-      border-radius: 50%; background: var(--amber);
-      border: 3px solid #fff; box-shadow: 0 2px 8px rgba(192,125,58,0.4);
-      cursor: pointer; transition: transform 0.15s;
-    }
-    .qty-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
-    .qty-ticks {
-      display: flex; justify-content: space-between;
-      padding: 0 18px; margin-top: 0.2rem;
-      font-size: 0.68rem; color: var(--light-bark); opacity: 0.6;
-    }
-
-    /* ===== PRICE CALCULATOR ===== */
-    .price-calc {
-      margin-top: 2.5rem;
-      background: var(--bark);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-med);
-    }
-    .calc-header {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 1.2rem 1.8rem;
-      background: var(--heartwood);
-    }
-    .calc-icon { font-size: 1.6rem; flex-shrink: 0; }
-    .calc-header-text { flex: 1; }
-    .calc-header-text strong { display: block; color: #fff; font-size: 1rem; font-weight: 700; }
-    .calc-header-text span { font-size: 0.78rem; color: rgba(255,255,255,0.65); }
-    .calc-type-toggle { display: flex; gap: 0.4rem; }
-    .calc-type-btn {
-      padding: 0.4rem 0.9rem;
-      border-radius: 6px;
-      font-size: 0.78rem; font-weight: 700;
-      color: rgba(255,255,255,0.6);
-      border: 1.5px solid rgba(255,255,255,0.2);
-      transition: background var(--transition), color var(--transition), border-color var(--transition);
-      cursor: pointer;
-    }
-    .calc-type-btn.active { background: var(--amber); color: var(--bark); border-color: var(--amber); }
-    .calc-body { padding: 1.5rem 1.8rem; }
-    .calc-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      font-size: 0.88rem; color: rgba(255,255,255,0.75);
-    }
-    .calc-row span:last-child { font-weight: 700; color: var(--straw); white-space: nowrap; margin-left: 1rem; }
-    .calc-divider { border: none; border-top: 2px solid rgba(255,255,255,0.15); margin: 0.8rem 0; }
-    .calc-total-row {
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 1.1rem; font-weight: 700; color: #fff;
-    }
-    .calc-total-row span:last-child {
-      font-family: var(--font-display);
-      font-size: 1.7rem; color: var(--amber);
-    }
-    .calc-note { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 0.8rem; }
-
-    /* ===== NEW CHAT (FAQ + Eigene Frage) ===== */
-    .chat-faq-list {
-      display: flex; flex-direction: column; gap: 0.4rem;
-      padding: 0 1.2rem 0.8rem;
-    }
-    .faq-btn {
-      text-align: left;
-      background: var(--mist);
-      border: 1px solid rgba(192,125,58,0.22);
-      border-radius: 10px;
-      padding: 0.55rem 0.9rem;
-      font-size: 0.82rem; color: var(--bark); font-weight: 400;
-      cursor: pointer;
-      transition: background var(--transition), border-color var(--transition);
-      line-height: 1.35;
-    }
-    .faq-btn:hover { background: rgba(192,125,58,0.14); border-color: var(--amber); }
-    .faq-btn.other-btn {
-      background: transparent;
-      border-style: dashed;
-      color: var(--heartwood);
-      font-weight: 700;
-      font-size: 0.8rem;
-    }
-    .chat-custom-wrap {
-      display: none;
-      border-top: 1px solid rgba(192,125,58,0.12);
-      padding: 0.8rem 1rem;
-      flex-direction: column; gap: 0.5rem;
-      flex-shrink: 0;
-    }
-    .chat-custom-wrap.visible { display: flex; }
-    .chat-custom-note {
-      font-size: 0.73rem; color: var(--light-bark);
-      padding: 0 0.1rem;
-    }
-    .chat-custom-row { display: flex; gap: 0.5rem; }
-
   </style>
 </head>
 <body>
 
-<!-- ===================== NAVIGATION ===================== -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
     <div class="logo-icon">🌲</div>
@@ -1063,7 +297,6 @@
   </button>
 </nav>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#produkte" onclick="closeMobile()">Produkte</a>
   <a href="#lieferung" onclick="closeMobile()">Lieferung</a>
@@ -1072,7 +305,6 @@
   <a href="#kontakt" class="btn-primary" style="text-align:center" onclick="closeMobile()">Anfrage senden</a>
 </div>
 
-<!-- ===================== HERO ===================== -->
 <section id="hero">
   <div class="hero-ring"></div>
   <div class="hero-ring2"></div>
@@ -1085,57 +317,22 @@
       <a href="#produkte" class="btn-outline">Produkte ansehen</a>
     </div>
     <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">50 km</div>
-        <div class="stat-label">Lieferradius</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Holzarten</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Regional & PEFC</div>
-      </div>
+      <div class="stat"><div class="stat-num">50 km</div><div class="stat-label">Lieferradius</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Holzarten</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Regional & PEFC</div></div>
     </div>
   </div>
 </section>
 
-<!-- ===================== FEATURES STRIP ===================== -->
 <div id="features">
   <div class="features-grid">
-    <div class="feat-item">
-      <div class="feat-icon">🌳</div>
-      <div class="feat-text">
-        <strong>PEFC-zertifiziert</strong>
-        <span>Nachhaltige Forstwirtschaft</span>
-      </div>
-    </div>
-    <div class="feat-item">
-      <div class="feat-icon">📍</div>
-      <div class="feat-text">
-        <strong>Aus der Region</strong>
-        <span>Oetmannshausen, Nordhessen</span>
-      </div>
-    </div>
-    <div class="feat-item">
-      <div class="feat-icon">🚚</div>
-      <div class="feat-text">
-        <strong>Lieferung möglich</strong>
-        <span>Im Umkreis von 50 km</span>
-      </div>
-    </div>
-    <div class="feat-item">
-      <div class="feat-icon">🏆</div>
-      <div class="feat-text">
-        <strong>Top-Qualität</strong>
-        <span>Ausgesuchtes Brennholz</span>
-      </div>
-    </div>
+    <div class="feat-item"><div class="feat-icon">🌳</div><div class="feat-text"><strong>PEFC-zertifiziert</strong><span>Nachhaltige Forstwirtschaft</span></div></div>
+    <div class="feat-item"><div class="feat-icon">📍</div><div class="feat-text"><strong>Aus der Region</strong><span>Oetmannshausen, Nordhessen</span></div></div>
+    <div class="feat-item"><div class="feat-icon">🚚</div><div class="feat-text"><strong>Lieferung möglich</strong><span>Im Umkreis von 50 km</span></div></div>
+    <div class="feat-item"><div class="feat-icon">🏆</div><div class="feat-text"><strong>Top-Qualität</strong><span>Ausgesuchtes Brennholz</span></div></div>
   </div>
 </div>
 
-<!-- ===================== PRODUCTS ===================== -->
 <section id="produkte">
   <div class="container">
     <div class="section-header reveal">
@@ -1147,9 +344,7 @@
     <div class="products-grid">
       <!-- Buchenholz -->
       <div class="product-card reveal">
-        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1504204267155-aaad8e81290d?w=800&q=85');">
-          <span class="badge-pefc">PEFC zertifiziert</span>
-        </div>
+        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1504204267155-aaad8e81290d?w=800&q=85');"><span class="badge-pefc">PEFC zertifiziert</span></div>
         <div class="product-body">
           <h3>🪵 Buchenholz</h3>
           <p class="product-desc">Buche gilt als das klassische Brennholz schlechthin – hohe Energiedichte, gleichmäßige Verbrennung und angenehmer Duft. Ideal für Kamin, Ofen und offene Feuerstellen.</p>
@@ -1172,11 +367,12 @@
               <span class="qty-value" id="buche-qty-val">1 RM</span>
             </div>
             <div class="qty-slider-row">
+              <!-- FIX 1: min="0" -->
               <button class="qty-btn" onclick="changeQty('buche',-1)">−</button>
-              <input type="range" min="1" max="20" value="1" class="qty-slider" id="buche-qty" oninput="updateQty('buche')"/>
+              <input type="range" min="0" max="20" value="1" class="qty-slider" id="buche-qty" oninput="updateQty('buche')"/>
               <button class="qty-btn" onclick="changeQty('buche',1)">+</button>
             </div>
-            <div class="qty-ticks"><span>1</span><span>5</span><span>10</span><span>15</span><span>20</span></div>
+            <div class="qty-ticks"><span>0</span><span>5</span><span>10</span><span>15</span><span>20</span></div>
           </div>
           <a href="#kontakt" class="product-order-btn" onclick="prefillForm('Buchenholz',120,'buche')">Jetzt anfragen →</a>
         </div>
@@ -1184,9 +380,7 @@
 
       <!-- Eichenholz -->
       <div class="product-card reveal" style="transition-delay:0.12s">
-        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&q=85');">
-          <span class="badge-pefc">PEFC zertifiziert</span>
-        </div>
+        <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&q=85');"><span class="badge-pefc">PEFC zertifiziert</span></div>
         <div class="product-body">
           <h3>🌳 Eichenholz</h3>
           <p class="product-desc">Eiche brennt besonders langsam und gleichmäßig mit einer sehr langen Glutdauer. Perfekt für Kaminöfen und Heizungsanlagen, wo Effizienz zählt.</p>
@@ -1209,18 +403,19 @@
               <span class="qty-value" id="eiche-qty-val">1 RM</span>
             </div>
             <div class="qty-slider-row">
+              <!-- FIX 1: min="0" -->
               <button class="qty-btn" onclick="changeQty('eiche',-1)">−</button>
-              <input type="range" min="1" max="20" value="1" class="qty-slider" id="eiche-qty" oninput="updateQty('eiche')"/>
+              <input type="range" min="0" max="20" value="1" class="qty-slider" id="eiche-qty" oninput="updateQty('eiche')"/>
               <button class="qty-btn" onclick="changeQty('eiche',1)">+</button>
             </div>
-            <div class="qty-ticks"><span>1</span><span>5</span><span>10</span><span>15</span><span>20</span></div>
+            <div class="qty-ticks"><span>0</span><span>5</span><span>10</span><span>15</span><span>20</span></div>
           </div>
           <a href="#kontakt" class="product-order-btn" onclick="prefillForm('Eichenholz',110,'eiche')">Jetzt anfragen →</a>
         </div>
       </div>
     </div>
 
-    <!-- LIVE PRICE CALCULATOR -->
+    <!-- PRICE CALCULATOR -->
     <div class="price-calc reveal" id="priceCalc">
       <div class="calc-header">
         <span class="calc-icon">🧮</span>
@@ -1247,7 +442,8 @@
           <span>85 €</span>
         </div>
         <div class="calc-row">
-          <span>🧺 Gitterbox-Pfand (<span id="c-box-count">2</span> × 30 €) <small style="opacity:0.55">– wird erstattet</small></span>
+          <!-- FIX 2: corrected Pfand label -->
+          <span>🧺 Gitterbox-Pfand (<span id="c-box-count">2</span> × 30 €/Box) <small style="opacity:0.55">– wird je Box erstattet</small></span>
           <span id="c-box-sum">60 €</span>
         </div>
         <div class="calc-divider"></div>
@@ -1255,13 +451,13 @@
           <span>Gesamtbetrag</span>
           <span id="c-total">375 €</span>
         </div>
-        <p class="calc-note" id="c-note">inkl. 85 € Lieferung + <span id="c-box-note">60 €</span> Pfand (wird nach Gitterbox-Rückgabe vollständig erstattet)</p>
+        <!-- FIX 2: corrected note text -->
+        <p class="calc-note" id="c-note">inkl. 85 € Lieferung + 30 € Pfand pro Gitterbox – nach Rückgabe jeder Box erhalten Sie das Pfand vollständig zurück</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== DELIVERY ===================== -->
 <section id="lieferung">
   <div class="container">
     <div class="delivery-grid">
@@ -1274,57 +470,35 @@
         <div class="delivery-cards">
           <div class="delivery-card reveal">
             <div class="delivery-card-icon">🚚</div>
-            <div>
-              <h4>Lieferung im Umkreis</h4>
-              <p>Wir liefern innerhalb eines Radius von 50 km um unseren Standort in Oetmannshausen. Direkt, pünktlich und sicher.</p>
-              <div class="price-tag">85 €</div>
-            </div>
+            <div><h4>Lieferung im Umkreis</h4><p>Wir liefern innerhalb eines Radius von 50 km um unseren Standort in Oetmannshausen. Direkt, pünktlich und sicher.</p><div class="price-tag">85 €</div></div>
           </div>
           <div class="delivery-card reveal" style="transition-delay:0.1s">
             <div class="delivery-card-icon">🧺</div>
-            <div>
-              <h4>Gitterbox-Lieferung</h4>
-              <p>Das Holz wird in robusten Gitterboxen geliefert. Pro Box erheben wir ein Pfand von 30 €, das bei Rückgabe vollständig erstattet wird.</p>
-              <div class="price-tag">30 € Pfand</div>
-            </div>
+            <div><h4>Gitterbox-Lieferung</h4><p>Das Holz wird in robusten Gitterboxen geliefert (1 Box = 1 Raummeter). Pro Box berechnen wir <strong>30 € Pfand</strong>, das bei Rückgabe jeder einzelnen Box vollständig erstattet wird.</p><div class="price-tag">30 € Pfand / Box</div></div>
           </div>
           <div class="delivery-card reveal" style="transition-delay:0.2s">
             <div class="delivery-card-icon">📦</div>
-            <div>
-              <h4>Abholung vor Ort</h4>
-              <p>Sie holen selbst ab? Kein Problem! Kommen Sie einfach zu uns nach Oetmannshausen, 37287 Wehretal. Bitte vorher kurz anrufen.</p>
-            </div>
+            <div><h4>Abholung vor Ort</h4><p>Sie holen selbst ab? Kein Problem! Kommen Sie einfach zu uns nach Oetmannshausen, 37287 Wehretal. Bitte vorher kurz anrufen.</p></div>
           </div>
         </div>
       </div>
-
-      <!-- Map illustration -->
       <div class="delivery-map reveal">
         <svg class="map-svg" viewBox="0 0 340 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Background -->
           <rect width="340" height="300" rx="16" fill="rgba(255,255,255,0.04)"/>
-          <!-- Terrain blobs -->
           <ellipse cx="170" cy="150" rx="130" ry="110" fill="rgba(61,90,62,0.15)"/>
           <ellipse cx="200" cy="130" rx="80" ry="60" fill="rgba(90,122,74,0.12)"/>
-          <!-- Roads -->
           <path d="M 40 150 Q 100 130 170 150 Q 240 170 300 145" stroke="rgba(255,255,255,0.15)" stroke-width="8" stroke-linecap="round"/>
           <path d="M 170 40 Q 165 100 170 150 Q 175 200 165 260" stroke="rgba(255,255,255,0.12)" stroke-width="6" stroke-linecap="round"/>
-          <!-- Delivery radius circle -->
           <circle cx="170" cy="150" r="100" stroke="rgba(232,194,122,0.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
           <circle cx="170" cy="150" r="100" fill="rgba(192,125,58,0.06)"/>
-          <!-- Pin shadow -->
           <ellipse cx="170" cy="165" rx="14" ry="5" fill="rgba(0,0,0,0.2)"/>
-          <!-- Pin -->
           <path d="M 170 90 C 148 90 130 108 130 130 C 130 155 170 185 170 185 C 170 185 210 155 210 130 C 210 108 192 90 170 90Z" fill="#C07D3A"/>
           <circle cx="170" cy="130" r="12" fill="white"/>
           <text x="170" y="135" text-anchor="middle" font-size="12" fill="#3B2A1A">🌲</text>
-          <!-- Distance label -->
           <text x="245" y="78" fill="rgba(232,194,122,0.7)" font-size="10" font-family="Lato, sans-serif" font-weight="700">50 km Radius</text>
           <line x1="240" y1="82" x2="220" y2="110" stroke="rgba(232,194,122,0.4)" stroke-width="1"/>
-          <!-- Location name -->
           <text x="170" y="210" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11" font-family="Lato, sans-serif" font-weight="700">Oetmannshausen</text>
           <text x="170" y="224" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="9" font-family="Lato, sans-serif">37287 Wehretal, Nordhessen</text>
-          <!-- Small tree icons around -->
           <text x="60" y="100" font-size="18" opacity="0.3">🌲</text>
           <text x="260" y="180" font-size="16" opacity="0.25">🌳</text>
           <text x="80" y="200" font-size="14" opacity="0.2">🌲</text>
@@ -1335,16 +509,12 @@
   </div>
 </section>
 
-<!-- ===================== ABOUT ===================== -->
 <section id="ueber-uns">
   <div class="container">
     <div class="about-grid">
       <div class="about-img-wrap reveal">
         <div class="about-img"></div>
-        <div class="about-img-badge">
-          <span class="num">🌿</span>
-          <span class="lbl">PEFC<br/>Zertifiziert</span>
-        </div>
+        <div class="about-img-badge"><span class="num">🌿</span><span class="lbl">PEFC<br/>Zertifiziert</span></div>
       </div>
       <div class="about-content reveal" style="transition-delay:0.15s">
         <span class="section-label">Über uns</span>
@@ -1352,33 +522,16 @@
         <p>Wir sind ein junges, lokales Unternehmen aus Oetmannshausen im Herzen von Nordhessen. Als leidenschaftliche Befürworter nachhaltiger Forstwirtschaft beziehen wir unser Holz ausschließlich aus PEFC-zertifizierten Quellen.</p>
         <p>Unser Ziel ist es, Ihnen hochwertiges Brennholz direkt aus der Region anzubieten – transparent, fair und mit echtem Bezug zu Natur und Umwelt. Kurze Lieferwege schonen nicht nur die Umwelt, sondern garantieren frische, optimale Qualität.</p>
         <div class="about-pillars">
-          <div class="pillar">
-            <div class="pillar-icon">🌱</div>
-            <h5>Nachhaltigkeit</h5>
-            <p>PEFC-zertifiziertes Holz aus verantwortungsvoller Forstwirtschaft.</p>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">📍</div>
-            <h5>Regionalität</h5>
-            <p>Direkt aus Nordhessen – kurze Wege, starke Region.</p>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">✅</div>
-            <h5>Qualität</h5>
-            <p>Ausgesuchtes Holz, sorgfältig gespalten und bereit für Ihren Kamin.</p>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">🤝</div>
-            <h5>Vertrauen</h5>
-            <p>Persönlicher Service und transparente Preise ohne versteckte Kosten.</p>
-          </div>
+          <div class="pillar"><div class="pillar-icon">🌱</div><h5>Nachhaltigkeit</h5><p>PEFC-zertifiziertes Holz aus verantwortungsvoller Forstwirtschaft.</p></div>
+          <div class="pillar"><div class="pillar-icon">📍</div><h5>Regionalität</h5><p>Direkt aus Nordhessen – kurze Wege, starke Region.</p></div>
+          <div class="pillar"><div class="pillar-icon">✅</div><h5>Qualität</h5><p>Ausgesuchtes Holz, sorgfältig gespalten und bereit für Ihren Kamin.</p></div>
+          <div class="pillar"><div class="pillar-icon">🤝</div><h5>Vertrauen</h5><p>Persönlicher Service und transparente Preise ohne versteckte Kosten.</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== CONTACT ===================== -->
 <section id="kontakt">
   <div class="container">
     <div class="section-header reveal" style="margin-bottom:3rem">
@@ -1389,79 +542,38 @@
       <div class="contact-info reveal">
         <p>Haben Sie Fragen zu unseren Produkten, Preisen oder Lieferkonditionen? Schreiben Sie uns – wir melden uns schnellstmöglich bei Ihnen zurück.</p>
         <div class="contact-details">
-          <div class="contact-detail">
-            <div class="contact-detail-icon">📍</div>
-            <div class="contact-detail-text">
-              <strong>Adresse</strong>
-              <span>Oetmannshausen<br/>37287 Wehretal, Deutschland</span>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">📞</div>
-            <div class="contact-detail-text">
-              <strong>Telefon</strong>
-              <span>Auf Anfrage erhältlich</span>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">✉️</div>
-            <div class="contact-detail-text">
-              <strong>E-Mail</strong>
-              <span>info@brennholz-nordhessen.de</span>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">🕐</div>
-            <div class="contact-detail-text">
-              <strong>Erreichbarkeit</strong>
-              <span>Mo–Fr: 8–18 Uhr<br/>Sa: 9–14 Uhr</span>
-            </div>
-          </div>
+          <div class="contact-detail"><div class="contact-detail-icon">📍</div><div class="contact-detail-text"><strong>Adresse</strong><span>Oetmannshausen<br/>37287 Wehretal, Deutschland</span></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">📞</div><div class="contact-detail-text"><strong>Telefon</strong><span>0162 9645696</span></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">✉️</div><div class="contact-detail-text"><strong>E-Mail</strong><span>brennholz.hessen@gmx.de</span></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">🕐</div><div class="contact-detail-text"><strong>Erreichbarkeit</strong><span>Mo–Fr: 8–18 Uhr<br/>Sa: 9–14 Uhr</span></div></div>
         </div>
       </div>
-
       <div class="contact-form reveal" style="transition-delay:0.15s">
         <h3>Anfrage senden</h3>
         <div class="form-row">
-          <div class="form-group">
-            <label>Vorname</label>
-            <input type="text" placeholder="Max" id="fname" />
-          </div>
-          <div class="form-group">
-            <label>Nachname</label>
-            <input type="text" placeholder="Mustermann" id="lname" />
-          </div>
+          <div class="form-group"><label>Vorname</label><input type="text" placeholder="Max" id="fname" /></div>
+          <div class="form-group"><label>Nachname</label><input type="text" placeholder="Mustermann" id="lname" /></div>
         </div>
-        <div class="form-group">
-          <label>E-Mail</label>
-          <input type="email" placeholder="max@beispiel.de" id="email" />
-        </div>
+        <div class="form-group"><label>E-Mail</label><input type="email" placeholder="max@beispiel.de" id="email" /></div>
         <div class="form-row">
-          <div class="form-group">
-            <label>Holzart</label>
+          <div class="form-group"><label>Holzart</label>
             <select id="wood" onchange="updateFormTotal()">
               <option value="">Bitte wählen...</option>
               <option value="Buchenholz – 120 €/rm">Buchenholz – 120 €/rm</option>
               <option value="Eichenholz – 110 €/rm">Eichenholz – 110 €/rm</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Schnittlänge</label>
+          <div class="form-group"><label>Schnittlänge</label>
             <select id="length">
               <option value="">Bitte wählen...</option>
-              <option>25 cm</option>
-              <option>33 cm</option>
-              <option>50 cm</option>
+              <option>25 cm</option><option>33 cm</option><option>50 cm</option>
             </select>
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group">
-            <label>Menge (Raummeter)</label>
-            <input type="number" min="1" max="20" value="1" id="qty" placeholder="z. B. 3" oninput="updateFormTotal()" style="appearance:auto" />
-          </div>
-          <div class="form-group">
-            <label>Lieferung oder Abholung?</label>
+          <!-- FIX 1: min="0" in form too -->
+          <div class="form-group"><label>Menge (Raummeter)</label><input type="number" min="0" max="20" value="1" id="qty" placeholder="z. B. 3" oninput="updateFormTotal()" style="appearance:auto" /></div>
+          <div class="form-group"><label>Lieferung oder Abholung?</label>
             <select id="delivery" onchange="updateFormTotal()">
               <option value="">Bitte wählen...</option>
               <option value="lieferung">🚚 Lieferung (+85 €, max. 50 km)</option>
@@ -1469,30 +581,19 @@
             </select>
           </div>
         </div>
-        <!-- Live-Gesamtbetrag -->
-        <div id="formTotal" style="display:none; background:var(--mist); border:1.5px solid rgba(192,125,58,0.3); border-radius:8px; padding:0.7rem 1rem; font-size:0.88rem; color:var(--bark); margin-bottom:0.8rem;">
-        </div>
-        <div class="form-group">
-          <label>Ihre Nachricht</label>
-          <textarea placeholder="Weitere Wünsche, Anmerkungen, Lieferadresse…" id="message"></textarea>
-        </div>
+        <div id="formTotal" style="display:none; background:var(--mist); border:1.5px solid rgba(192,125,58,0.3); border-radius:8px; padding:0.7rem 1rem; font-size:0.88rem; color:var(--bark); margin-bottom:0.8rem;"></div>
+        <div class="form-group"><label>Ihre Nachricht</label><textarea placeholder="Weitere Wünsche, Anmerkungen, Lieferadresse…" id="message"></textarea></div>
         <button class="form-submit" onclick="submitForm()">Anfrage absenden ✉️</button>
-        <div class="form-success" id="formSuccess">
-          ✅ Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns bald bei Ihnen.
-        </div>
+        <div class="form-success" id="formSuccess">✅ Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns bald bei Ihnen.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="nav-logo">
-        <div class="logo-icon">🌲</div>
-        <span style="color:#fff">Brennholzhandel<small style="color:rgba(255,255,255,0.5)">Nordhessen</small></span>
-      </div>
+      <div class="nav-logo"><div class="logo-icon">🌲</div><span style="color:#fff">Brennholzhandel<small style="color:rgba(255,255,255,0.5)">Nordhessen</small></span></div>
       <p>Lokales Start-up aus Oetmannshausen. Hochwertiges, PEFC-zertifiziertes Brennholz direkt aus Nordhessen.</p>
       <div class="pefc-badge" style="margin-top:1rem">🌿 PEFC-zertifiziert</div>
     </div>
@@ -1521,7 +622,7 @@
   </div>
 </footer>
 
-<!-- ===================== CHAT (FAQ + Eigene Frage) ===================== -->
+<!-- CHAT -->
 <div class="chat-fab" id="chatFab" onclick="toggleChat()" title="Chat öffnen">
   💬
   <div class="badge">1</div>
@@ -1539,7 +640,7 @@
   <div class="chat-messages" id="chatMessages">
     <div class="chat-msg bot">
       Hallo! 👋 Willkommen bei Brennholzhandel Nordhessen.<br/><br/>
-      Wählen Sie eine häufige Frage oder stellen Sie uns Ihre eigene Frage:
+      Wählen Sie eine häufige Frage oder nehmen Sie direkt Kontakt mit uns auf:
     </div>
   </div>
 
@@ -1552,28 +653,36 @@
     <button class="faq-btn" onclick="answerFaq(this)">🧺 Was ist mit den Gitterboxen?</button>
     <button class="faq-btn" onclick="answerFaq(this)">📏 Welche Schnittlängen gibt es?</button>
     <button class="faq-btn" onclick="answerFaq(this)">🌿 Ist das Holz zertifiziert?</button>
-    <button class="faq-btn other-btn" onclick="showCustomInput()">✏️ Andere Frage stellen…</button>
+    <!-- FIX 3: replaced "andere Frage" with direct contact options -->
+    <button class="faq-btn other-btn" onclick="showContactOptions()">✉️ Direkt Kontakt aufnehmen…</button>
   </div>
 
-  <!-- Eigene Frage -->
-  <div class="chat-custom-wrap" id="customWrap">
-    <span class="chat-custom-note">Schreiben Sie Ihre Frage – ein Mitarbeiter meldet sich in Kürze bei Ihnen.</span>
-    <div class="chat-custom-row">
-      <input class="chat-input" id="chatInput" type="text" placeholder="Ihre Frage eingeben…" onkeydown="if(event.key==='Enter')sendCustom()"/>
-      <button class="chat-send" onclick="sendCustom()">➤</button>
+  <!-- FIX 3: Contact options box instead of custom input -->
+  <div class="chat-contact-box" id="contactBox">
+    <div class="chat-contact-inner">
+      <p>Wählen Sie, wie Sie uns am liebsten erreichen möchten – wir antworten so schnell wie möglich:</p>
+      <div class="chat-contact-options">
+        <a href="mailto:brennholz.hessen@gmx.de?subject=Anfrage%20vom%20Website-Chat" class="contact-option-btn">
+          <span class="opt-icon">✉️</span>
+          <span class="opt-label">Per E-Mail schreiben<small>brennholz.hessen@gmx.de</small></span>
+        </a>
+        <a href="#kontakt" class="contact-option-btn" onclick="toggleChat()">
+          <span class="opt-icon">📋</span>
+          <span class="opt-label">Anfrageformular nutzen<small>Mit Preisberechnung & direkter Bestellung</small></span>
+        </a>
+      </div>
     </div>
+    <button class="chat-contact-back" onclick="resetChat()">← Zurück zu den FAQ</button>
   </div>
-  <div class="chat-powered">Brennholzhandel Nordhessen · Wir antworten schnellstmöglich</div>
+
+  <div class="chat-powered">Brennholzhandel Nordhessen · Oetmannshausen, 37287 Wehretal</div>
 </div>
 
-<!-- ===================== JAVASCRIPT ===================== -->
 <script>
-  /* ===== NAVBAR SCROLL ===== */
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  /* ===== HAMBURGER ===== */
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -1585,34 +694,29 @@
     mobileMenu.classList.remove('open');
   }
 
-  /* ===== REVEAL ON SCROLL ===== */
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   revealEls.forEach(el => observer.observe(el));
 
-  /* ===== LENGTH CHIPS ===== */
   function selectChip(btn, wood) {
     const parent = btn.closest('.product-lengths');
     parent.querySelectorAll('.length-chip').forEach(c => c.classList.remove('active'));
     btn.classList.add('active');
   }
 
-  /* ===== QUANTITY SLIDER & PRICE CALCULATOR ===== */
-  // Preise & Typ
   const PRICES = { buche: 120, eiche: 110 };
   const LIEFERUNG = 85;
   const PFAND_PRO_BOX = 30;
-  let calcType = 'lieferung'; // 'lieferung' | 'abholung'
+  let calcType = 'lieferung';
 
+  // FIX 1: min is now 0, clamp accordingly
   function updateQty(wood) {
     const slider = document.getElementById(wood + '-qty');
     const val = parseInt(slider.value);
-    // Update slider gradient
-    const pct = ((val - 1) / 19) * 100;
+    const pct = (val / 20) * 100; // 0..20 range
     slider.style.background = `linear-gradient(to right, var(--amber) ${pct}%, rgba(242,237,228,0.3) ${pct}%)`;
-    // Update label
     document.getElementById(wood + '-qty-val').textContent = val + ' RM';
     recalcPrice();
   }
@@ -1620,7 +724,7 @@
   function changeQty(wood, delta) {
     const slider = document.getElementById(wood + '-qty');
     let val = parseInt(slider.value) + delta;
-    val = Math.min(20, Math.max(1, val));
+    val = Math.min(20, Math.max(0, val)); // FIX 1: clamp to 0
     slider.value = val;
     updateQty(wood);
   }
@@ -1636,40 +740,38 @@
   function recalcPrice() {
     const buche = parseInt(document.getElementById('buche-qty').value);
     const eiche = parseInt(document.getElementById('eiche-qty').value);
-    const boxes = buche + eiche; // 1 Gitterbox pro RM
+    const boxes = buche + eiche;
 
-    const holzSum  = buche * 120 + eiche * 110;
-    const pfand    = boxes * PFAND_PRO_BOX;
+    const holzSum    = buche * 120 + eiche * 110;
+    const pfand      = boxes * PFAND_PRO_BOX;
     const lieferkost = calcType === 'lieferung' ? LIEFERUNG : 0;
-    const total    = holzSum + lieferkost + pfand;
+    const total      = holzSum + lieferkost + pfand;
 
-    document.getElementById('c-buche-qty').textContent  = buche;
-    document.getElementById('c-eiche-qty').textContent  = eiche;
-    document.getElementById('c-buche-sum').textContent  = (buche * 120) + ' €';
-    document.getElementById('c-eiche-sum').textContent  = (eiche * 110) + ' €';
-    document.getElementById('c-box-count').textContent  = boxes;
-    document.getElementById('c-box-sum').textContent    = pfand + ' €';
-    document.getElementById('c-total').textContent      = total + ' €';
-    document.getElementById('c-box-note').textContent   = pfand + ' €';
+    document.getElementById('c-buche-qty').textContent = buche;
+    document.getElementById('c-eiche-qty').textContent = eiche;
+    document.getElementById('c-buche-sum').textContent = (buche * 120) + ' €';
+    document.getElementById('c-eiche-sum').textContent = (eiche * 110) + ' €';
+    document.getElementById('c-box-count').textContent = boxes;
+    document.getElementById('c-box-sum').textContent   = pfand + ' €';
+    document.getElementById('c-total').textContent     = total + ' €';
 
+    // FIX 2: corrected note text
     const noteEl = document.getElementById('c-note');
     if (calcType === 'lieferung') {
-      noteEl.textContent = `inkl. 85 € Lieferung + ${pfand} € Pfand (wird nach Gitterbox-Rückgabe vollständig erstattet)`;
+      noteEl.textContent = `inkl. 85 € Lieferung + 30 € Pfand pro Gitterbox – nach Rückgabe jeder Box erhalten Sie das Pfand vollständig zurück`;
     } else {
-      noteEl.textContent = `inkl. ${pfand} € Pfand (wird nach Gitterbox-Rückgabe vollständig erstattet) – kein Lieferaufschlag`;
+      noteEl.textContent = `inkl. 30 € Pfand pro Gitterbox – nach Rückgabe jeder Box erhalten Sie das Pfand vollständig zurück (kein Lieferaufschlag)`;
     }
   }
 
-  // Init slider gradient
   window.addEventListener('DOMContentLoaded', () => {
     updateQty('buche');
     updateQty('eiche');
     recalcPrice();
   });
 
-  /* ===== PREFILL FORM FROM PRODUCT CARD ===== */
   function prefillForm(holzart, preis, wood) {
-    const qty   = parseInt(document.getElementById(wood + '-qty').value);
+    const qty    = parseInt(document.getElementById(wood + '-qty').value);
     const laenge = document.querySelector('#' + wood + '-lengths .length-chip.active')?.textContent || '—';
     document.getElementById('wood').value     = holzart === 'Buchenholz' ? 'Buchenholz – 120 €/rm' : 'Eichenholz – 110 €/rm';
     document.getElementById('length').value   = laenge;
@@ -1678,24 +780,22 @@
     updateFormTotal();
   }
 
-  /* ===== CONTACT FORM – live total + Discord ===== */
   function updateFormTotal() {
     const wood     = document.getElementById('wood').value;
     const qty      = parseInt(document.getElementById('qty').value) || 0;
     const delivery = document.getElementById('delivery').value;
-
     let preis = 0;
     if (wood.includes('Buche')) preis = 120;
     else if (wood.includes('Eiche')) preis = 110;
 
-    const holzSum  = preis * qty;
-    const pfand    = qty * 30;
-    const lief     = delivery === 'lieferung' ? 85 : 0;
-    const total    = holzSum + pfand + lief;
+    const holzSum = preis * qty;
+    const pfand   = qty * 30;
+    const lief    = delivery === 'lieferung' ? 85 : 0;
+    const total   = holzSum + pfand + lief;
 
     const el = document.getElementById('formTotal');
     if (el && qty > 0 && preis > 0) {
-      let txt = `${holzSum} € Holz + ${pfand} € Pfand`;
+      let txt = `${holzSum} € Holz + ${pfand} € Pfand (30 €/Box, wird erstattet)`;
       if (lief) txt += ` + 85 € Lieferung`;
       txt += ` = <strong>${total} €</strong>`;
       el.innerHTML = txt;
@@ -1715,12 +815,8 @@
     const delivery = document.getElementById('delivery').value;
     const message  = document.getElementById('message').value.trim();
 
-    if (!fname || !email) {
-      alert('Bitte füllen Sie mindestens Vorname und E-Mail aus.');
-      return;
-    }
+    if (!fname || !email) { alert('Bitte füllen Sie mindestens Vorname und E-Mail aus.'); return; }
 
-    // Berechnung für Discord
     let preis = 0;
     if (wood.includes('Buche')) preis = 120;
     else if (wood.includes('Eiche')) preis = 110;
@@ -1741,15 +837,15 @@
         title: '📋 Neue Bestellanfrage',
         color: 0x3D5A3E,
         fields: [
-          { name: '👤 Name',        value: `${fname} ${lname}`.trim() || '—', inline: true  },
-          { name: '📧 E-Mail',      value: email,                              inline: true  },
-          { name: '🪵 Holzart',     value: wood       || '—',                 inline: true  },
-          { name: '📦 Menge',       value: `${qty} Raummeter`,                inline: true  },
-          { name: '📏 Schnittlänge',value: length      || '—',                inline: true  },
-          { name: '🚚 Lieferung',   value: liefText,                          inline: true  },
-          { name: '🧺 Gitterboxen', value: `${qty} Stück × 30 € Pfand = ${pfand} €`, inline: false },
-          { name: '💶 Gesamtbetrag',value: `**${total} €** (inkl. ${pfand} € Pfand)`, inline: false },
-          { name: '💬 Nachricht',   value: message    || '(keine Nachricht)', inline: false },
+          { name: '👤 Name',         value: `${fname} ${lname}`.trim() || '—', inline: true },
+          { name: '📧 E-Mail',       value: email,                              inline: true },
+          { name: '🪵 Holzart',      value: wood       || '—',                 inline: true },
+          { name: '📦 Menge',        value: `${qty} Raummeter`,                inline: true },
+          { name: '📏 Schnittlänge', value: length      || '—',                inline: true },
+          { name: '🚚 Lieferung',    value: liefText,                          inline: true },
+          { name: '🧺 Gitterboxen',  value: `${qty} Stück × 30 € Pfand/Box = ${pfand} € gesamt`, inline: false },
+          { name: '💶 Gesamtbetrag', value: `**${total} €** (inkl. ${pfand} € Pfand – wird je Box bei Rückgabe erstattet)`, inline: false },
+          { name: '💬 Nachricht',    value: message     || '(keine Nachricht)', inline: false },
         ],
         footer: { text: 'Brennholzhandel Nordhessen · Bestellformular' },
         timestamp: new Date().toISOString()
@@ -1762,8 +858,9 @@
         { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }
       );
       if (res.ok || res.status === 204) {
-        ['fname','lname','email','wood','length','qty','delivery','message']
-          .forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
+        ['fname','lname','email','wood','length','qty','delivery','message'].forEach(id => {
+          const el = document.getElementById(id); if(el) el.value = '';
+        });
         document.getElementById('formTotal').style.display = 'none';
         const succ = document.getElementById('formSuccess');
         succ.style.display = 'block';
@@ -1778,18 +875,18 @@
     }
   }
 
-  /* ===== CHAT – FAQ + Eigene Frage → Discord ===== */
+  /* ===== CHAT ===== */
   const FAQ_ANSWERS = {
     '🪵 Welche Holzarten bieten Sie an?':
       'Wir führen <strong>Buchenholz</strong> (120 €/RM) und <strong>Eichenholz</strong> (110 €/RM) – beides PEFC-zertifiziert aus nachhaltiger Nordhessener Forstwirtschaft. 🌳',
     '💰 Was kostet das Brennholz?':
-      '<strong>Buchenholz:</strong> 120 € pro Raummeter<br><strong>Eichenholz:</strong> 110 € pro Raummeter<br><br>Hinzu kommen 30 € Pfand pro Gitterbox (= pro RM) – das Pfand wird bei Rückgabe vollständig erstattet. 💶',
+      '<strong>Buchenholz:</strong> 120 € pro Raummeter<br><strong>Eichenholz:</strong> 110 € pro Raummeter<br><br>Pro Raummeter kommt 1 Gitterbox dazu: <strong>30 € Pfand</strong>, das Sie bei Rückgabe der Box vollständig zurückerhalten. 💶',
     '🚚 Wie funktioniert die Lieferung?':
-      'Wir liefern im Umkreis von <strong>50 km</strong> um Oetmannshausen. Die Liefergebühr beträgt <strong>85 €</strong> pro Bestellung. Das Holz kommt in robusten Gitterboxen (30 € Pfand je Box). 🚚',
+      'Wir liefern im Umkreis von <strong>50 km</strong> um Oetmannshausen. Die Liefergebühr beträgt <strong>85 €</strong> pro Bestellung. Das Holz kommt in robusten Gitterboxen (30 € Pfand je Box, wird bei Rückgabe vollständig erstattet). 🚚',
     '📦 Kann ich das Holz auch abholen?':
       'Ja, gerne! Abholung ist kostenlos direkt bei uns in <strong>Oetmannshausen, 37287 Wehretal</strong>. Bitte kurz vorher anmelden. Gitterboxen (30 € Pfand/Stück) werden auch bei Abholung benötigt. 📦',
     '🧺 Was ist mit den Gitterboxen?':
-      'Das Holz wird immer in Gitterboxen geliefert oder abgeholt – <strong>pro Raummeter eine Box</strong>. Pro Box berechnen wir <strong>30 € Pfand</strong>, das bei Rückgabe vollständig zurückerstattet wird. 🧺',
+      'Das Holz wird in Gitterboxen geliefert oder abgeholt – <strong>pro Raummeter eine Box</strong>. Pro Box erheben wir <strong>30 € Pfand</strong>. Sobald Sie eine Box zurückgeben, erstatten wir Ihnen die 30 € dafür vollständig – egal ob Sie 1 oder 10 Boxen bestellt haben. 🧺',
     '📏 Welche Schnittlängen gibt es?':
       'Wir bieten drei Schnittlängen an: <strong>25 cm, 33 cm und 50 cm</strong>. Bitte geben Sie Ihre Wunschlänge bei der Anfrage an. 📏',
     '🌿 Ist das Holz zertifiziert?':
@@ -1809,28 +906,20 @@
     const question = btn.textContent;
     const answer   = FAQ_ANSWERS[question];
     if (!answer) return;
-
-    // Frage als User-Msg
     appendMsg(question, 'user');
-    // Antwort als Bot-Msg (kurze Verzögerung)
     setTimeout(() => {
       appendMsg(answer, 'bot');
-      // Nach Antwort: "Weitere Frage?" Button zeigen
       setTimeout(showBackBtn, 400);
     }, 350);
-
-    // FAQ-Liste ausblenden
     document.getElementById('faqList').style.display = 'none';
-    document.getElementById('customWrap').classList.remove('visible');
+    document.getElementById('contactBox').classList.remove('visible');
   }
 
   function showBackBtn() {
     const container = document.getElementById('chatMessages');
     const wrap = document.createElement('div');
     wrap.style.cssText = 'display:flex;gap:0.5rem;flex-wrap:wrap;padding:0.2rem 0;';
-    wrap.innerHTML = `
-      <button class="quick-btn" onclick="resetChat(this.closest('div'))">↩ Weitere Frage</button>
-    `;
+    wrap.innerHTML = `<button style="background:var(--mist);border:1px solid rgba(192,125,58,0.25);color:var(--heartwood);font-size:0.75rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:100px;cursor:pointer;" onclick="resetChat(this.closest('div'))">↩ Weitere Frage</button>`;
     container.appendChild(wrap);
     scrollChat();
   }
@@ -1838,60 +927,24 @@
   function resetChat(el) {
     if(el) el.remove();
     document.getElementById('faqList').style.display = 'flex';
-    document.getElementById('customWrap').classList.remove('visible');
+    document.getElementById('contactBox').classList.remove('visible');
     scrollChat();
   }
 
-  function showCustomInput() {
+  // FIX 3: show contact options instead of broken custom-input
+  function showContactOptions() {
     document.getElementById('faqList').style.display = 'none';
-    const wrap = document.getElementById('customWrap');
-    wrap.classList.add('visible');
-    document.getElementById('chatInput').focus();
-    appendMsg('✏️ Andere Frage stellen…', 'user');
-    appendMsg('Kein Problem! Schreiben Sie Ihre Frage – ein Mitarbeiter meldet sich so schnell wie möglich bei Ihnen. 😊', 'bot');
-  }
-
-  async function sendCustom() {
-    const input = document.getElementById('chatInput');
-    const msg   = input.value.trim();
-    if (!msg) return;
-    input.value = '';
-
-    appendMsg(msg, 'user');
-
-    // Sofortige Antwort an Kunden
-    setTimeout(() => {
-      appendMsg('✅ Ihre Frage wurde an unser Team weitergeleitet. <strong>Ein Mitarbeiter meldet sich in Kürze bei Ihnen.</strong> Danke für Ihre Geduld! 🙏', 'bot');
-      setTimeout(showBackBtn, 300);
-    }, 400);
-
-    // → Discord Webhook (Fragen-Kanal)
-    const payload = {
-      username: '❓ Neue Kundenfrage',
-      embeds: [{
-        title: '❓ Neue Frage vom Website-Chat',
-        color: 0xC07D3A,
-        fields: [
-          { name: '💬 Frage', value: msg, inline: false }
-        ],
-        footer: { text: 'Brennholzhandel Nordhessen · Chat-Widget' },
-        timestamp: new Date().toISOString()
-      }]
-    };
-
-    try {
-      await fetch(
-        'https://discordapp.com/api/webhooks/1495023470378225715/NeZns5Aq2W4Yq6Mjy99GMb6otLbj82pPw39hVXb-HvojMEsaS0vERmRpL3BGW8Bpz5i3',
-        { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }
-      );
-    } catch(e) { console.error('Discord Fehler:', e); }
+    document.getElementById('contactBox').classList.add('visible');
+    appendMsg('✉️ Direkt Kontakt aufnehmen…', 'user');
+    appendMsg('Kein Problem! Wählen Sie, wie Sie uns am besten erreichen möchten:', 'bot');
+    scrollChat();
   }
 
   function appendMsg(text, type) {
     const container = document.getElementById('chatMessages');
     const div = document.createElement('div');
     div.className = `chat-msg ${type}`;
-    div.innerHTML  = text;
+    div.innerHTML = text;
     container.appendChild(div);
     scrollChat();
   }
