@@ -204,7 +204,6 @@
     .faq-btn { text-align: left; background: var(--mist); border: 1px solid rgba(192,125,58,0.22); border-radius: 10px; padding: 0.55rem 0.9rem; font-size: 0.82rem; color: var(--bark); font-weight: 400; cursor: pointer; transition: background var(--transition), border-color var(--transition); line-height: 1.35; }
     .faq-btn:hover { background: rgba(192,125,58,0.14); border-color: var(--amber); }
     .faq-btn.other-btn { background: transparent; border-style: dashed; color: var(--heartwood); font-weight: 700; font-size: 0.8rem; }
-    /* FIX 3: Custom contact box */
     .chat-contact-box { display: none; flex-direction: column; gap: 0; flex-shrink: 0; }
     .chat-contact-box.visible { display: flex; }
     .chat-contact-inner { border-top: 1px solid rgba(192,125,58,0.15); background: var(--mist); padding: 1rem 1.2rem; }
@@ -218,8 +217,6 @@
     .chat-contact-back { display: flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1.2rem; font-size: 0.78rem; color: var(--heartwood); font-weight: 700; cursor: pointer; border-top: 1px solid rgba(192,125,58,0.12); background: #fff; transition: background var(--transition); }
     .chat-contact-back:hover { background: var(--mist); }
     .chat-powered { text-align: center; font-size: 0.65rem; color: rgba(59,42,26,0.35); padding: 0.4rem; flex-shrink: 0; }
-
-    /* QTY SLIDER */
     .qty-wrap { margin: 1rem 0 1.2rem; }
     .qty-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
     .qty-value { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--heartwood); background: var(--mist); padding: 0.15rem 0.7rem; border-radius: 6px; border: 1.5px solid rgba(192,125,58,0.25); min-width: 56px; text-align: center; }
@@ -230,8 +227,6 @@
     .qty-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--amber); border: 3px solid #fff; box-shadow: 0 2px 8px rgba(192,125,58,0.4); cursor: pointer; transition: transform 0.15s; }
     .qty-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
     .qty-ticks { display: flex; justify-content: space-between; padding: 0 18px; margin-top: 0.2rem; font-size: 0.68rem; color: var(--light-bark); opacity: 0.6; }
-
-    /* PRICE CALCULATOR */
     .price-calc { margin-top: 2.5rem; background: var(--bark); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-med); }
     .calc-header { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.8rem; background: var(--heartwood); }
     .calc-icon { font-size: 1.6rem; flex-shrink: 0; }
@@ -248,12 +243,9 @@
     .calc-total-row { display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; font-weight: 700; color: #fff; }
     .calc-total-row span:last-child { font-family: var(--font-display); font-size: 1.7rem; color: var(--amber); }
     .calc-note { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 0.8rem; }
-
     @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ===== COOKIE BANNER ===== */
     #cookieBanner {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
       background: var(--charcoal);
@@ -274,14 +266,7 @@
     .cookie-accept:hover { background: var(--fern); }
     .cookie-decline { background: transparent; color: rgba(255,255,255,0.5); padding: 0.6rem 1rem; border-radius: 7px; font-weight: 400; font-size: 0.82rem; border: 1px solid rgba(255,255,255,0.2); transition: color var(--transition), border-color var(--transition); cursor: pointer; }
     .cookie-decline:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
-
-    /* ===== STOCK BADGES ===== */
-    .stock-badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.3rem 0.8rem; border-radius: 100px;
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em;
-      margin-bottom: 0.8rem;
-    }
+    .stock-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.8rem; border-radius: 100px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 0.8rem; }
     .stock-badge.high { background: rgba(61,90,62,0.15); color: var(--moss); border: 1.5px solid rgba(61,90,62,0.3); }
     .stock-badge.mid  { background: rgba(192,125,58,0.15); color: var(--heartwood); border: 1.5px solid rgba(192,125,58,0.35); }
     .stock-badge.low  { background: rgba(180,60,40,0.12); color: #b43c28; border: 1.5px solid rgba(180,60,40,0.3); }
@@ -292,8 +277,6 @@
     .low  .stock-dot { background: #b43c28; animation: pulse-dot 1.4s infinite; }
     .out  .stock-dot { background: #999; }
     @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-    /* ===== REVIEWS SECTION ===== */
     #bewertungen { padding: 6rem 5%; background: var(--cream); }
     .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
     .review-card { background: #fff; border-radius: var(--radius-lg); padding: 1.8rem; box-shadow: var(--shadow-soft); border: 1px solid rgba(192,125,58,0.1); transition: transform var(--transition), box-shadow var(--transition); position: relative; }
@@ -316,9 +299,9 @@
     .review-bar-track { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
     .review-bar-fill { height: 100%; background: var(--amber); border-radius: 3px; transition: width 1s ease; }
     .review-count { font-size: 0.78rem; color: rgba(255,255,255,0.4); min-width: 28px; text-align: right; }
-    @media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } .review-summary { gap: 1.5rem; } }
-
     @media (max-width: 900px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+      .review-summary { gap: 1.5rem; }
       .features-grid { grid-template-columns: 1fr 1fr; }
       .feat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
       .feat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.08); }
@@ -407,9 +390,7 @@
       <h2>Auserlesenes Brennholz<br/>für jeden Bedarf</h2>
       <p>Wir führen ausschließlich hochwertiges, PEFC-zertifiziertes Holz aus nachhaltiger Forstwirtschaft. Wählen Sie Ihre bevorzugte Holzart und Schnittlänge.</p>
     </div>
-
     <div class="products-grid">
-      <!-- Buchenholz -->
       <div class="product-card reveal">
         <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1504204267155-aaad8e81290d?w=800&q=85');"><span class="badge-pefc">PEFC zertifiziert</span></div>
         <div class="product-body">
@@ -435,7 +416,6 @@
               <span class="qty-value" id="buche-qty-val">1 RM</span>
             </div>
             <div class="qty-slider-row">
-              <!-- FIX 1: min="0" -->
               <button class="qty-btn" onclick="changeQty('buche',-1)">−</button>
               <input type="range" min="0" max="20" value="1" class="qty-slider" id="buche-qty" oninput="updateQty('buche')"/>
               <button class="qty-btn" onclick="changeQty('buche',1)">+</button>
@@ -445,8 +425,6 @@
           <a href="#kontakt" class="product-order-btn" onclick="prefillForm('Buchenholz',120,'buche')">Jetzt anfragen →</a>
         </div>
       </div>
-
-      <!-- Eichenholz -->
       <div class="product-card reveal" style="transition-delay:0.12s">
         <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&q=85');"><span class="badge-pefc">PEFC zertifiziert</span></div>
         <div class="product-body">
@@ -472,7 +450,6 @@
               <span class="qty-value" id="eiche-qty-val">1 RM</span>
             </div>
             <div class="qty-slider-row">
-              <!-- FIX 1: min="0" -->
               <button class="qty-btn" onclick="changeQty('eiche',-1)">−</button>
               <input type="range" min="0" max="20" value="1" class="qty-slider" id="eiche-qty" oninput="updateQty('eiche')"/>
               <button class="qty-btn" onclick="changeQty('eiche',1)">+</button>
@@ -483,8 +460,6 @@
         </div>
       </div>
     </div>
-
-    <!-- PRICE CALCULATOR -->
     <div class="price-calc reveal" id="priceCalc">
       <div class="calc-header">
         <span class="calc-icon">🧮</span>
@@ -511,7 +486,6 @@
           <span>85 €</span>
         </div>
         <div class="calc-row">
-          <!-- FIX 2: corrected Pfand label -->
           <span>🧺 Gitterbox-Pfand (<span id="c-box-count">2</span> × 30 €/Box) <small style="opacity:0.55">– wird je Box erstattet</small></span>
           <span id="c-box-sum">60 €</span>
         </div>
@@ -520,7 +494,6 @@
           <span>Gesamtbetrag</span>
           <span id="c-total">375 €</span>
         </div>
-        <!-- FIX 2: corrected note text -->
         <p class="calc-note" id="c-note">inkl. 85 € Lieferung + 30 € Pfand pro Gitterbox – nach Rückgabe jeder Box erhalten Sie das Pfand vollständig zurück</p>
       </div>
     </div>
@@ -601,65 +574,6 @@
   </div>
 </section>
 
-<section id="kontakt">
-  <div class="container">
-    <div class="section-header reveal" style="margin-bottom:3rem">
-      <span class="section-label">Kontakt</span>
-      <h2>Wir freuen uns<br/>von Ihnen zu hören</h2>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <p>Haben Sie Fragen zu unseren Produkten, Preisen oder Lieferkonditionen? Schreiben Sie uns – wir melden uns schnellstmöglich bei Ihnen zurück.</p>
-        <div class="contact-details">
-          <div class="contact-detail"><div class="contact-detail-icon">📍</div><div class="contact-detail-text"><strong>Adresse</strong><span>Oetmannshausen<br/>37287 Wehretal, Deutschland</span></div></div>
-          <div class="contact-detail"><div class="contact-detail-icon">📞</div><div class="contact-detail-text"><strong>Telefon</strong><span><a href="tel:+4916296456996" style="color:inherit;">0162 9645696</a></span></div></div>
-          <div class="contact-detail"><div class="contact-detail-icon">✉️</div><div class="contact-detail-text"><strong>E-Mail</strong><span>brennholz.hessen@gmx.de</span></div></div>
-          <div class="contact-detail"><div class="contact-detail-icon">🕐</div><div class="contact-detail-text"><strong>Erreichbarkeit</strong><span>Mo–Fr: 8–18 Uhr<br/>Sa: 9–14 Uhr</span></div></div>
-        </div>
-      </div>
-      <div class="contact-form reveal" style="transition-delay:0.15s">
-        <h3>Anfrage senden</h3>
-        <div class="form-row">
-          <div class="form-group"><label>Vorname</label><input type="text" placeholder="Max" id="fname" /></div>
-          <div class="form-group"><label>Nachname</label><input type="text" placeholder="Mustermann" id="lname" /></div>
-        </div>
-        <div class="form-group"><label>E-Mail</label><input type="email" placeholder="max@beispiel.de" id="email" /></div>
-        <div class="form-row">
-          <div class="form-group"><label>Holzart</label>
-            <select id="wood" onchange="updateFormTotal()">
-              <option value="">Bitte wählen...</option>
-              <option value="Buchenholz – 120 €/rm">Buchenholz – 120 €/rm</option>
-              <option value="Eichenholz – 110 €/rm">Eichenholz – 110 €/rm</option>
-            </select>
-          </div>
-          <div class="form-group"><label>Schnittlänge</label>
-            <select id="length">
-              <option value="">Bitte wählen...</option>
-              <option>25 cm</option><option>33 cm</option><option>50 cm</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <!-- FIX 1: min="0" in form too -->
-          <div class="form-group"><label>Menge (Raummeter)</label><input type="number" min="0" max="20" value="1" id="qty" placeholder="z. B. 3" oninput="updateFormTotal()" style="appearance:auto" /></div>
-          <div class="form-group"><label>Lieferung oder Abholung?</label>
-            <select id="delivery" onchange="updateFormTotal()">
-              <option value="">Bitte wählen...</option>
-              <option value="lieferung">🚚 Lieferung (+85 €, max. 50 km)</option>
-              <option value="abholung">📦 Selbstabholung in Oetmannshausen</option>
-            </select>
-          </div>
-        </div>
-        <div id="formTotal" style="display:none; background:var(--mist); border:1.5px solid rgba(192,125,58,0.3); border-radius:8px; padding:0.7rem 1rem; font-size:0.88rem; color:var(--bark); margin-bottom:0.8rem;"></div>
-        <div class="form-group"><label>Ihre Nachricht</label><textarea placeholder="Weitere Wünsche, Anmerkungen, Lieferadresse…" id="message"></textarea></div>
-        <button class="form-submit" onclick="submitForm()">Anfrage absenden ✉️</button>
-        <div class="form-success" id="formSuccess">✅ Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns bald bei Ihnen.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== BEWERTUNGEN ===================== -->
 <section id="bewertungen">
   <div class="container">
     <div class="section-header reveal">
@@ -723,8 +637,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Rating Summary -->
     <div class="review-summary reveal">
       <div class="review-avg">
         <div class="avg-num">5,0</div>
@@ -745,7 +657,63 @@
   </div>
 </section>
 
-<!-- ===================== COOKIE BANNER ===================== -->
+<section id="kontakt">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:3rem">
+      <span class="section-label">Kontakt</span>
+      <h2>Wir freuen uns<br/>von Ihnen zu hören</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p>Haben Sie Fragen zu unseren Produkten, Preisen oder Lieferkonditionen? Schreiben Sie uns – wir melden uns schnellstmöglich bei Ihnen zurück.</p>
+        <div class="contact-details">
+          <div class="contact-detail"><div class="contact-detail-icon">📍</div><div class="contact-detail-text"><strong>Adresse</strong><span>Oetmannshausen<br/>37287 Wehretal, Deutschland</span></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">📞</div><div class="contact-detail-text"><strong>Telefon</strong><span><a href="tel:+4916296456996" style="color:inherit;">0162 9645696</a></span></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">✉️</div><div class="contact-detail-text"><strong>E-Mail</strong><span>brennholz.hessen@gmx.de</span></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">🕐</div><div class="contact-detail-text"><strong>Erreichbarkeit</strong><span>Mo–Fr: 8–18 Uhr<br/>Sa: 9–14 Uhr</span></div></div>
+        </div>
+      </div>
+      <div class="contact-form reveal" style="transition-delay:0.15s">
+        <h3>Anfrage senden</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Vorname</label><input type="text" placeholder="Max" id="fname" /></div>
+          <div class="form-group"><label>Nachname</label><input type="text" placeholder="Mustermann" id="lname" /></div>
+        </div>
+        <div class="form-group"><label>E-Mail</label><input type="email" placeholder="max@beispiel.de" id="email" /></div>
+        <div class="form-row">
+          <div class="form-group"><label>Holzart</label>
+            <select id="wood" onchange="updateFormTotal()">
+              <option value="">Bitte wählen...</option>
+              <option value="Buchenholz – 120 €/rm">Buchenholz – 120 €/rm</option>
+              <option value="Eichenholz – 110 €/rm">Eichenholz – 110 €/rm</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Schnittlänge</label>
+            <select id="length">
+              <option value="">Bitte wählen...</option>
+              <option>25 cm</option><option>33 cm</option><option>50 cm</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Menge (Raummeter)</label><input type="number" min="0" max="20" value="1" id="qty" placeholder="z. B. 3" oninput="updateFormTotal()" style="appearance:auto" /></div>
+          <div class="form-group"><label>Lieferung oder Abholung?</label>
+            <select id="delivery" onchange="updateFormTotal()">
+              <option value="">Bitte wählen...</option>
+              <option value="lieferung">🚚 Lieferung (+85 €, max. 50 km)</option>
+              <option value="abholung">📦 Selbstabholung in Oetmannshausen</option>
+            </select>
+          </div>
+        </div>
+        <div id="formTotal" style="display:none; background:var(--mist); border:1.5px solid rgba(192,125,58,0.3); border-radius:8px; padding:0.7rem 1rem; font-size:0.88rem; color:var(--bark); margin-bottom:0.8rem;"></div>
+        <div class="form-group"><label>Ihre Nachricht</label><textarea placeholder="Weitere Wünsche, Anmerkungen, Lieferadresse…" id="message"></textarea></div>
+        <button class="form-submit" onclick="submitForm()">Anfrage absenden ✉️</button>
+        <div class="form-success" id="formSuccess">✅ Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns bald bei Ihnen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div id="cookieBanner">
   <div class="cookie-text">
     <strong>🍪 Diese Website verwendet Cookies.</strong><br/>
@@ -770,7 +738,7 @@
         <li><a href="#produkte">Produkte</a></li>
         <li><a href="#lieferung">Lieferung & Service</a></li>
         <li><a href="#bewertungen">Bewertungen</a></li>
-    <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#ueber-uns">Über uns</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
     </div>
@@ -790,7 +758,6 @@
   </div>
 </footer>
 
-<!-- CHAT -->
 <div class="chat-fab" id="chatFab" onclick="toggleChat()" title="Chat öffnen">
   💬
   <div class="badge">1</div>
@@ -811,8 +778,6 @@
       Wählen Sie eine häufige Frage oder nehmen Sie direkt Kontakt mit uns auf:
     </div>
   </div>
-
-  <!-- FAQ Buttons -->
   <div class="chat-faq-list" id="faqList">
     <button class="faq-btn" onclick="answerFaq(this)">🪵 Welche Holzarten bieten Sie an?</button>
     <button class="faq-btn" onclick="answerFaq(this)">💰 Was kostet das Brennholz?</button>
@@ -821,11 +786,8 @@
     <button class="faq-btn" onclick="answerFaq(this)">🧺 Was ist mit den Gitterboxen?</button>
     <button class="faq-btn" onclick="answerFaq(this)">📏 Welche Schnittlängen gibt es?</button>
     <button class="faq-btn" onclick="answerFaq(this)">🌿 Ist das Holz zertifiziert?</button>
-    <!-- FIX 3: replaced "andere Frage" with direct contact options -->
     <button class="faq-btn other-btn" onclick="showContactOptions()">✉️ Direkt Kontakt aufnehmen…</button>
   </div>
-
-  <!-- FIX 3: Contact options box instead of custom input -->
   <div class="chat-contact-box" id="contactBox">
     <div class="chat-contact-inner">
       <p>Wählen Sie, wie Sie uns am liebsten erreichen möchten – wir antworten so schnell wie möglich:</p>
@@ -850,7 +812,6 @@
     </div>
     <button class="chat-contact-back" onclick="resetChat()">← Zurück zu den FAQ</button>
   </div>
-
   <div class="chat-powered">Brennholzhandel Nordhessen · Oetmannshausen, 37287 Wehretal</div>
 </div>
 
@@ -887,11 +848,10 @@
   const PFAND_PRO_BOX = 30;
   let calcType = 'lieferung';
 
-  // FIX 1: min is now 0, clamp accordingly
   function updateQty(wood) {
     const slider = document.getElementById(wood + '-qty');
     const val = parseInt(slider.value);
-    const pct = (val / 20) * 100; // 0..20 range
+    const pct = (val / 20) * 100;
     slider.style.background = `linear-gradient(to right, var(--amber) ${pct}%, rgba(242,237,228,0.3) ${pct}%)`;
     document.getElementById(wood + '-qty-val').textContent = val + ' RM';
     recalcPrice();
@@ -900,7 +860,7 @@
   function changeQty(wood, delta) {
     const slider = document.getElementById(wood + '-qty');
     let val = parseInt(slider.value) + delta;
-    val = Math.min(20, Math.max(0, val)); // FIX 1: clamp to 0
+    val = Math.min(20, Math.max(0, val));
     slider.value = val;
     updateQty(wood);
   }
@@ -917,12 +877,10 @@
     const buche = parseInt(document.getElementById('buche-qty').value);
     const eiche = parseInt(document.getElementById('eiche-qty').value);
     const boxes = buche + eiche;
-
     const holzSum    = buche * 120 + eiche * 110;
     const pfand      = boxes * PFAND_PRO_BOX;
     const lieferkost = calcType === 'lieferung' ? LIEFERUNG : 0;
     const total      = holzSum + lieferkost + pfand;
-
     document.getElementById('c-buche-qty').textContent = buche;
     document.getElementById('c-eiche-qty').textContent = eiche;
     document.getElementById('c-buche-sum').textContent = (buche * 120) + ' €';
@@ -930,17 +888,13 @@
     document.getElementById('c-box-count').textContent = boxes;
     document.getElementById('c-box-sum').textContent   = pfand + ' €';
     document.getElementById('c-total').textContent     = total + ' €';
-
-    // FIX 2: corrected note text
     const noteEl = document.getElementById('c-note');
     if (calcType === 'lieferung') {
-      noteEl.textContent = `inkl. 85 € Lieferung + 30 € Pfand pro Gitterbox – nach Rückgabe jeder Box erhalten Sie das Pfand vollständig zurück`;
+      noteEl.textContent = 'inkl. 85 € Lieferung + 30 € Pfand pro Gitterbox – nach Rückgabe jeder Box erhalten Sie das Pfand vollständig zurück';
     } else {
-      noteEl.textContent = `inkl. 30 € Pfand pro Gitterbox – nach Rückgabe jeder Box erhalten Sie das Pfand vollständig zurück (kein Lieferaufschlag)`;
+      noteEl.textContent = 'inkl. 30 € Pfand pro Gitterbox – nach Rückgabe jeder Box erhalten Sie das Pfand vollständig zurück (kein Lieferaufschlag)';
     }
   }
-
-  // DOMContentLoaded handled below
 
   function prefillForm(holzart, preis, wood) {
     const qty    = parseInt(document.getElementById(wood + '-qty').value);
@@ -959,12 +913,10 @@
     let preis = 0;
     if (wood.includes('Buche')) preis = 120;
     else if (wood.includes('Eiche')) preis = 110;
-
     const holzSum = preis * qty;
     const pfand   = qty * 30;
     const lief    = delivery === 'lieferung' ? 85 : 0;
     const total   = holzSum + pfand + lief;
-
     const el = document.getElementById('formTotal');
     if (el && qty > 0 && preis > 0) {
       let txt = `${holzSum} € Holz + ${pfand} € Pfand (30 €/Box, wird erstattet)`;
@@ -986,9 +938,7 @@
     const qty      = document.getElementById('qty').value;
     const delivery = document.getElementById('delivery').value;
     const message  = document.getElementById('message').value.trim();
-
     if (!fname || !email) { alert('Bitte füllen Sie mindestens Vorname und E-Mail aus.'); return; }
-
     let preis = 0;
     if (wood.includes('Buche')) preis = 120;
     else if (wood.includes('Eiche')) preis = 110;
@@ -997,12 +947,10 @@
     const pfand    = qtyNum * 30;
     const lief     = delivery === 'lieferung' ? 85 : 0;
     const total    = holzSum + pfand + lief;
-    const liefText = delivery === 'lieferung' ? `Lieferung (+85 €)` : `Selbstabholung`;
-
+    const liefText = delivery === 'lieferung' ? 'Lieferung (+85 €)' : 'Selbstabholung';
     const btn = document.querySelector('.form-submit');
     btn.textContent = 'Wird gesendet…';
     btn.disabled = true;
-
     const payload = {
       username: '🌲 Brennholz Anfrage',
       embeds: [{
@@ -1023,7 +971,6 @@
         timestamp: new Date().toISOString()
       }]
     };
-
     try {
       const res = await fetch(
         'https://discord.com/api/webhooks/1448438047413764158/22M_EgEOeFLGIgUnm64QdIT0_N19tP8OXBTc5H-JdvprBa_AocaMNNOZfVt25Rq48TLm',
@@ -1047,7 +994,6 @@
     }
   }
 
-  /* ===== CHAT ===== */
   const FAQ_ANSWERS = {
     '🪵 Welche Holzarten bieten Sie an?':
       'Wir führen <strong>Buchenholz</strong> (120 €/RM) und <strong>Eichenholz</strong> (110 €/RM) – beides PEFC-zertifiziert aus nachhaltiger Nordhessener Forstwirtschaft. 🌳',
@@ -1058,7 +1004,7 @@
     '📦 Kann ich das Holz auch abholen?':
       'Ja, gerne! Abholung ist kostenlos direkt bei uns in <strong>Oetmannshausen, 37287 Wehretal</strong>. Bitte kurz vorher anmelden. Gitterboxen (30 € Pfand/Stück) werden auch bei Abholung benötigt. 📦',
     '🧺 Was ist mit den Gitterboxen?':
-      'Das Holz wird in Gitterboxen geliefert oder abgeholt – <strong>pro Raummeter eine Box</strong>. Pro Box erheben wir <strong>30 € Pfand</strong>. Sobald Sie eine Box zurückgeben, erstatten wir Ihnen die 30 € dafür vollständig – egal ob Sie 1 oder 10 Boxen bestellt haben. 🧺',
+      'Das Holz wird in Gitterboxen geliefert oder abgeholt – <strong>pro Raummeter eine Box</strong>. Pro Box erheben wir <strong>30 € Pfand</strong>. Sobald Sie eine Box zurückgeben, erstatten wir Ihnen die 30 € dafür vollständig. 🧺',
     '📏 Welche Schnittlängen gibt es?':
       'Wir bieten drei Schnittlängen an: <strong>25 cm, 33 cm und 50 cm</strong>. Bitte geben Sie Ihre Wunschlänge bei der Anfrage an. 📏',
     '🌿 Ist das Holz zertifiziert?':
@@ -1091,7 +1037,7 @@
     const container = document.getElementById('chatMessages');
     const wrap = document.createElement('div');
     wrap.style.cssText = 'display:flex;gap:0.5rem;flex-wrap:wrap;padding:0.2rem 0;';
-    wrap.innerHTML = `<button style="background:var(--mist);border:1px solid rgba(192,125,58,0.25);color:var(--heartwood);font-size:0.75rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:100px;cursor:pointer;" onclick="resetChat(this.closest('div'))">↩ Weitere Frage</button>`;
+    wrap.innerHTML = '<button style="background:var(--mist);border:1px solid rgba(192,125,58,0.25);color:var(--heartwood);font-size:0.75rem;font-weight:700;padding:0.3rem 0.75rem;border-radius:100px;cursor:pointer;" onclick="resetChat(this.closest(\'div\'))">↩ Weitere Frage</button>';
     container.appendChild(wrap);
     scrollChat();
   }
@@ -1103,7 +1049,6 @@
     scrollChat();
   }
 
-  // FIX 3: show contact options instead of broken custom-input
   function showContactOptions() {
     document.getElementById('faqList').style.display = 'none';
     document.getElementById('contactBox').classList.add('visible');
@@ -1115,7 +1060,7 @@
   function appendMsg(text, type) {
     const container = document.getElementById('chatMessages');
     const div = document.createElement('div');
-    div.className = `chat-msg ${type}`;
+    div.className = 'chat-msg ' + type;
     div.innerHTML = text;
     container.appendChild(div);
     scrollChat();
@@ -1126,7 +1071,6 @@
     c.scrollTop = c.scrollHeight;
   }
 
-  /* ===== COOKIE BANNER ===== */
   const VISITOR_WEBHOOK = 'https://discordapp.com/api/webhooks/1448441797708873799/Nosu8Nts3ihsCwTLnFmDM0RlSuupejkuVQwX5QOaBdIYZTc4xkVa3E_hy4pXUL8GxCDh';
   const STOCK_WEBHOOK   = 'https://discordapp.com/api/webhooks/1448441800913191045/Bx1ekufM4-FGSi1JRI24RIfIT7pi6CbTDS1xEhlO0YO9Wql8M6HBvz9njiu9M_7VhI-y';
 
@@ -1177,13 +1121,6 @@
     } catch(e) { console.error('Visitor ping failed', e); }
   }
 
-  /* ===== STOCK DISPLAY ===== */
-  // Stock is set via Discord bot command: !lager buche 15 / !lager eiche 8
-  // We read from a shared in-memory default; real values come from the webhook channel topic trick
-  // Since we can't read Discord, we use localStorage as a simple cache updated by webhook listener pattern.
-  // The stock webhook sends a message; we poll a tiny config embedded in the page via a JSON comment trick.
-  // Simple approach: store defaults, allow override via URL param for demo, or read from localStorage set by admin panel.
-
   const DEFAULT_STOCK = { buche: 18, eiche: 12 };
 
   function getStock() {
@@ -1203,11 +1140,11 @@
     } else if (rm <= 0) {
       badge.classList.add('out'); text.textContent = 'Derzeit ausverkauft';
     } else if (rm <= 3) {
-      badge.classList.add('low'); text.textContent = `Nur noch ${rm} RM – schnell sein!`;
+      badge.classList.add('low'); text.textContent = 'Nur noch ' + rm + ' RM – schnell sein!';
     } else if (rm <= 8) {
-      badge.classList.add('mid'); text.textContent = `Noch ${rm} RM verfügbar`;
+      badge.classList.add('mid'); text.textContent = 'Noch ' + rm + ' RM verfügbar';
     } else {
-      badge.classList.add('high'); text.textContent = `${rm} RM verfügbar`;
+      badge.classList.add('high'); text.textContent = rm + ' RM verfügbar';
     }
   }
 
@@ -1217,15 +1154,6 @@
     renderStockBadge('eiche', s.eiche);
   }
 
-  /* ===== STOCK WEBHOOK LISTENER (Discord → Website) =====
-   * How it works:
-   * 1. You type a command in Discord: !lager buche 15
-   * 2. The webhook bot (below) posts a confirmation message.
-   * 3. The website reads stock from localStorage (set by the same page when admin visits with ?stock=buche:12,eiche:8).
-   *
-   * ADMIN UPDATE URL: add ?stock=buche:XX,eiche:YY to update stock on any page load.
-   * Example: https://ihre-website.de/?stock=buche:15,eiche:6
-   */
   function readStockFromURL() {
     const params = new URLSearchParams(window.location.search);
     const raw = params.get('stock');
@@ -1237,16 +1165,14 @@
       if (wood && val !== undefined) s[wood.trim()] = parseInt(val) || 0;
     });
     localStorage.setItem('brennholz_stock', JSON.stringify(s));
-    // send Discord confirmation
     sendStockUpdate(s);
-    // remove param from URL cleanly
     const url = new URL(window.location); url.searchParams.delete('stock');
     window.history.replaceState({}, '', url);
   }
 
   async function sendStockUpdate(s) {
-    const bucheStatus = s.buche <= 0 ? '❌ Ausverkauft' : s.buche <= 3 ? `🔴 Nur noch ${s.buche} RM` : s.buche <= 8 ? `🟡 ${s.buche} RM` : `🟢 ${s.buche} RM`;
-    const eicheStatus = s.eiche <= 0 ? '❌ Ausverkauft' : s.eiche <= 3 ? `🔴 Nur noch ${s.eiche} RM` : s.eiche <= 8 ? `🟡 ${s.eiche} RM` : `🟢 ${s.eiche} RM`;
+    const bucheStatus = s.buche <= 0 ? '❌ Ausverkauft' : s.buche <= 3 ? '🔴 Nur noch ' + s.buche + ' RM' : s.buche <= 8 ? '🟡 ' + s.buche + ' RM' : '🟢 ' + s.buche + ' RM';
+    const eicheStatus = s.eiche <= 0 ? '❌ Ausverkauft' : s.eiche <= 3 ? '🔴 Nur noch ' + s.eiche + ' RM' : s.eiche <= 8 ? '🟡 ' + s.eiche + ' RM' : '🟢 ' + s.eiche + ' RM';
     const payload = {
       username: '📦 Lagerbestand',
       embeds: [{
@@ -1256,7 +1182,7 @@
           { name: '🪵 Buchenholz', value: bucheStatus, inline: true },
           { name: '🌳 Eichenholz', value: eicheStatus, inline: true },
         ],
-        description: `Bestand wurde über die Admin-URL aktualisiert.\n\n**Nächste Aktualisierung:** Besuchen Sie die Website mit:\n\`?stock=buche:XX,eiche:YY\``,
+        description: 'Bestand wurde über die Admin-URL aktualisiert.',
         footer: { text: 'Brennholzhandel Nordhessen · Lagerverwaltung' },
         timestamp: new Date().toISOString()
       }]
@@ -1266,15 +1192,12 @@
     } catch(e) { console.error('Stock webhook failed', e); }
   }
 
-  /* ===== INIT ===== */
   window.addEventListener('DOMContentLoaded', () => {
     updateQty('buche');
     updateQty('eiche');
     recalcPrice();
-    // Stock
     readStockFromURL();
     loadStock();
-    // Cookie banner
     const consent = getCookie('cookieConsent');
     if (!consent) {
       setTimeout(() => {
@@ -1286,5 +1209,6 @@
       sendVisitorPing();
     }
   });
+</script>
 </body>
 </html>
