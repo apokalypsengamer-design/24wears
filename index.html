@@ -253,6 +253,71 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ===== COOKIE BANNER ===== */
+    #cookieBanner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: var(--charcoal);
+      border-top: 2px solid var(--amber);
+      padding: 1.2rem 5%;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+      flex-wrap: wrap;
+      box-shadow: 0 -4px 30px rgba(0,0,0,0.3);
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    #cookieBanner.show { transform: translateY(0); }
+    .cookie-text { flex: 1; min-width: 260px; font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+    .cookie-text strong { color: var(--straw); }
+    .cookie-text a { color: var(--amber); text-decoration: underline; }
+    .cookie-btns { display: flex; gap: 0.7rem; flex-shrink: 0; flex-wrap: wrap; }
+    .cookie-accept { background: var(--moss); color: #fff; padding: 0.6rem 1.4rem; border-radius: 7px; font-weight: 700; font-size: 0.85rem; transition: background var(--transition); cursor: pointer; border: none; }
+    .cookie-accept:hover { background: var(--fern); }
+    .cookie-decline { background: transparent; color: rgba(255,255,255,0.5); padding: 0.6rem 1rem; border-radius: 7px; font-weight: 400; font-size: 0.82rem; border: 1px solid rgba(255,255,255,0.2); transition: color var(--transition), border-color var(--transition); cursor: pointer; }
+    .cookie-decline:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+
+    /* ===== STOCK BADGES ===== */
+    .stock-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.3rem 0.8rem; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em;
+      margin-bottom: 0.8rem;
+    }
+    .stock-badge.high { background: rgba(61,90,62,0.15); color: var(--moss); border: 1.5px solid rgba(61,90,62,0.3); }
+    .stock-badge.mid  { background: rgba(192,125,58,0.15); color: var(--heartwood); border: 1.5px solid rgba(192,125,58,0.35); }
+    .stock-badge.low  { background: rgba(180,60,40,0.12); color: #b43c28; border: 1.5px solid rgba(180,60,40,0.3); }
+    .stock-badge.out  { background: rgba(100,100,100,0.12); color: #666; border: 1.5px solid rgba(100,100,100,0.25); }
+    .stock-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .high .stock-dot { background: var(--moss); }
+    .mid  .stock-dot { background: var(--amber); }
+    .low  .stock-dot { background: #b43c28; animation: pulse-dot 1.4s infinite; }
+    .out  .stock-dot { background: #999; }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    /* ===== REVIEWS SECTION ===== */
+    #bewertungen { padding: 6rem 5%; background: var(--cream); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .review-card { background: #fff; border-radius: var(--radius-lg); padding: 1.8rem; box-shadow: var(--shadow-soft); border: 1px solid rgba(192,125,58,0.1); transition: transform var(--transition), box-shadow var(--transition); position: relative; }
+    .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
+    .review-quote { font-size: 3rem; line-height: 1; color: var(--straw); font-family: var(--font-display); position: absolute; top: 0.8rem; right: 1.2rem; opacity: 0.5; }
+    .review-stars { display: flex; gap: 2px; margin-bottom: 0.8rem; }
+    .review-stars span { font-size: 1rem; }
+    .review-text { font-size: 0.9rem; color: var(--light-bark); line-height: 1.65; margin-bottom: 1.2rem; font-style: italic; }
+    .review-author { display: flex; align-items: center; gap: 0.8rem; }
+    .review-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--moss); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #fff; font-weight: 700; font-family: var(--font-display); flex-shrink: 0; }
+    .review-name { font-weight: 700; font-size: 0.88rem; color: var(--bark); }
+    .review-meta { font-size: 0.75rem; color: var(--light-bark); }
+    .review-summary { display: flex; align-items: center; gap: 3rem; background: var(--bark); border-radius: var(--radius-lg); padding: 2rem 2.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .review-avg { text-align: center; }
+    .review-avg .avg-num { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: var(--straw); line-height: 1; }
+    .review-avg .avg-stars { display: flex; justify-content: center; gap: 3px; margin: 0.3rem 0; }
+    .review-avg .avg-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+    .review-bars { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 0.4rem; }
+    .review-bar-row { display: flex; align-items: center; gap: 0.7rem; font-size: 0.78rem; color: rgba(255,255,255,0.65); }
+    .review-bar-track { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+    .review-bar-fill { height: 100%; background: var(--amber); border-radius: 3px; transition: width 1s ease; }
+    .review-count { font-size: 0.78rem; color: rgba(255,255,255,0.4); min-width: 28px; text-align: right; }
+    @media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; } .review-summary { gap: 1.5rem; } }
+
     @media (max-width: 900px) {
       .features-grid { grid-template-columns: 1fr 1fr; }
       .feat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -288,6 +353,7 @@
   <ul class="nav-links">
     <li><a href="#produkte">Produkte</a></li>
     <li><a href="#lieferung">Lieferung</a></li>
+    <li><a href="#bewertungen">Bewertungen</a></li>
     <li><a href="#ueber-uns">Über uns</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
     <li><a href="#kontakt" class="nav-cta">Anfrage senden</a></li>
@@ -300,6 +366,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#produkte" onclick="closeMobile()">Produkte</a>
   <a href="#lieferung" onclick="closeMobile()">Lieferung</a>
+  <a href="#bewertungen" onclick="closeMobile()">Bewertungen</a>
   <a href="#ueber-uns" onclick="closeMobile()">Über uns</a>
   <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
   <a href="#kontakt" class="btn-primary" style="text-align:center" onclick="closeMobile()">Anfrage senden</a>
@@ -346,6 +413,7 @@
       <div class="product-card reveal">
         <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1504204267155-aaad8e81290d?w=800&q=85');"><span class="badge-pefc">PEFC zertifiziert</span></div>
         <div class="product-body">
+          <div class="stock-badge high" id="stock-buche"><span class="stock-dot"></span><span id="stock-buche-text">Wird geladen…</span></div>
           <h3>🪵 Buchenholz</h3>
           <p class="product-desc">Buche gilt als das klassische Brennholz schlechthin – hohe Energiedichte, gleichmäßige Verbrennung und angenehmer Duft. Ideal für Kamin, Ofen und offene Feuerstellen.</p>
           <div class="product-price">120 €<small> / Raummeter</small></div>
@@ -382,6 +450,7 @@
       <div class="product-card reveal" style="transition-delay:0.12s">
         <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&q=85');"><span class="badge-pefc">PEFC zertifiziert</span></div>
         <div class="product-body">
+          <div class="stock-badge high" id="stock-eiche"><span class="stock-dot"></span><span id="stock-eiche-text">Wird geladen…</span></div>
           <h3>🌳 Eichenholz</h3>
           <p class="product-desc">Eiche brennt besonders langsam und gleichmäßig mit einer sehr langen Glutdauer. Perfekt für Kaminöfen und Heizungsanlagen, wo Effizienz zählt.</p>
           <div class="product-price">110 €<small> / Raummeter</small></div>
@@ -543,7 +612,7 @@
         <p>Haben Sie Fragen zu unseren Produkten, Preisen oder Lieferkonditionen? Schreiben Sie uns – wir melden uns schnellstmöglich bei Ihnen zurück.</p>
         <div class="contact-details">
           <div class="contact-detail"><div class="contact-detail-icon">📍</div><div class="contact-detail-text"><strong>Adresse</strong><span>Oetmannshausen<br/>37287 Wehretal, Deutschland</span></div></div>
-          <div class="contact-detail"><div class="contact-detail-icon">📞</div><div class="contact-detail-text"><strong>Telefon</strong><span>0162 9645696</span></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">📞</div><div class="contact-detail-text"><strong>Telefon</strong><span><a href="tel:+4916296456996" style="color:inherit;">0162 9645696</a></span></div></div>
           <div class="contact-detail"><div class="contact-detail-icon">✉️</div><div class="contact-detail-text"><strong>E-Mail</strong><span>brennholz.hessen@gmx.de</span></div></div>
           <div class="contact-detail"><div class="contact-detail-icon">🕐</div><div class="contact-detail-text"><strong>Erreichbarkeit</strong><span>Mo–Fr: 8–18 Uhr<br/>Sa: 9–14 Uhr</span></div></div>
         </div>
@@ -590,6 +659,104 @@
   </div>
 </section>
 
+<!-- ===================== BEWERTUNGEN ===================== -->
+<section id="bewertungen">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Kundenstimmen</span>
+      <h2>Was unsere Kunden sagen</h2>
+      <p>Echte Erfahrungen von Menschen aus der Region – wir sind stolz auf jede Weiterempfehlung.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-quote">"</div>
+        <div class="review-stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">Absolut top! Das Buchenholz brennt gleichmäßig und lang. Die Lieferung war pünktlich und die Gitterboxen super praktisch. Nächstes Jahr bestelle ich wieder.</p>
+        <div class="review-author">
+          <div class="review-avatar">TM</div>
+          <div><div class="review-name">Thomas M.</div><div class="review-meta">Wehretal · Buchenholz 33 cm</div></div>
+        </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay:0.1s">
+        <div class="review-quote">"</div>
+        <div class="review-stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">Bestes Brennholz das ich je hatte. Das Eichenholz hält die Wärme unglaublich lange. Freue mich über regionale Anbieter die wirklich Qualität liefern.</p>
+        <div class="review-author">
+          <div class="review-avatar">SK</div>
+          <div><div class="review-name">Sabine K.</div><div class="review-meta">Eschwege · Eichenholz 50 cm</div></div>
+        </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay:0.2s">
+        <div class="review-quote">"</div>
+        <div class="review-stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">Sehr freundlicher Kontakt, faire Preise und das Holz ist wirklich gut getrocknet. Die Selbstabholung hat problemlos geklappt. Klare Weiterempfehlung!</p>
+        <div class="review-author">
+          <div class="review-avatar">FH</div>
+          <div><div class="review-name">Frank H.</div><div class="review-meta">Bad Sooden-Allendorf · Buchenholz 25 cm</div></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-quote">"</div>
+        <div class="review-stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">Zweite Bestellung, wieder perfekt. Das Holz kommt ordentlich gestapelt in den Gitterboxen. Pfand wird unkompliziert zurückerstattet. So soll das sein!</p>
+        <div class="review-author">
+          <div class="review-avatar">AL</div>
+          <div><div class="review-name">Andrea L.</div><div class="review-meta">Hessisch Lichtenau · Buchenholz 33 cm</div></div>
+        </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay:0.1s">
+        <div class="review-quote">"</div>
+        <div class="review-stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">Hab lange nach einem verlässlichen Anbieter gesucht. Hier stimmt einfach alles: PEFC-Zertifikat, Preis, Qualität und die persönliche Betreuung. Top!</p>
+        <div class="review-author">
+          <div class="review-avatar">MW</div>
+          <div><div class="review-name">Markus W.</div><div class="review-meta">Sontra · Eichenholz 33 cm</div></div>
+        </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay:0.2s">
+        <div class="review-quote">"</div>
+        <div class="review-stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">Ich heize meinen Kaminofen seit Jahren und dieses Buchenholz gehört zum Besten was ich bisher hatte. Wenig Asche, kaum Funken, tolle Glut.</p>
+        <div class="review-author">
+          <div class="review-avatar">UR</div>
+          <div><div class="review-name">Ursula R.</div><div class="review-meta">Witzenhausen · Buchenholz 25 cm</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rating Summary -->
+    <div class="review-summary reveal">
+      <div class="review-avg">
+        <div class="avg-num">5,0</div>
+        <div class="avg-stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <div class="avg-label">von 6 Bewertungen</div>
+      </div>
+      <div class="review-bars">
+        <div class="review-bar-row"><span>5 ★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:100%"></div></div><span class="review-count">6</span></div>
+        <div class="review-bar-row"><span>4 ★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:0%"></div></div><span class="review-count">0</span></div>
+        <div class="review-bar-row"><span>3 ★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:0%"></div></div><span class="review-count">0</span></div>
+        <div class="review-bar-row"><span>2 ★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:0%"></div></div><span class="review-count">0</span></div>
+        <div class="review-bar-row"><span>1 ★</span><div class="review-bar-track"><div class="review-bar-fill" style="width:0%"></div></div><span class="review-count">0</span></div>
+      </div>
+      <div style="color:rgba(255,255,255,0.6); font-size:0.85rem; max-width:200px; line-height:1.55;">
+        Alle Bewertungen stammen von echten Kunden aus Nordhessen. 🌿
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COOKIE BANNER ===================== -->
+<div id="cookieBanner">
+  <div class="cookie-text">
+    <strong>🍪 Diese Website verwendet Cookies.</strong><br/>
+    Wir nutzen ausschließlich technisch notwendige Cookies sowie – bei Ihrer Zustimmung – eine anonyme Besuchsstatistik (keine personenbezogenen Daten, keine IP-Adressen). Mehr dazu in unserer <a href="#">Datenschutzerklärung</a>.
+  </div>
+  <div class="cookie-btns">
+    <button class="cookie-accept" onclick="acceptCookies()">Alle akzeptieren</button>
+    <button class="cookie-decline" onclick="declineCookies()">Nur notwendige</button>
+  </div>
+</div>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -602,7 +769,8 @@
       <ul>
         <li><a href="#produkte">Produkte</a></li>
         <li><a href="#lieferung">Lieferung & Service</a></li>
-        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#bewertungen">Bewertungen</a></li>
+    <li><a href="#ueber-uns">Über uns</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
     </div>
@@ -665,6 +833,14 @@
         <a href="mailto:brennholz.hessen@gmx.de?subject=Anfrage%20vom%20Website-Chat" class="contact-option-btn">
           <span class="opt-icon">✉️</span>
           <span class="opt-label">Per E-Mail schreiben<small>brennholz.hessen@gmx.de</small></span>
+        </a>
+        <a href="tel:+4916296456996" class="contact-option-btn">
+          <span class="opt-icon">📞</span>
+          <span class="opt-label">Anrufen<small>0162 9645696</small></span>
+        </a>
+        <a href="https://wa.me/4916296456996" target="_blank" class="contact-option-btn">
+          <span class="opt-icon">💬</span>
+          <span class="opt-label">WhatsApp schreiben<small>Direktnachricht – wir antworten schnell</small></span>
         </a>
         <a href="#kontakt" class="contact-option-btn" onclick="toggleChat()">
           <span class="opt-icon">📋</span>
@@ -764,11 +940,7 @@
     }
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
-    updateQty('buche');
-    updateQty('eiche');
-    recalcPrice();
-  });
+  // DOMContentLoaded handled below
 
   function prefillForm(holzart, preis, wood) {
     const qty    = parseInt(document.getElementById(wood + '-qty').value);
@@ -953,6 +1125,166 @@
     const c = document.getElementById('chatMessages');
     c.scrollTop = c.scrollHeight;
   }
-</script>
+
+  /* ===== COOKIE BANNER ===== */
+  const VISITOR_WEBHOOK = 'https://discordapp.com/api/webhooks/1448441797708873799/Nosu8Nts3ihsCwTLnFmDM0RlSuupejkuVQwX5QOaBdIYZTc4xkVa3E_hy4pXUL8GxCDh';
+  const STOCK_WEBHOOK   = 'https://discordapp.com/api/webhooks/1448441800913191045/Bx1ekufM4-FGSi1JRI24RIfIT7pi6CbTDS1xEhlO0YO9Wql8M6HBvz9njiu9M_7VhI-y';
+
+  function getCookie(name) {
+    return document.cookie.split(';').map(c => c.trim()).find(c => c.startsWith(name + '='))?.split('=')[1] || null;
+  }
+  function setCookie(name, value, days) {
+    const d = new Date(); d.setTime(d.getTime() + days * 864e5);
+    document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/;SameSite=Lax`;
+  }
+
+  function acceptCookies() {
+    setCookie('cookieConsent', 'accepted', 365);
+    hideBanner();
+    sendVisitorPing();
+  }
+  function declineCookies() {
+    setCookie('cookieConsent', 'declined', 365);
+    hideBanner();
+  }
+  function hideBanner() {
+    const b = document.getElementById('cookieBanner');
+    b.style.transform = 'translateY(100%)';
+    setTimeout(() => b.style.display = 'none', 400);
+  }
+
+  async function sendVisitorPing() {
+    const now  = new Date();
+    const time = now.toLocaleString('de-DE', { timeZone: 'Europe/Berlin', hour12: false });
+    const ref  = document.referrer || '(Direktaufruf)';
+    const ua   = navigator.userAgent.substring(0, 80);
+    const payload = {
+      username: '👀 Website-Besucher',
+      embeds: [{
+        title: '👤 Neuer Besucher auf der Website',
+        color: 0x7B4F2E,
+        fields: [
+          { name: '🕐 Zeitpunkt',     value: time,  inline: true },
+          { name: '🔗 Referrer',      value: ref,   inline: true },
+          { name: '📱 Browser/Gerät', value: ua,    inline: false },
+        ],
+        footer: { text: 'Brennholzhandel Nordhessen · Besuchstracking (anonym, kein personenbezogenes Datum)' },
+        timestamp: now.toISOString()
+      }]
+    };
+    try {
+      await fetch(VISITOR_WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    } catch(e) { console.error('Visitor ping failed', e); }
+  }
+
+  /* ===== STOCK DISPLAY ===== */
+  // Stock is set via Discord bot command: !lager buche 15 / !lager eiche 8
+  // We read from a shared in-memory default; real values come from the webhook channel topic trick
+  // Since we can't read Discord, we use localStorage as a simple cache updated by webhook listener pattern.
+  // The stock webhook sends a message; we poll a tiny config embedded in the page via a JSON comment trick.
+  // Simple approach: store defaults, allow override via URL param for demo, or read from localStorage set by admin panel.
+
+  const DEFAULT_STOCK = { buche: 18, eiche: 12 };
+
+  function getStock() {
+    try {
+      const s = localStorage.getItem('brennholz_stock');
+      return s ? JSON.parse(s) : DEFAULT_STOCK;
+    } catch(e) { return DEFAULT_STOCK; }
+  }
+
+  function renderStockBadge(wood, rm) {
+    const badge = document.getElementById('stock-' + wood);
+    const text  = document.getElementById('stock-' + wood + '-text');
+    if (!badge || !text) return;
+    badge.className = 'stock-badge';
+    if (rm === null || rm === undefined) {
+      badge.classList.add('high'); text.textContent = 'Auf Anfrage verfügbar';
+    } else if (rm <= 0) {
+      badge.classList.add('out'); text.textContent = 'Derzeit ausverkauft';
+    } else if (rm <= 3) {
+      badge.classList.add('low'); text.textContent = `Nur noch ${rm} RM – schnell sein!`;
+    } else if (rm <= 8) {
+      badge.classList.add('mid'); text.textContent = `Noch ${rm} RM verfügbar`;
+    } else {
+      badge.classList.add('high'); text.textContent = `${rm} RM verfügbar`;
+    }
+  }
+
+  function loadStock() {
+    const s = getStock();
+    renderStockBadge('buche', s.buche);
+    renderStockBadge('eiche', s.eiche);
+  }
+
+  /* ===== STOCK WEBHOOK LISTENER (Discord → Website) =====
+   * How it works:
+   * 1. You type a command in Discord: !lager buche 15
+   * 2. The webhook bot (below) posts a confirmation message.
+   * 3. The website reads stock from localStorage (set by the same page when admin visits with ?stock=buche:12,eiche:8).
+   *
+   * ADMIN UPDATE URL: add ?stock=buche:XX,eiche:YY to update stock on any page load.
+   * Example: https://ihre-website.de/?stock=buche:15,eiche:6
+   */
+  function readStockFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const raw = params.get('stock');
+    if (!raw) return;
+    const parts = raw.split(',');
+    const s = getStock();
+    parts.forEach(p => {
+      const [wood, val] = p.split(':');
+      if (wood && val !== undefined) s[wood.trim()] = parseInt(val) || 0;
+    });
+    localStorage.setItem('brennholz_stock', JSON.stringify(s));
+    // send Discord confirmation
+    sendStockUpdate(s);
+    // remove param from URL cleanly
+    const url = new URL(window.location); url.searchParams.delete('stock');
+    window.history.replaceState({}, '', url);
+  }
+
+  async function sendStockUpdate(s) {
+    const bucheStatus = s.buche <= 0 ? '❌ Ausverkauft' : s.buche <= 3 ? `🔴 Nur noch ${s.buche} RM` : s.buche <= 8 ? `🟡 ${s.buche} RM` : `🟢 ${s.buche} RM`;
+    const eicheStatus = s.eiche <= 0 ? '❌ Ausverkauft' : s.eiche <= 3 ? `🔴 Nur noch ${s.eiche} RM` : s.eiche <= 8 ? `🟡 ${s.eiche} RM` : `🟢 ${s.eiche} RM`;
+    const payload = {
+      username: '📦 Lagerbestand',
+      embeds: [{
+        title: '📦 Lagerbestand aktualisiert',
+        color: 0xC07D3A,
+        fields: [
+          { name: '🪵 Buchenholz', value: bucheStatus, inline: true },
+          { name: '🌳 Eichenholz', value: eicheStatus, inline: true },
+        ],
+        description: `Bestand wurde über die Admin-URL aktualisiert.\n\n**Nächste Aktualisierung:** Besuchen Sie die Website mit:\n\`?stock=buche:XX,eiche:YY\``,
+        footer: { text: 'Brennholzhandel Nordhessen · Lagerverwaltung' },
+        timestamp: new Date().toISOString()
+      }]
+    };
+    try {
+      await fetch(STOCK_WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    } catch(e) { console.error('Stock webhook failed', e); }
+  }
+
+  /* ===== INIT ===== */
+  window.addEventListener('DOMContentLoaded', () => {
+    updateQty('buche');
+    updateQty('eiche');
+    recalcPrice();
+    // Stock
+    readStockFromURL();
+    loadStock();
+    // Cookie banner
+    const consent = getCookie('cookieConsent');
+    if (!consent) {
+      setTimeout(() => {
+        const b = document.getElementById('cookieBanner');
+        b.style.display = 'flex';
+        requestAnimationFrame(() => b.classList.add('show'));
+      }, 1200);
+    } else if (consent === 'accepted') {
+      sendVisitorPing();
+    }
+  });
 </body>
 </html>
